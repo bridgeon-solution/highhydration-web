@@ -16,7 +16,11 @@ const OrderModal = ({props,setModal,orderfetch}) => {
       try {
         const deleteOrdre=async()=>{
           setLoading(true)
-          const response=await api.delete(`/orders/${props?._id}`)
+          const data={
+            orderId:props?._id,
+            status:"cancelled"
+          }
+          const response=await api.patch(`/orders/`,{data})
           setLoading(false)
           setModal(false)
           if(response.status===200){
@@ -106,7 +110,7 @@ const OrderModal = ({props,setModal,orderfetch}) => {
                 OK
               </button>
               <button onClick={()=>{handleClancle()}}  type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-red-400 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700   dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                Delete
+                Cancel
               </button>
             </div>
             </>

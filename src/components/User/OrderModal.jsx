@@ -14,8 +14,8 @@ const OrderModal = ({props,setModal,orderfetch}) => {
     }
     const handleDelete=()=>{
       try {
+        setLoading(true)
         const deleteOrdre=async()=>{
-          setLoading(true)
           const data={
             orderId:props?._id,
             status:"cancelled"

@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import api from '../../axiosInterceptors'
 
 const OrderAllocation = () => {
+    const [data,setData]=useState(null)
+useEffect(()=>{
+try {
+    async function fetchData(){
+        const response=await api.get('/orders')
+        console.log(response,"resputinn");
+      setData(response.data.orders)
+      console.log(data,"dataum");
+    }
+    fetchData()
+} catch (error) {
+    console.log(error);
+}
+    },[])
+
   return (
     <div>
         

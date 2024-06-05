@@ -269,7 +269,7 @@ console.log(userData);
         </div>
         <div className='mb-6 w-full p-2'>
           <label>Pin Code</label>
-      <p className='border rounded-lg bg-[#efeded] p-2'>{userData?.pincode||"Add Pin Code"}</p>
+      <p className='border rounded-lg bg-[#efeded] p-2'>{userData?.pin_number||"Add Pin Code"}</p>
         </div>
         <div className=' flex justify-end mr-4 mb-5'>
         <IoAddCircle className='text-blue-500 mt-1'/>

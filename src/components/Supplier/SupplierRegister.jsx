@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import client from "../../assets/Supplier/Client.jpg";
 import { FcGoogle } from "react-icons/fc";
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

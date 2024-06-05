@@ -7,7 +7,7 @@ import { GiWaterRecycling } from "react-icons/gi";
 import { FaGlassWaterDroplet } from "react-icons/fa6";
 import { RiWaterFlashFill } from "react-icons/ri";
 import { IoIosWater } from "react-icons/io";
-import Footer from "../../../components/User/Footer";
+import Footer from "../../../components/user/Footer";
 const Aboutus = () => {
   return (
     <>

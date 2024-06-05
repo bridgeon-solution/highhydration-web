@@ -13,7 +13,7 @@ import { IoAddCircle } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import toast from 'react-hot-toast';
-import OrderDetails from '../../components/User/OrderDetails';
+import OrderDetails from '../../components/user/OrderDetails';
 const Order = ({product,setModalOpen}) => {
 const [count,setcound]=useState(1)
 const steps = [
@@ -71,7 +71,7 @@ const handlechnge=(a)=>{
 const stepdata=(a)=>{
   if(a==="+"){
     if(pageNum===0){
-      if(!userData.pincode&&!userData.first_name&&!userData.last_name&&!userData.address_line1&&!userData.address_line2&&!userData.pincode&&!userData.phone_number){
+      if(!userData.pin_number&&!userData.first_name&&!userData.last_name&&!userData.address_line1&&!userData.address_line2&&!userData.pincode&&!userData.phone_number){
         toast.error('Fill the Details Properly ')
         setButtonBg(false)
       }
@@ -87,7 +87,7 @@ const stepdata=(a)=>{
         userId:userid,
         totalItems:count,
         deliveryStatus:"ordered",
-        bulkOrder:false,
+        preOrder:true,
         amount:price,
         address:{
           address_line1:userData.address_line1,
@@ -95,8 +95,10 @@ const stepdata=(a)=>{
           pincode:userData.pin_number,
           phone_number:userData.phone_number
         },
-        product:product?._id
+        product:product?._id,
+        type:'preorder'
       }
+      
     
       const createOrder=async()=>{
         try {
@@ -105,6 +107,14 @@ const stepdata=(a)=>{
           setOrderDetails(response?.data?.savedOrder)
           if(response.status===201){
             toast.success(response?.data?.message)
+            const paymentData={
+              userId:userid,
+              orderId:response.data.savedOrder._id,
+              status:"pending",
+              amount:price 
+            }
+            const res=await api.post('/payments/',paymentData)
+            console.log(response);
           }
         } catch (error) {
           console.log(error);
@@ -114,19 +124,21 @@ const stepdata=(a)=>{
       createOrder()
     }
   }
+ 
     if(selectedDate!=null){
       setVisble(false)
       if(pageNum>=0){
        const queryParams={
         userid,
         product_Id:product?._id,
-        quantity:count
+        quantity:count,
+        selectedDate:selectedDate
        }
        console.log(queryParams);
        const fetchData=async()=>{
         try {
           const response=await api.post(`/payment/payment`,queryParams)
-          console.log(response);
+          console.log(response,'response for payments');
           if(pageNum>=1){
             setLoading(true)
             if(response.status===200){
@@ -170,7 +182,7 @@ const handleSubmit = () => {
       return;
   }
 }
-console.log(userData);
+console.log(selectedDate,'hiii');
   return (
     <div className=' bg-opacity-5 justify-center flex'>
       {loader&&<Loader/>}

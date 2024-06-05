@@ -62,10 +62,10 @@ const AdminSidebar = () => {
             <NavLink to="/location"  activeClassName="activeClicked">
               <CDBSidebarMenuItem icon='fas fa-map-marker-alt'>Location</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink to='/payment' activeClassName="activeClicked">
+            <NavLink activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="fa-solid fa-credit-card">Payment</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink activeClassName="activeClicked">
+            <NavLink  to={'/complaint'}         activeClassName="activeClicked">
     <CDBSidebarMenuItem icon="exclamation-circle">Complaints</CDBSidebarMenuItem>
            </NavLink>
  

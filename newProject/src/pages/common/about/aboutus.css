@@ -1,0 +1,15 @@
+@keyframes moveTopAndHide {
+  0% {
+    opacity: 1;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+    transform: rotate(90);
+  }
+}
+
+.animate-moveTopAndHide {
+  animation: moveTopAndHide 0.5s ease-in-out forwards;
+}

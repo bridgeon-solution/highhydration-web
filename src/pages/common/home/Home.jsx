@@ -4,7 +4,7 @@ import Home1 from './Home1';
 import Home2 from './Home2';
 import Countup from '../../../components/User/Countup';
 import Footer from '../../../components/User/Footer';
-import Products from '../../users/Products'
+import Products from '../../Users/Products'
 import ProductList from '../../../components/User/ProductList';
 function App() {
   const motionDivRef = useRef(null);

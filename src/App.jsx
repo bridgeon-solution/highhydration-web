@@ -1,7 +1,7 @@
 import React from 'react'
 import SupLogin from './components/supplier/SupLogin'
-import SupplierPro from './pages/supplier/SupplierPro'
-import SupplyHome from './pages/supplier/SupplyHome'
+import SupplierPro from './pages/Supplier/SupplierPro'
+import SupplyHome from './pages/Supplier/SupplyHome'
 import SupplierRegister from './components/supplier/SupplierRegister'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -17,9 +17,9 @@ import UserRegister from './components/User/UserRegister'
 import UserLogin from './components/User/UserLogin'
 import EditProfile from './components/User/EditProfile'
 import AllProducts from './pages/Admin/AllProducts'
-import Products from './pages/users/Products'
-import SingleProduct from './pages/users/SingleProduct'
-import Order from './pages/users/Order'
+import Products from './pages/Users/Products'
+import SingleProduct from './pages/Users/SingleProduct'
+import Order from './pages/Users/Order'
 import Home from './pages/common/home/Home'
 import Wellcome from './pages/common/Wellcome'
 import PaymentSuccess from './components/User/PaymentSuccess'
@@ -32,7 +32,9 @@ import Aboutus from './pages/common/about/Aboutus'
 import UserManagement from './pages/Admin/UserManagement'
 import OrderDetails from './components/User/OrderDetails' 
 import PaymentSection from './components/Admin/PaymentSection'
-import OrderAllocation from './pages/supplier/OrderAllocation'
+import OrderAllocation from './pages/Supplier/OrderAllocation'
+import OrderManagement from './pages/Admin/OrderManagement'
+import Complaints from './pages/Admin/Complaints'
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -83,7 +85,9 @@ function App() {
         <Route path="payment/cancel" element={<PaymentCancel />} />
         <Route path='/orderdetails' element={<OrderDetails/>}/>
         <Route path='/payment' element={<PaymentSection/>}/>
-
+        <Route path='/orders' element ={<OrderManagement />} />
+        <Route path='/complaints' element ={<Complaints />} />
+ 
       </Routes>
       </NavigationProvider>
       <Toaster

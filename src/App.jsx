@@ -34,6 +34,7 @@ import { NavigationProvider } from './utils/NavigationContext'
 import Aboutus from './pages/common/about/Aboutus'
 import UserManagement from './pages/Admin/UserManagement'
 import OrderDetails from './components/User/OrderDetails'
+import PaymentSection from './components/Admin/PaymentSection'
 
 
 
@@ -86,6 +87,7 @@ function App() {
         <Route path="payment/success" element={<PaymentSuccess />} />
         <Route path="payment/cancel" element={<PaymentCancel />} />
         <Route path='/orderdetails' element={<OrderDetails/>}/>
+        <Route path='/payment' element={<PaymentSection/>}/>
 
       </Routes>
       </NavigationProvider>

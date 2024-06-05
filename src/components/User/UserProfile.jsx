@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import SupplyChart from '../../pages/Supplier/SupplyChart'
 import client from "../../assets/Supplier/Client.jpg"
 import { useNavigate } from 'react-router-dom'
 import api from '../../axiosInterceptors'

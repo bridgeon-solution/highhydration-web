@@ -12,7 +12,7 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {useFormik,Formik,Form,Field} from 'formik'
-import { registerValidation } from '../Supplier/registerValidation';
+import { registerValidation } from '../supplier/registerValidation';
 import Loader from '../Loader';
 import api from '../../axiosInterceptors';
 import toast, { Toaster } from 'react-hot-toast';

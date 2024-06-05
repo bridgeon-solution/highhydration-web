@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { UserData } from "../../pages/Admin/FAKEDATA";
-import BarChart from "../Supplier/BarChart";
+import BarChart from "../supplier/BarChart";
 import PieChart from "./PieChart";
 
 const AdminChart = () => {

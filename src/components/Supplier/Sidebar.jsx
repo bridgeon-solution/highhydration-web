@@ -41,7 +41,7 @@ const SideBar = () => {
               <CDBSidebarMenuItem icon='fas fa-bell'>Notification</CDBSidebarMenuItem>
             </NavLink>
            
-            <NavLink  activeClassName="activeClicked">
+            <NavLink  to={'/orderAllocation'}  activeClassName="activeClicked">
               <CDBSidebarMenuItem icon='fas fa-shopping-cart'> Orders</CDBSidebarMenuItem>
             </NavLink>
             <NavLink activeClassName="activeClicked">

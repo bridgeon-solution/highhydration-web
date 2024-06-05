@@ -31,6 +31,7 @@ import { NavigationProvider } from './utils/NavigationContext'
 import Aboutus from './pages/common/about/Aboutus'
 import UserManagement from './pages/Admin/UserManagement'
 import OrderDetails from './components/User/OrderDetails'
+import OrderAllocation from './pages/supplier/OrderAllocation'
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -71,6 +72,7 @@ function App() {
         <Route path='/editPro' element={<EditProfile />} />
         <Route path='/product' element={<AllProducts />} />
         <Route path='/suppliermanagement' element={<SupplierMangement />} />
+        <Route path='/orderAllocation' element={<OrderAllocation/>} />
         <Route path='/usermanagement' element={<UserManagement/>} />
         <Route path='/location' element={<Location />} />
         <Route path='/productList' element={<Products />} />

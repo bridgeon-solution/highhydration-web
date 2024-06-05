@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ProductList from '../../components/User/ProductList';
+import ProductList from '../../components/user/ProductList';
 import backgroundImg from '../../assets/Users/paint3.png'
 import { MdWater } from "react-icons/md";
 import Pro1 from '../../assets/Users/pro1.png';
@@ -19,6 +19,7 @@ const Products = () => {
       setLoading(true)
       try {
           const response= await api.get(`/products`)
+          console.log(response);
           setProduct(response.data.products)
           setLoading(false)
           console.log(response,'hiiii')

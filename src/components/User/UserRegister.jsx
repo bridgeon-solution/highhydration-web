@@ -250,7 +250,7 @@ const UserRegister = () => {
                   </Modal>
 
 
-                  <GoogleLogin
+                 {/* <GoogleLogin
                     clientId={clientId}
                     buttonText='Continue with Google'
                     onSuccess={onSuccess}
@@ -273,6 +273,7 @@ const UserRegister = () => {
                       </div>
                     )}
                   />
+                  */}
                 </div>
 
 

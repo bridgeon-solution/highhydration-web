@@ -86,7 +86,7 @@ return (
                 </button>
                 
                 <p className="text-xs text-gray-600 text-center font-bold">
-                  Don’t have an account ?  <span className='text-orange-400'  onClick={()=>navigate('/proregistartion')}>Sign up</span>
+                  Don’t have an account ?  <span className='text-orange-400'  onClick={()=>navigate('/supregistration')}>Sign up</span>
 
                 </p>
                

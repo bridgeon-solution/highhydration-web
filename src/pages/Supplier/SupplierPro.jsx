@@ -1,7 +1,10 @@
 import React from 'react'
 import client from "../../assets/Supplier/Client.jpg"
-import SupplyChart from '../Supplier/SupplyChart'
-import SideBar from '../../components/Supplier/Sidebar'
+import SupplyChart from '../supplier/SupplyChart'
+import SideBar from '../../components/supplier/Sidebar'
+
+
+
 
 const SupplierPro = () => {
   return (

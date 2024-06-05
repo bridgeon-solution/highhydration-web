@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import client from "../../assets/Supplier/Client.jpg";
 import { FcGoogle } from "react-icons/fc";
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -14,15 +14,13 @@ import Typography from '@mui/material/Typography';
 import {useFormik,Formik,Form,Field} from 'formik'
 import { registerValidation } from './registerValidation';
 import Loader from '../Loader';
-
 const baseUrl = import.meta.env.VITE_BASE_URL;
-
-const onSuccess = (res) => {
-  console.log('LOGIN SUCCESS Current user:',res.profileObj);
-}
-const onFailure = (res) => {
-  console.log('Login Failed! res :', res);
-}
+// const onSuccess = (res) => {
+//   console.log('LOGIN SUCCESS Current user:',res.profileObj);
+// }
+// const onFailure = (res) => {
+//   console.log('Login Failed! res :', res);
+// }
 
 const initialValues={
   first_name: '',
@@ -267,7 +265,7 @@ const [loader,setLoading]=useState(false)
                   </Modal>
 
 
-                  <GoogleLogin
+                  {/* <GoogleLogin
                     clientId={clientId}
                     buttonText='Continue with Google'
                     onSuccess={onSuccess}
@@ -289,7 +287,7 @@ const [loader,setLoading]=useState(false)
                         </button>
                       </div>
                     )}
-                  />
+                  /> */}
                 </div>
 
 

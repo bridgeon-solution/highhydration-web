@@ -30,7 +30,7 @@ import Service from './pages/common/service/Service'
 import { NavigationProvider } from './utils/NavigationContext'
 import Aboutus from './pages/common/about/Aboutus'
 import UserManagement from './pages/Admin/UserManagement'
-import OrderDetails from './components/User/OrderDetails'
+import OrderDetails from './components/User/OrderDetails' 
 import PaymentSection from './components/Admin/PaymentSection'
 import OrderAllocation from './pages/supplier/OrderAllocation'
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";

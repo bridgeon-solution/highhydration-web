@@ -70,9 +70,9 @@ const AdminSidebar = () => {
            </NavLink>
  
            <div>
-      <NavLink activeClassName="activeClicked" onClick={toggleModal}>
-        <CDBSidebarMenuItem icon="ellipsis-h">Others</CDBSidebarMenuItem>
-      </NavLink>
+           <NavLink activeClassName="activeClicked">
+      <CDBSidebarMenuItem icon="fas fa-box">Order</CDBSidebarMenuItem>
+    </NavLink>
     </div>
       </>
       )}

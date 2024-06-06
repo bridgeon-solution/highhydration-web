@@ -46,7 +46,7 @@ const PaymentSectionAll = () => {
           <tbody className="">
     {data?.map((i, index) => (
       <tr className="" key={i._id || index}>
-        <td className="text-center ">{i?._id}</td>
+        <td className="text-center">{i?._id.slice(-6)}</td>
         <td className=" text-center ">{i && new Date(i.createdAt).toLocaleDateString()}</td>
         <td className=" text-center">{i?.amount}</td>
         <td className=" text-center">{i?.type}</td>

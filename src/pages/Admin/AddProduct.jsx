@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminSidebar from '../../components/Admin/AdminSidebar';
 import ad from '../../assets/Supplier/sup1.png';
 import img from '../../assets/Supplier/uploadimage.jpg';
@@ -10,6 +10,29 @@ import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
+import api from '../../axiosInterceptors';
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import { FaStar } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import { MdOutlineSaveAlt } from "react-icons/md";
+import { IoMdAddCircleOutline } from "react-icons/io";
+import Typography from "@mui/material/Typography";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 600,
+  bgcolor: "background.paper",
+  border: "1px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 const baseUrl =import.meta.env.VITE_BASE_URL; 
 
@@ -26,7 +49,8 @@ const AddProduct = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [loading,setLoading]=useState(false)
   const navigate = useNavigate()
-
+  const [categories, setCategories] = useState([]);
+ 
 
 
   const handleImageChange = (event) => {
@@ -40,7 +64,10 @@ const AddProduct = () => {
     }
   };
 
-
+  const handleCategorySelection = (categoryName) => {
+    formik.setFieldValue('category', categoryName);
+    setShowMilestoneList(false); // Close the category list after selection
+  };
 
 
 
@@ -90,6 +117,83 @@ const AddProduct = () => {
   });
 
   const { values, handleBlur, handleChange, handleSubmit, errors } = formik;
+
+  const [showMilestoneList, setShowMilestoneList] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [newCategory,setNewCategory]=useState('')
+  const [editingIndex, setEditingIndex] = useState(null); 
+  const [editedValue, setEditedValue] = useState("");
+
+  const fetchCategory = async () => {
+    try {
+      const response = await api.get('/admin/category');
+      setCategories(response.data.category);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    } 
+  };
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const toggleMilestoneList = () => {
+    setShowMilestoneList(!showMilestoneList);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+  const handleSave = async ()=>{
+    try {
+      const response = await api.post('/admin/category',{name:newCategory})
+      console.log(response,'add new category')
+      if(response.status===201){
+        fetchCategory()
+        setOpen(false)
+      }
+    } catch (error) {
+      console.log(error, 'error in post category')
+    }
+  }
+
+  const handleEditClick = (index, initialValue) => {
+    setEditingIndex(index);
+    setEditedValue(initialValue);
+    setShowMilestoneList(true);
+  };
+
+  const handleSaveClick = async(id) => {
+    try {
+      const response = await api.put(`/admin/category/${id}` , { name: editedValue })
+      if(response.status===200){
+        fetchCategory()
+      }
+      setEditingIndex(null);
+    } catch (error) {
+      console.log(error.message,'error in update category')
+    }
+    
+  };
+
+
+const handleDeleteCategory = async(id)=>{
+  try {
+    const response = await api.delete(`/admin/category/${id}`)
+    if(response.status===200){
+      fetchCategory()
+    }
+  } catch (error) {
+    console.log(error.message,'error in delete category')
+  }
+}
+ 
+
 
   return (
     <div className='flex w-full h-screen overflow-hidden bg-white'>
@@ -154,7 +258,122 @@ const AddProduct = () => {
               <div className='w-3/5 bg-[#f2f2f2] border rounded-xl p-4 flex'>
                 <div className='w-1/2 mr-2'>
                   <p className='font-semibold'>Category</p>
-                  <input name="category" className="w-full mb-2 px-2 py-3 rounded-lg font-medium text-black placeholder-gray-500 text-sm bg-[#E6E6E6]" placeholder='Category' value={values.category} onChange={handleChange} onBlur={handleBlur} />
+                  <input
+  type="text"
+  placeholder="Please Type"
+  className="w-full mb-2 px-2 py-3 rounded-lg font-medium text-black placeholder-gray-500 text-sm bg-[#E6E6E6]"
+  onClick={toggleMilestoneList}
+  value={values.category}
+  readOnly
+/>
+{showMilestoneList && (
+  <div className="border border-gray-300 mt-2 p-2 bg-[#f8f8f8] text-start rounded-md">
+    {categories.map((category, index) => (
+      <div className="flex justify-between items-center border-b py-2" key={index}>
+        <div onClick={() => handleCategorySelection(category.name)}>
+          {editingIndex === index ? (
+            <input
+              type="text"
+              className='p-1'
+              value={editedValue}
+              onChange={(e) => setEditedValue(e.target.value)}
+              onClick={(e) => e.stopPropagation()} 
+            />
+          ) : (
+            <b>{category.name}</b>
+          )}
+        </div>
+        <div>
+          {editingIndex === index ? (
+            <button
+              className="mr-2 text-blue-500"
+              onClick={() => handleSaveClick(category._id)}
+            >
+              <MdOutlineSaveAlt />
+            </button>
+          ) : (
+            <button
+              className="mr-2 text-blue-500"
+              onClick={() => handleEditClick(index, category.name)}
+            >
+              <FaEdit />
+            </button>
+          )}
+          <button className="text-red-500" onClick={() => handleDeleteCategory(category._id)}>
+            <MdDelete />
+          </button>
+        </div>
+      </div>
+    ))}
+    <button
+      onClick={handleOpen}
+      className="bg-blue-600 flex p-2 text-white rounded-md mt-2"
+    >
+      <IoMdAddCircleOutline />
+      <b> New Category</b>
+    </button>
+  </div>
+)}
+
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          slots={{ backdrop: Backdrop }}
+          slotProps={{
+            backdrop: {
+              timeout: 500,
+            },
+          }}
+        >
+          <Fade in={open}>
+            <Box sx={style}>
+              <Typography
+                id="transition-modal-title"
+                variant="h6"
+                component="h2"
+              >
+                Add New Category
+              </Typography>
+              <hr />
+              <Typography
+                id="transition-modal-description"
+                sx={{ mt: 2 }}
+              >
+                Category name
+                <span className="text-[#FF0000]">*</span>
+                <br />
+                <input
+                  className="w-full h-10 border-black border rounded-md p-1"
+                  placeholder="Please type"
+                  type="text"
+                  onChange={(e)=>setNewCategory(e.target.value)}
+                />
+              </Typography>
+              <div className="pt-3 mt-2 flex justify-between">
+                <button
+                  onClick={handleClose}
+                  style={{ border: "1px solid #000080" }}
+                  className="p-2 rounded-md text-[#000080] mr-2"
+                >
+                  Cancel
+                </button>
+                <button
+                  style={{ border: "1px solid #000080" }}
+                  className="p-2 rounded-md text-white bg-[#000080]"
+                  onClick={handleSave}
+                >
+                  Save
+                </button>
+              </div>
+            </Box>
+          </Fade>
+        </Modal>
+            
+            
+
                   {errors.category && <small className="text-xs italic text-red-500">{errors.category}</small>}
                 </div>
                 <div className='w-1/2 ml-2'>
@@ -169,6 +388,15 @@ const AddProduct = () => {
                 {errors.price && <small className="text-xs italic text-red-500">{errors.price}</small>}
               </div>
             </div>
+
+
+
+
+
+
+
+
+
 
           </div>
   

@@ -269,7 +269,7 @@ const UserRegister = () => {
                               with Google
                             </span>
                           </div>
-                        </button>
+                        </button>   
                       </div>
                     )}
                   />

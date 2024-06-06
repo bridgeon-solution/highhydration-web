@@ -65,14 +65,14 @@ const AdminSidebar = () => {
             <NavLink to='/payment' activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="fa-solid fa-credit-card">Payment</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink activeClassName="activeClicked">
+            <NavLink to='/complaints' activeClassName="activeClicked">
     <CDBSidebarMenuItem icon="exclamation-circle">Complaints</CDBSidebarMenuItem>
            </NavLink>
  
            <div>
-      <NavLink activeClassName="activeClicked" onClick={toggleModal}>
-        <CDBSidebarMenuItem icon="ellipsis-h">Others</CDBSidebarMenuItem>
-      </NavLink>
+           <NavLink to='/orders' activeClassName="activeClicked">
+      <CDBSidebarMenuItem icon="fas fa-box">Order</CDBSidebarMenuItem>
+    </NavLink>
     </div>
       </>
       )}

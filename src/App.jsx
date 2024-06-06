@@ -1,5 +1,5 @@
 import React from 'react'
-import SupLogin from 'src/components/supplier/SupLogin.jsx'
+import SupLogin from './components/supplier/SupLogin'
 import SupplierPro from './pages/supplier/SupplierPro'
 import SupplyHome from './pages/supplier/SupplyHome'
 import SupplierRegister from './components/supplier/SupplierRegister'

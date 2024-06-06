@@ -96,7 +96,7 @@ const stepdata=(a)=>{
           phone_number:userData.phone_number
         },
         product:product?._id,
-        type:'preorder'
+        
       }
       
     
@@ -111,7 +111,8 @@ const stepdata=(a)=>{
               userId:userid,
               orderId:response.data.savedOrder._id,
               status:"pending",
-              amount:price 
+              amount:price ,
+              type:'preorder'
             }
             const res=await api.post('/payments/',paymentData)
             console.log(response);

@@ -12,7 +12,7 @@ import api from '../../axiosInterceptors'
 import { IoAddCircle } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
-import toast from 'react-hot-toast';
+import toast from 'react-hot-toast'; 
 import OrderDetails from '../../components/user/OrderDetails';
 const Order = ({product,setModalOpen}) => {
 const [count,setcound]=useState(1)
@@ -96,7 +96,7 @@ const stepdata=(a)=>{
           phone_number:userData.phone_number
         },
         product:product?._id,
-        type:'preorder'
+        
       }
       
     
@@ -111,7 +111,8 @@ const stepdata=(a)=>{
               userId:userid,
               orderId:response.data.savedOrder._id,
               status:"pending",
-              amount:price 
+              amount:price ,
+              type:'preorder'
             }
             const res=await api.post('/payments/',paymentData)
             console.log(response);

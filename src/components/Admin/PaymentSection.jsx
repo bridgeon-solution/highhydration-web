@@ -1,13 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminSidebar from './AdminSidebar'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import PaymentSectionAll from './PaymentSectionAll';
 import PaymentSectionPending from './PaymentSectionPending';
 import PaymentSectionPaid from './PaymentSectionPaid';
+import api from '../../axiosInterceptors';
 
 
 const PaymentSection = () => {
 const [value,setValue]=useState("all")
+const [total,setTotal]=useState(0)
+const [success,setSuccess]=useState(0)
+const [pendingAmount,setPendingAmount]=useState(0)
+const currentDate = new Date(Date.now());
+    const formattedDate = currentDate.toLocaleString('en-US', { month: 'short', day: '2-digit', hour: '2-digit' });
+
+  useEffect(()=>{
+    const fetchData=async (req,res)=>{
+      try {
+        const response=await api.get('/payments/details/')
+        console.log(response);
+        setTotal(response.data.totalAmount[0].totalAmount)
+        setSuccess(response.data.totalSuccessAmount[0].totalAmount)
+        setPendingAmount(response.data.totalPendingAmount[0].totalAmount)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchData()
+  },[])
+  console.log(total);
+  console.log(success);
+  console.log(pendingAmount);
   return (
     <>
     <div className='flex w-full h-scree bg-[#F8F8F8]'>
@@ -15,10 +39,24 @@ const [value,setValue]=useState("all")
         <AdminSidebar />
       </div>
       <div className='w-full'>
-        <div className='flex w-full gap-10 mt-3 p-2'>
-          <div className='bg-blue-100 w-80 h-32 rounded-lg'></div>
-          <div className='bg-green-100 w-80 h-32 rounded-lg'></div>
-          <div className='bg-red-100 w-80 h-32 rounded-lg'></div>
+        <div className='flex w-full gap-10 mt-3  pl-6 pt-3'>
+          <div className='bg-blue-100 w-80 h-32 rounded-lg text-start pl-3'>
+           
+            <p className='text-gray-500 font-light text-lg'>Total Amount</p>
+            <p className='text-2xl font-semibold' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #87CEEB, #00008B)', '-webkit-background-clip': 'text' }}>${total}</p>
+            <span className='text-end mx-1 font-light text-gray-400 '>{formattedDate}</span>
+  
+          </div>
+          <div className='bg-green-100 w-80 h-32 rounded-lg pl-3 '>
+          <p className='text-gray-500 font-light text-lg'>Success Amount</p>
+            <p className='text-green-500 font-semibold text-2xl'>${success}</p>
+            <span className='text-end mx-1 font-light text-gray-400 '>{formattedDate}</span>
+          </div>
+          <div className='bg-red-100 w-80 h-32 rounded-lg pl-3 '>
+          <p className='text-gray-500 font-light text-lg'>Pending Amount</p>
+            <p className='text-red-500 font-semibold text-2xl'>${pendingAmount}</p>
+            <span className='text-end mx-1 font-light text-gray-400 '>{formattedDate}</span>
+          </div>
         </div>
       <div className='mx-4 mt-3'>
         <h1 className='font-semibold text-xl text-gray-500'>Payment History</h1>

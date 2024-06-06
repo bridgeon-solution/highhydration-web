@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import client from "../../assets/Supplier/Client.jpg";
 import { FcGoogle } from "react-icons/fc";
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {useFormik,Formik,Form,Field} from 'formik'
-import { registerValidation } from '../Supplier/registerValidation';
+import { registerValidation } from '../supplier/registerValidation';
 import Loader from '../Loader';
 import api from '../../axiosInterceptors';
 import toast, { Toaster } from 'react-hot-toast';
@@ -250,7 +250,7 @@ const UserRegister = () => {
                   </Modal>
 
 
-                  <GoogleLogin
+                 {/* <GoogleLogin
                     clientId={clientId}
                     buttonText='Continue with Google'
                     onSuccess={onSuccess}
@@ -269,10 +269,11 @@ const UserRegister = () => {
                               with Google
                             </span>
                           </div>
-                        </button>
+                        </button>   
                       </div>
                     )}
                   />
+                  */}
                 </div>
 
 

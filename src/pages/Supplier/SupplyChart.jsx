@@ -1,7 +1,7 @@
 
 import { useState } from "react";
-import { UserData } from "../../components/Supplier/FAKEDATA";
-import BarChart from "../../components/Supplier/BarChart";
+import { UserData } from "../../components/supplier/FAKEDATA";
+import BarChart from "../../components/supplier/BarChart";
 
 function   SupplyChart () {
   const [userData, setUserData] = useState({

@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Home1 from './Home1';
 import Home2 from './Home2';
-import Countup from '../../../components/User/Countup';
-import Footer from '../../../components/User/Footer';
-import Products from '../../Users/Products'
-import ProductList from '../../../components/User/ProductList';
+import Countup from '../../../components/user/Countup';
+import Footer from '../../../components/user/Footer';
+import Products from '../../users/Products'
+import ProductList from '../../../components/user/ProductList';
 function App() {
   const motionDivRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);

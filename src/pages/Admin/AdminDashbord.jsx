@@ -9,7 +9,7 @@ import AttendenceChart from '../../components/Admin/AttendenceChart'
 
 const AdminDashbord = () => {
   return (
-    <div className=' flex w-full h-screen overflow-hidden bg-[#F8F8F8]' >
+    <div className='flex w-full h-screen overflow-hidden bg-[#F8F8F8]' >
 <div className=' mt-2 min-h-screen' >
         <AdminSidebar />
       </div>

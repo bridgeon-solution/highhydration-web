@@ -13,7 +13,7 @@ import {
     Typography,
     Button,
   } from "@material-tailwind/react";
-import Footer from '../../../components/User/Footer';
+import Footer from '../../../components/user/Footer';
 const Service = () => {
     const shimmerVariants = {
         initial: { backgroundPosition: '200% center' },

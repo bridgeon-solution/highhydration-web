@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import api from '../../axiosInterceptors'
 import OrderModal from './OrderModal'
+import { FaStar } from "react-icons/fa";
 
 const OrdersList = () => {
     const userid=localStorage.getItem('userId')
@@ -10,6 +11,8 @@ const OrdersList = () => {
     const [modal,setmodal]=useState(false)
     const [product,setProduct]=useState()
     const [showAll,setShowAll]=useState(0)
+    const [reviewBox,setReviewBox]=useState(true)
+    const [starRate,setStarRate]=useState(0)
 
     const orderfetch= async ()=>{
     try {
@@ -35,7 +38,17 @@ const OrdersList = () => {
       "cancelled": "red",
     };
     const colourpicker = (status) => {
+      if(status==="delivered"){
+        setReviewBox(ture)
+      }
       return statusColors[status] || "gray"; 
+    };
+    const handleStarClick = (count) => {
+      if (starRate === 1 && count === 1) {
+        setStarRate(0);
+      } else {
+        setStarRate(count);
+      }
     };
   return (
     <>
@@ -44,8 +57,8 @@ const OrdersList = () => {
         <div className='w-full  flex justify-center'>
         <h1 className="text-4xl text-[#2D416E] font-semibold mb-6 mt-3">Order Details</h1>
         </div>
-        {orders?.map((order)=>(
-        <div className='mb-5 mx-auto'>
+        {orders?.map((order,index)=>(
+        <div key={order?._id||index} className='mb-5 mx-auto'>
       <div className="relative flex flex-col md:flex-row md:space-x-5  md:space-y-0 rounded-xl shadow-lg items-center p-1 max-w-xs md:max-w-7xl mx-auto  border border-white bg-white">
         <div className="w-9/12 md:w-1/6 h-full rounded-xl overflow-hidden bg-white grid place-items-center">
           <img src={order?.product?.image} alt="Product Image" />
@@ -88,6 +101,24 @@ const OrdersList = () => {
             </button>
           </div>
           </div>
+          {reviewBox &&
+          <div>
+          <div className='flex gap-2'>
+            {[...Array(5)].map((i,index)=>(
+              <div key={i||index}>
+                <FaStar
+                onClick={() => handleStarClick(index + 1, order?._id)} 
+                 size={18} className={`${starRate>index?'text-yellow-400':'text-gray-500'}`}/>
+              </div>
+            ))}
+          </div>
+          </div>
+        }
+        {starRate>=1?
+        <p className='text-sm font-extralight text-blue-600 mb-2'>Write review</p>
+        :<p className='text-sm font-extralight text-gray-600 mb-2'>Rate this product now</p>
+        }
+       
         </div>
       </div>
     </div>

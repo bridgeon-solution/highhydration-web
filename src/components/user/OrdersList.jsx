@@ -43,12 +43,11 @@ const OrdersList = () => {
       }
       return statusColors[status] || "gray"; 
     };
-    const handleStarClick = (count) => {
-      if (starRate === 1 && count === 1) {
-        setStarRate(0);
-      } else {
-        setStarRate(count);
-      }
+    const handleStarClick = (rating, productId) => {
+      setStarRate((prevRatings) => ({
+        ...prevRatings,
+        [productId]: prevRatings[productId] === 1 && rating === 1 ? 0 : rating,
+      }));
     };
   return (
     <>
@@ -58,7 +57,7 @@ const OrdersList = () => {
         <h1 className="text-4xl text-[#2D416E] font-semibold mb-6 mt-3">Order Details</h1>
         </div>
         {orders?.map((order,index)=>(
-        <div key={order?._id||index} className='mb-5 mx-auto'>
+        <div key={order?._id||index} className='mb-5 mx-auto mt-3'>
       <div className="relative flex flex-col md:flex-row md:space-x-5  md:space-y-0 rounded-xl shadow-lg items-center p-1 max-w-xs md:max-w-7xl mx-auto  border border-white bg-white">
         <div className="w-9/12 md:w-1/6 h-full rounded-xl overflow-hidden bg-white grid place-items-center">
           <img src={order?.product?.image} alt="Product Image" />
@@ -86,7 +85,7 @@ const OrdersList = () => {
 
             </div>
             <div className=' flex flex-col items-center justify-center p-2'>
-                <p className='bg-gray-100 border-gray-300 border-1 pl-2 pr-2 pt-1 pb-1 rounded-lg'>{order?.product?.price}X{order?.totalItems}={order?.amount}</p>
+                <p className='bg-gray-100 border-gray-300 border-1 pl-2 pr-2 pt-1 pb-1 rounded-lg'>{order?.product?.price}X{order?.totalItems||1}={order?.amount||order?.product?.price}</p>
             </div>
           </div>
           <div className='flex justify-between'>
@@ -108,13 +107,14 @@ const OrdersList = () => {
               <div key={i||index}>
                 <FaStar
                 onClick={() => handleStarClick(index + 1, order?._id)} 
-                 size={18} className={`${starRate>index?'text-yellow-400':'text-gray-500'}`}/>
+                 size={18} 
+                 className={`${starRate[order?._id] > index ? 'text-yellow-400' : 'text-gray-500'}`}/>
               </div>
             ))}
           </div>
           </div>
         }
-        {starRate>=1?
+        {starRate[order?._id]>=1?
         <p className='text-sm font-extralight text-blue-600 mb-2'>Write review</p>
         :<p className='text-sm font-extralight text-gray-600 mb-2'>Rate this product now</p>
         }

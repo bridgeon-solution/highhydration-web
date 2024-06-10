@@ -6,6 +6,7 @@ import api from '../../axiosInterceptors'
 const OrderModal = ({props,setModal,orderfetch}) => {
   const [deteteModal,setDeleteModal]=useState(false)
   const [loading,setLoading]=useState(false)
+ 
     const handleClose=()=>{
         setModal(false)
     }

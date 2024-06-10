@@ -32,9 +32,10 @@ import Aboutus from './pages/common/about/Aboutus'
 import UserManagement from './pages/Admin/UserManagement'
 import OrderDetails from './components/user/OrderDetails'
 import PaymentSection from './components/Admin/PaymentSection'
-import OrderAllocation from './pages/supplier/OrderAllocation'
+
 import OrderManagement from './pages/Admin/OrderManagement'
 import Complaints from './pages/Admin/Complaints'
+import SupTable from './components/supplier/SupTable'
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -53,7 +54,7 @@ function App() {
   return (
     <>
     
-      <Navbar />
+      {/* <Navbar /> */}
       <NavigationProvider>
       <Routes>
     
@@ -75,7 +76,7 @@ function App() {
         <Route path='/editPro' element={<EditProfile />} />
         <Route path='/product' element={<AllProducts />} />
         <Route path='/suppliermanagement' element={<SupplierMangement />} />
-        <Route path='/orderAllocation' element={<OrderAllocation/>} />
+        <Route path='/orderAllocation' element={<SupTable/>} />
         <Route path='/usermanagement' element={<UserManagement/>} />
         <Route path='/location' element={<Location />} />
         <Route path='/productList' element={<Products />} />

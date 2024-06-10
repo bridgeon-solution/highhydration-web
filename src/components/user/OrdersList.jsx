@@ -14,7 +14,7 @@ const OrdersList = () => {
   const [showAll, setShowAll] = useState(0);
   const [starRate, setStarRate] = useState(0);
   const [reviewProduct, setReviewProduct] = useState(false);
-  const [desablebutton,setDesableButton]=useState([])
+  const [prodid,setProdId]=useState(0)
 
   const orderfetch = async () => {
     try {
@@ -47,6 +47,7 @@ const OrdersList = () => {
       [productId]: prevRatings[productId] === 1 && rating === 1 ? 0 : rating,
     }));
   };
+  console.log(prodid,'Orders');
   return (
     <>
       <div>
@@ -56,6 +57,7 @@ const OrdersList = () => {
             setReviewProduct={setReviewProduct}
             starRate={starRate}
             setStarRate={setStarRate}
+            prodid={prodid}
           />
         )}
         {modal && (
@@ -173,6 +175,7 @@ const OrdersList = () => {
                     className="text-sm font-extralight text-blue-600 mb-2"
                     onClick={() => {
                       setReviewProduct(true);
+                      setProdId(order?.product?._id);
                     }}
                   >
                     Write review

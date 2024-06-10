@@ -6,11 +6,13 @@ import { FaStar } from "react-icons/fa";
 import toast from "react-hot-toast";
 import api from "../../axiosInterceptors";
 
-const ReviewModals = ({ props, setReviewProduct, starRate,}) => {
+const ReviewModals = ({ props, setReviewProduct, starRate,setStarRate,prodid}) => {
     const [error,setError]=useState()
     const userId=localStorage.getItem('userId')
     const [value,setValue]=useState('')
-  const handleClose = () => {
+    console.log(prodid,'productId');
+    const handleClose = () => {
+    setStarRate(0)
     setReviewProduct(false);
   };
   const handleColor = (a) => {
@@ -50,8 +52,8 @@ const ReviewModals = ({ props, setReviewProduct, starRate,}) => {
     }else{
       try {
         const data={
-          userId,
-          prodcutId:Object.keys(starRate)[0],
+          userId:userId,
+          prodcutId:prodid,
           rating:Object.values(starRate)[0],
           reviewText:description
         }

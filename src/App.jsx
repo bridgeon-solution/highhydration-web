@@ -32,10 +32,11 @@ import Aboutus from './pages/common/about/Aboutus'
 import UserManagement from './pages/Admin/UserManagement'
 import OrderDetails from './components/user/OrderDetails'
 import PaymentSection from './components/Admin/PaymentSection'
-
+import Pdffile from './components/user/Pdffile'
 import OrderManagement from './pages/Admin/OrderManagement'
 import Complaints from './pages/Admin/Complaints'
 import SupTable from './components/supplier/SupTable'
+
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -55,6 +56,7 @@ function App() {
     <>
     
       {/* <Navbar /> */}
+      <Pdffile/>
       <NavigationProvider>
       <Routes>
     

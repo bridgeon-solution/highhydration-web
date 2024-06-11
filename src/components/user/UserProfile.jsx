@@ -123,6 +123,7 @@ import { useNavigate } from 'react-router-dom'
 import api from '../../axiosInterceptors'
 import Loader from '../Loader'
 import OrdersList from './OrdersList'
+import PyamentCompleted from './PyamentCompleted'
 
 const UserProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -132,6 +133,7 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false) 
   const [message,setMessage]= useState('')
+  const[role,setRole]=useState('orders')
 
   useEffect(() => {
     async function fetchData() {
@@ -203,8 +205,10 @@ const UserProfile = () => {
         </button>
       </div>
 
-      <div className='flex justify-around flex-wrap m-5'>
-        <div className="w-full sm:w-6/12 md:w-6/12 lg:w-3/12 px-3 text-center mb-5">
+      <div className='flex justify-around flex-wrap m-5'  >
+
+ 
+        <div className="w-full sm:w-6/12 md:w-6/12 lg:w-3/12 px-3 text-center mb-5" onClick={()=>setRole('orders')} >
           <div className="py-4 border rounded-lg bg-gray-200 shadow-xl">
             <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-black text-lg font-bold tracking-wide">Total Orders</h6>
             <div className="flex items-center justify-center">
@@ -213,7 +217,10 @@ const UserProfile = () => {
             <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-black text-lg font-thin tracking-wide">last updated at 23/04/200</h6>
           </div>
         </div>
-        <div className="w-full sm:w-6/12 md:w-6/12 lg:w-3/12 px-3 text-center mb-5">
+
+
+
+        <div className="w-full sm:w-6/12 md:w-6/12 lg:w-3/12 px-3 text-center mb-5" onClick={()=>setRole('payments')}  >
           <div className="py-4 border rounded-lg bg-gray-200 shadow-xl">
             <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-gradient-to-tl from-green-700 to-green-500 text-lg font-bold tracking-wide">Last Payments</h6>
             <div className="flex items-center justify-center">
@@ -222,7 +229,10 @@ const UserProfile = () => {
             <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-black text-lg font-thin tracking-wide">last updated at 23/04/200</h6>
           </div>
         </div>
-        <div className="w-full sm:w-6/12 md:w-6/12 lg:w-3/12 px-3 text-center mb-5">
+
+  
+    
+        <div className="w-full sm:w-6/12 md:w-6/12 lg:w-3/12 px-3 text-center mb-5"  onClick={()=>setRole('pending')}>
           <div className="py-4 border rounded-lg bg-gray-200 shadow-xl">
             <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-gradient-to-tl from-red-700 to-red-500 text-lg font-bold tracking-wide">Pending</h6>
             <div className="flex items-center justify-center">
@@ -231,8 +241,18 @@ const UserProfile = () => {
             <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-black text-lg font-thin tracking-wide">last updated at 23/04/200</h6>
           </div>
         </div>
+      
+
       </div>
-      <OrdersList/>
+
+      {role==='orders' &&
+     <OrdersList/>
+      }
+
+     {role==='payments' &&
+     <PyamentCompleted name={`${userData?.first_name} ${userData?.last_name}`} />
+      }
+ 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="max-w-xl mx-auto flex w-full flex-col border rounded-lg bg-white p-8">

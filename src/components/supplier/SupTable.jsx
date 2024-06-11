@@ -15,21 +15,20 @@ console.log(userId,"usurrrr");
     setToggle((prevToggle) => !prevToggle);
   }
   console.log(togle);
-
+  async function fetchData(){
+    const response=await api.get(`/suppliers/supplierPincode/`,{
+      params: {
+        id:userId,
+        page:page
+      }})
+    setdata(response.data.data)
+    setPagination(response.data.pagination)
+    console.log(response,"resputinn");
+    console.log(data,"datum");
+    console.log(pagination,"pagination");
+  }
 useEffect(()=>{
   try {
-    async function fetchData(){
-      const response=await api.get(`/suppliers/supplierPincode/`,{
-        params: {
-          id:userId,
-          page:page
-        }})
-      setdata(response.data.data)
-      setPagination(response.data.pagination)
-      console.log(response,"resputinn");
-      console.log(data,"datum");
-      console.log(pagination,"pagination");
-    }
     fetchData()
   } catch (error) {
     console.log(error,"error");
@@ -38,9 +37,13 @@ useEffect(()=>{
 
 async function  handleButton(id){
 console.log(id,"huzzzzz");
+
 try {
   const response=await api.patch('suppliers/order',{_id:id})
   console.log(response,"huhuhu");
+  if(response.status===200){
+    fetchData()
+  }
 } catch (error) {
   console.log(error);
 }
@@ -120,9 +123,9 @@ function handleIncrement(){
           </td>
           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{x.totalItems}</td>
           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-            <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-orange-400 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 "
+            <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 "
             onClick={()=>handleButton(x._id)}>
-              {x.deliveryStatus}
+             Delivered
             </button>
           </td>
         </tr>

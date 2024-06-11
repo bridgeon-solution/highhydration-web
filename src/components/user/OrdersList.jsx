@@ -14,7 +14,7 @@ const OrdersList = () => {
   const [showAll, setShowAll] = useState(0);
   const [starRate, setStarRate] = useState(0);
   const [reviewProduct, setReviewProduct] = useState(false);
-  const [prodid,setProdId]=useState(0)
+  const [prodid, setProdId] = useState(0);
 
   const orderfetch = async () => {
     try {
@@ -47,7 +47,7 @@ const OrdersList = () => {
       [productId]: prevRatings[productId] === 1 && rating === 1 ? 0 : rating,
     }));
   };
-  console.log(prodid,'Orders');
+  console.log(prodid, "Orders");
   return (
     <>
       <div>
@@ -109,20 +109,26 @@ const OrdersList = () => {
                     <h3 className="font-black text-gray-800 md:text-xl text-lg">
                       {order?.product?.productname}
                     </h3>
-
-                    <p className="md:text-sm text-gray-500 text-base">
-                      {showAll[order?._id]
+                    <p className="text-ascent-2">
+                      {showAll === order?._id
                         ? order?.product?.productDescription
-                        : order?.product?.productDescription?.slice(0, 200) ||
-                          order?.product?.productDescription}
-                      {order?.product?.productDescription?.length > 200 && (
-                        <span
-                          className="text-blue ml-2 font-medium cursor-pointer text-blue-600"
-                          onClick={() => toggleShowAll(order?._id)}
-                        >
-                          {showAll[order?._id] ? "Show Less" : "Show More..."}
-                        </span>
-                      )}
+                        : order?.product?.productDescription?.slice(0, 300) || order?.product?.productDescription}
+                      {order?.product?.productDescription?.length > 200 &&
+                        (showAll === order?._id ? (
+                          <span
+                            className="text-blue ml-2 font-medium cursor-pointer text-blue-500"
+                            onClick={() => setShowAll(0)}
+                          >
+                            Show Less
+                          </span>
+                        ) : (
+                          <span
+                            className="text-blue ml-2 font-medium cursor-pointer text-blue-500"
+                            onClick={() => setShowAll(order?._id)}
+                          >
+                            Show More
+                          </span>
+                        ))}
                     </p>
                   </div>
                   <div className=" flex flex-col items-center justify-center p-2">

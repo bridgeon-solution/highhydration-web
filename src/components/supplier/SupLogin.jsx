@@ -36,6 +36,9 @@ try {
       navigate('/admindashboard')
     }else{
       navigate('/supdashbord')
+      if(response.data.data.roles =='admin'){
+        localStorage.setItem('role',response.data.data._id)
+      }
       localStorage.setItem('token',response.data.token)
     }
 

@@ -6,7 +6,7 @@ import SupplierRegister from './components/supplier/SupplierRegister'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { gapi } from 'gapi-script'
-import AdminDashbord from './pages/Admin/AdminDashbord'
+import AdminDashbord from './pages/Admin/AdminDashbord' 
 import AddProduct from './pages/Admin/AddProduct'
 import SupplierMangement from './pages/Admin/SupplierMangement'
 import "tw-elements-react/dist/css/tw-elements-react.min.css";

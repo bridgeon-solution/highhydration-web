@@ -124,6 +124,7 @@ import api from '../../axiosInterceptors'
 import Loader from '../Loader'
 import OrdersList from './OrdersList'
 import PyamentCompleted from './PyamentCompleted'
+import PendingBills from './PendingBills'
 
 const UserProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -253,6 +254,9 @@ const UserProfile = () => {
      <PyamentCompleted name={`${userData?.first_name} ${userData?.last_name}`} />
       }
  
+ {role==='pending' &&
+     <PendingBills/>
+      }
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="max-w-xl mx-auto flex w-full flex-col border rounded-lg bg-white p-8">

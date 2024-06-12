@@ -50,6 +50,7 @@ const SingleProduct = () => {
         ],
       };
       const [product,setProducts]=useState([])
+      const [review,setReview]=useState([])
       useEffect(()=>{
         const  fetchDatas=async()=>{
           try {
@@ -67,7 +68,22 @@ const SingleProduct = () => {
               console.log(error)
           }
           }
+          const fethcReviews=async()=>{
+            try {
+              const response= await api.get('reviews',{params:{
+                value:productId
+              }})
+              console.log(response,'reviews');
+              setReview(response?.data?.reviews)
+            } catch (error) {
+              console.error(error)
+            }
+            
+          }
+          fethcReviews()
           fetchDatas()
+
+
       },[])  
 
       const handeleChange=()=>{
@@ -128,26 +144,26 @@ const SingleProduct = () => {
         <div className="w-3/4 m-auto ">
           <div className="slider-container">
             <Slider {...settings}>
-              {product?.reviews?.map((i) => (
+              {review?.map((i) => (
                 <div className="bg-white mb-2 h-[450px] text-black rounded-xls:h-[100px]">
                   <div className="h-48 sm:h-56 rounded-t-xl bg-blue-400 flex justify-center items-center">
                     <img
                       className="h-32 w-32 sm:h-44 sm:w-44 rounded-full"
-                      src={i.profilePic}
-                      alt={i.username}
+                      src={i?.userId?.image}
+                      alt={i?.userId?.first_name}
                     />
                   </div>
                   <div className="p-4">
                     <p className="text-lg sm:text-xl font-semibold">
                       {i?.username}
                     </p>
-                    <p className="mt-2 text-sm sm:text-base">{i?.review}</p>
+                    <p className="mt-2 text-sm sm:text-base">{i?.reviewText}</p>
                     <div className="flex gap-1 mt-2">
                       {[...Array(5)].map((_, ind) => (
                         <FaStar
                           key={ind}
                           className={`${
-                            i.star < ind + 1
+                            i.rating < ind + 1
                               ? "text-[#EEEEEE]"
                               : "text-yellow-500"
                           }`}

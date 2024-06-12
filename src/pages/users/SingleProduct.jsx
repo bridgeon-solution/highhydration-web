@@ -162,7 +162,7 @@ const SingleProduct = () => {
               <Slider {...settings}>
                 {review?.map((i) => (
                   <div className="bg-white mb-2  shadow text-black rounded-xls:h-[100px]">
-                    <div className="h-48 sm:h-56 rounded-t-xl  flex justify-center items-center">
+                    <div className="h-40  sm:h-56 rounded-t-xl  flex justify-center items-center">
                       <img
                         className="h-20 w-20 sm:h-32 sm:w-32 rounded-full"
                         src={i?.userId?.image}
@@ -180,8 +180,8 @@ const SingleProduct = () => {
                       <p className="text-ascent-2">
                         {showAll === i?._id
                           ? i?.reviewText
-                          : i?.reviewText?.slice(0, 300) || i?.reviewText}
-                        {i?.reviewText?.length > 300 &&
+                          : i?.reviewText?.slice(0, 140) || i?.reviewText}
+                        {i?.reviewText?.length > 140 &&
                           (showAll === i?._id ? (
                             <span
                               className="text-blue ml-2 font-medium cursor-pointer text-blue-500"

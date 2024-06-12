@@ -56,8 +56,7 @@ function App() {
     <>
     
       {/* <Navbar /> */}
-      <Pdffile/>
-      <NavigationProvider>
+ <NavigationProvider>
       <Routes>
     
         <Route path='/' element={<Wellcome />} />

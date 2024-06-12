@@ -8,9 +8,11 @@ import { FaGlassWaterDroplet } from "react-icons/fa6";
 import { RiWaterFlashFill } from "react-icons/ri";
 import { IoIosWater } from "react-icons/io";
 import Footer from "../../../components/user/Footer";
+import Navbar from "../Navbar";
 const Aboutus = () => {
   return (
     <>
+    <Navbar/>
       <div
         className="w-full h-[89vh]  flex-col justify-center flex items-center relative"
         style={{

@@ -11,9 +11,7 @@ import {
 import {NavLink} from "react-router-dom";
 
 const SideBar = () => {
-
-
-  return (
+return (
     <div
       style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
     >
@@ -41,7 +39,7 @@ const SideBar = () => {
               <CDBSidebarMenuItem icon='fas fa-bell'>Notification</CDBSidebarMenuItem>
             </NavLink>
            
-            <NavLink  to={'/orderAllocation'}  activeClassName="activeClicked">
+            <NavLink  to={'/orderAllocation/'}  activeClassName="activeClicked">
               <CDBSidebarMenuItem icon='fas fa-shopping-cart'> Orders</CDBSidebarMenuItem>
             </NavLink>
             <NavLink activeClassName="activeClicked">

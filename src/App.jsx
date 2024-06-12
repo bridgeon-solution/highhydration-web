@@ -81,7 +81,7 @@ function App() {
         <Route path='/productList' element={<Products />} />
         <Route path='/productList/:productId' element={<SingleProduct />} />
         <Route path='/order' element={<Order />} />
-        <Route path="payment/success" element={<PaymentSuccess />} />
+        <Route path="payment/success" element={<PaymentSuccess />} /> 
         <Route path="payment/cancel" element={<PaymentCancel />} />
         <Route path='/orderdetails' element={<OrderDetails/>}/>
         <Route path='/payment' element={<PaymentSection/>}/>

@@ -29,7 +29,7 @@ console.log(url)
 try {
 
       const response=await axios.post(`${baseUrl}/${url}`,{email,password})
-      console.log(response);
+      console.log(response,"repooo");
       setLoading(false)
    if(response.status===200){
     if(email=='admin@123'){
@@ -37,6 +37,7 @@ try {
     }else{
       navigate('/supdashbord')
       localStorage.setItem('token',response.data.token)
+      localStorage.setItem('userid',response.data.data._id)
     }
 
    }
@@ -44,7 +45,7 @@ try {
       console.log(error);
       if (error.response.status === 400) {
  
-        toast.error('invalid user or password');
+        toast.error('invalid user or password'); 
         setErr('invalid user or password');
         setLoading(false)
       } else {

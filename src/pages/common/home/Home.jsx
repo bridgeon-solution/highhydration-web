@@ -6,6 +6,7 @@ import Countup from '../../../components/user/Countup';
 import Footer from '../../../components/user/Footer';
 import Products from '../../users/Products'
 import ProductList from '../../../components/user/ProductList';
+import Navbar from '../Navbar';
 function App() {
   const motionDivRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <div className='bg-[#fdfdfd]'>
-    
+    <Navbar/>
       <Home1 />
       <motion.div
         ref={motionDivRef}

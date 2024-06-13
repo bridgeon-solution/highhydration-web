@@ -124,6 +124,7 @@ import api from '../../axiosInterceptors'
 import Loader from '../Loader'
 import OrdersList from './OrdersList'
 import PyamentCompleted from './PyamentCompleted'
+import ChatModal from './modals/ChatModal'
 
 const UserProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -132,7 +133,7 @@ const UserProfile = () => {
   const [userData, setUserData] = useState([])
   const [loading, setLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false) 
-  const [message,setMessage]= useState('')
+  
   const[role,setRole]=useState('orders')
 
   useEffect(() => {
@@ -153,16 +154,7 @@ const UserProfile = () => {
     setIsModalOpen(!isModalOpen)
   }
 
-  const handleSave = async()=>{
-    try {
-      const response = await api.post('/users/feedback',{userId,message})
-      if(response.status===201){
-        setIsModalOpen(!isModalOpen)
-      }
-    } catch (error) {
-      console.log(error,'error in save message')
-    }
-  }
+ 
 
   return (
     <div className='w-full h-screen mt-2'>
@@ -253,24 +245,7 @@ const UserProfile = () => {
      <PyamentCompleted name={`${userData?.first_name} ${userData?.last_name}`} />
       }
  
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="max-w-xl mx-auto flex w-full flex-col border rounded-lg bg-white p-8">
-            <h2 className="title-font mb-1 text-lg font-medium text-gray-900">Feedback</h2>
-            <p className="mb-5 leading-relaxed text-gray-600">If you had any issues or you liked our product, please share with us!</p>
-            <div className="mb-4">
-              <label htmlFor="message" className="text-sm leading-7 text-gray-600">Message</label>
-              <textarea id="message" name="message" onChange={(e)=>setMessage(e.target.value)} className="h-32 w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"></textarea>
-            </div>
-            <div className='flex justify-evenly'>
-        <button onClick={handleSave} className="rounded border-0 bg-indigo-500 py-2 px-6 text-lg text-white hover:bg-indigo-600 focus:outline-none">Send</button>
-        <button onClick={toggleModal} className="rounded border-0 bg-red-500 py-2 px-6 text-lg text-white hover:bg-red-600 focus:outline-none">Close</button>
-    </div>
-           
-            <p className="mt-3 text-xs text-gray-500">Feel free to connect with us on social media platforms.</p>
-          </div>
-        </div>
-      )}
+ {isModalOpen && <ChatModal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
     </div>
   )
 }

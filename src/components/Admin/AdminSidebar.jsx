@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CDBSidebar,
   CDBSidebarContent,
@@ -9,14 +9,38 @@ import {
 } from "cdbreact";
 
 import {NavLink} from "react-router-dom";
+import api from "../../axiosInterceptors";
 
 
 const AdminSidebar = () => {
   const [showModal, setShowModal] = useState(false);
+  const supplierId=localStorage.getItem('role')
+  const [supplierAuth,setSupplierAuth]=useState(['/payment', '/suppliermanagement','/usermanagement','/rolemanagement'])
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      try {
+        let user = localStorage.getItem('role');
+        if (!user) {
+
+        } else {
+          const response = await api.get('/role', {
+            params: {
+              supplierId
+            },
+          });
+          setSupplierAuth( response.data.roles[0].permissions || [])
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    checkAuthentication();
+  }, []);
   return (
     <div
       style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
@@ -52,19 +76,22 @@ const AdminSidebar = () => {
 
               <CDBSidebarMenuItem icon='fas fa-shopping-bag'>Products</CDBSidebarMenuItem>
             </NavLink>
+            {supplierAuth.includes('/suppliermanagement') ?
             <NavLink  to="/suppliermanagement" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon='user'>Supplier </CDBSidebarMenuItem>
-            </NavLink>
+            </NavLink>:""}
+            {supplierAuth.includes('/usermanagement') ?
             <NavLink   to={'/usermanagement'}  activeClassName="activeClicked" >
               <CDBSidebarMenuItem icon='fas fa-bell'>Users</CDBSidebarMenuItem>
-            </NavLink>
+            </NavLink>:""}
            
             <NavLink to="/location"  activeClassName="activeClicked">
               <CDBSidebarMenuItem icon='fas fa-map-marker-alt'>Location</CDBSidebarMenuItem>
             </NavLink>
+            {supplierAuth.includes('/payment') ?
             <NavLink to='/payment' activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="fa-solid fa-credit-card">Payment</CDBSidebarMenuItem>
-            </NavLink>
+            </NavLink>:""}
             <NavLink to='/complaints' activeClassName="activeClicked">
     <CDBSidebarMenuItem icon="exclamation-circle">Complaints</CDBSidebarMenuItem>
            </NavLink>
@@ -74,6 +101,10 @@ const AdminSidebar = () => {
       <CDBSidebarMenuItem icon="fas fa-box">Order</CDBSidebarMenuItem>
     </NavLink>
     </div>
+    {supplierAuth.includes('/rolemanagement') ?
+    <NavLink to='/rolemanagement' activeClassName="activeClicked">
+    <CDBSidebarMenuItem icon="user fa-gear">Roles</CDBSidebarMenuItem>
+           </NavLink>:""}
       </>
       )}
 

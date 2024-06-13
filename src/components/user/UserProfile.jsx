@@ -125,6 +125,8 @@ import Loader from '../Loader'
 import OrdersList from './OrdersList'
 import PyamentCompleted from './PyamentCompleted'
 import PendingBills from './PendingBills'
+import ChatModal from './modals/ChatModal'
+
 
 const UserProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -133,7 +135,7 @@ const UserProfile = () => {
   const [userData, setUserData] = useState([])
   const [loading, setLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false) 
-  const [message,setMessage]= useState('')
+  
   const[role,setRole]=useState('orders')
 
   useEffect(() => {
@@ -154,16 +156,7 @@ const UserProfile = () => {
     setIsModalOpen(!isModalOpen)
   }
 
-  const handleSave = async()=>{
-    try {
-      const response = await api.post('/users/feedback',{userId,message})
-      if(response.status===201){
-        setIsModalOpen(!isModalOpen)
-      }
-    } catch (error) {
-      console.log(error,'error in save message')
-    }
-  }
+ 
 
   return (
     <div className='w-full h-screen mt-2'>
@@ -254,6 +247,7 @@ const UserProfile = () => {
      <PyamentCompleted name={`${userData?.first_name} ${userData?.last_name}`} />
       }
  
+
  {role==='pending' &&
      <PendingBills/>
       }
@@ -275,6 +269,9 @@ const UserProfile = () => {
           </div>
         </div>
       )}
+
+ {isModalOpen && <ChatModal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
+
     </div>
   )
 }

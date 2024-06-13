@@ -27,6 +27,7 @@ export default {
       }
     }
   },
-  plugins: [require("tw-elements-react/dist/plugin.cjs")],
+  plugins: [require("tw-elements-react/dist/plugin.cjs"),], 
+
 }
 

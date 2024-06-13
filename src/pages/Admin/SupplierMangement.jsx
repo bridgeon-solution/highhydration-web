@@ -8,6 +8,7 @@ import { Button, IconButton } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Loader from "../../components/Loader";
+import SupplierMangementModal from "../../components/Admin/SupplierManagementModal";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const manageUrl=import.meta.env.VITE_BASE_URL_SUPPLIERMANGEMENT;
 
@@ -19,6 +20,7 @@ const SupplierMangement = () => {
   const [search,setSearch]=useState('')
   const [loading,setLoading]=useState(false)
   const totalPageCount = Math.ceil(suppliers.length / 5);
+  const [isOpen,setIsOpen]=useState(false)
 
   const handlePageChange = (action) => {
     setLoading(true)
@@ -107,9 +109,12 @@ allusers()
     }
   });
 
+  console.log(isOpen,"page");
 
   return (
     <div className="flex h-screen ">
+      { isOpen && <SupplierMangementModal handleClose={setIsOpen} isOpen={isOpen} fethcData={allusers}/>
+      }
       {loading&&<Loader/>}
       <div>
         <AdminSidebar />
@@ -174,7 +179,8 @@ allusers()
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {Search.map((person, index) => (
-                <tr
+                <tr 
+                onClick={()=>{setIsOpen(person)}}
                   key={person.email}
                   className={index % 2 === 1 ? "bg-[#F7F6FE]" : "bg-white"}
                 >

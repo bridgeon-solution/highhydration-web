@@ -57,6 +57,7 @@ function App() {
     <>
     
       {/* <Navbar /> */}
+
       {/* <Pdffile/> */}
       <NavigationProvider>
       <Routes>

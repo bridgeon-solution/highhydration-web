@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import AdminSidebar from '../../components/Admin/AdminSidebar';
 import api from '../../axiosInterceptors';
 
+
 const Complaints = () => {
     const [message, setMessage] = useState([]);
+    const[modal,setModal]=useState(false)
     useEffect(() => {
         const fetchMessages = async () => {
             try {
@@ -27,7 +29,9 @@ const Complaints = () => {
 
         <div className="relative flex flex-wrap justify-evenly gap-4 w-full p-4  overflow-scroll">
     {message.map((message) => (
-        <div key={message._id} className="w-full sm:w-1/2 lg:w-2/5 flex flex-col items-center bg-white shadow-xl rounded-lg p-6 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+        <div key={message._id} 
+        className="w-full sm:w-1/2 lg:w-2/5 flex flex-col items-center bg-white shadow-xl rounded-lg p-6 transform hover:scale-105 transition-transform duration-300 ease-in-out"
+        onClick={()=>setModal(true)}>
             <div className="relative flex items-center gap-4 w-full">
                 <img
                     src={message.userId?.image || "https://i.pinimg.com/736x/76/f3/f3/76f3f3007969fd3b6db21c744e1ef289.jpg"}
@@ -53,7 +57,9 @@ const Complaints = () => {
 </div>
 
 
-
+{modal&&(
+    <ChatModal setModal={{setModal}} />
+)}
 
  
 

@@ -37,7 +37,7 @@ try {
     }else{
       navigate('/supdashbord')
       localStorage.setItem('token',response.data.token)
-      localStorage.setItem('userid',response.data.data._id)
+      localStorage.setItem('supplierid',response.data.data._id)
     }
 
    }

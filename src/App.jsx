@@ -39,6 +39,7 @@ import api from './axiosInterceptors'
 import RolesManagement from './components/Admin/RolesManagement'
 
 import SupTable from './components/supplier/SupTable'
+
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -57,11 +58,10 @@ function App() {
     <>
     
       {/* <Navbar /> */}
-
       {/* <Pdffile/> */}
       <NavigationProvider>
       <Routes>
-    
+
         <Route path='/' element={<Wellcome />} />
         <Route path='/service' element={<Service />} />
         <Route path='/home' element={<Home />} />
@@ -92,8 +92,7 @@ function App() {
         <Route path='/payment' element={<PaymentSection/>}/>
         <Route path='/orders' element ={<OrderManagement />} />
         <Route path='/complaints' element ={<Complaints />} />
-        <Route path='/usermanagement' element={<UserManagement/>} />
-        <Route path='/rolemanagement' element={<RolesManagement/>}/>
+ 
       </Routes>
       </NavigationProvider>
       <Toaster

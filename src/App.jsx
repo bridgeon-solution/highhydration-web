@@ -3,7 +3,7 @@ import SupLogin from './components/supplier/SupLogin'
 import SupplierPro from './pages/supplier/SupplierPro'
 import SupplyHome from './pages/supplier/SupplyHome'
 import SupplierRegister from './components/supplier/SupplierRegister'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { gapi } from 'gapi-script'
 import AdminDashbord from './pages/Admin/AdminDashbord' 
@@ -32,9 +32,13 @@ import Aboutus from './pages/common/about/Aboutus'
 import UserManagement from './pages/Admin/UserManagement'
 import OrderDetails from './components/user/OrderDetails'
 import PaymentSection from './components/Admin/PaymentSection'
-import OrderAllocation from './pages/supplier/OrderAllocation'
+import Pdffile from './components/user/Pdffile'
 import OrderManagement from './pages/Admin/OrderManagement'
 import Complaints from './pages/Admin/Complaints'
+import api from './axiosInterceptors'
+import RolesManagement from './components/Admin/RolesManagement'
+
+import SupTable from './components/supplier/SupTable'
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -49,11 +53,11 @@ function App() {
     }
     gapi.load('client:auth2', start)
   });
-
   return (
     <>
     
-      <Navbar />
+      {/* <Navbar /> */}
+      {/* <Pdffile/> */}
       <NavigationProvider>
       <Routes>
     
@@ -75,19 +79,20 @@ function App() {
         <Route path='/editPro' element={<EditProfile />} />
         <Route path='/product' element={<AllProducts />} />
         <Route path='/suppliermanagement' element={<SupplierMangement />} />
-        <Route path='/orderAllocation' element={<OrderAllocation/>} />
+        <Route path='/orderAllocation' element={<SupTable/>} />
         <Route path='/usermanagement' element={<UserManagement/>} />
         <Route path='/location' element={<Location />} />
         <Route path='/productList' element={<Products />} />
         <Route path='/productList/:productId' element={<SingleProduct />} />
         <Route path='/order' element={<Order />} />
-        <Route path="payment/success" element={<PaymentSuccess />} />
+        <Route path="payment/success" element={<PaymentSuccess />} /> 
         <Route path="payment/cancel" element={<PaymentCancel />} />
         <Route path='/orderdetails' element={<OrderDetails/>}/>
         <Route path='/payment' element={<PaymentSection/>}/>
         <Route path='/orders' element ={<OrderManagement />} />
         <Route path='/complaints' element ={<Complaints />} />
- 
+        <Route path='/usermanagement' element={<UserManagement/>} />
+        <Route path='/rolemanagement' element={<RolesManagement/>}/>
       </Routes>
       </NavigationProvider>
       <Toaster

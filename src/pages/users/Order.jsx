@@ -71,9 +71,18 @@ const handlechnge=(a)=>{
 const stepdata=(a)=>{
   if(a==="+"){
     if(pageNum===0){
-      if(!userData.pin_number&&!userData.first_name&&!userData.last_name&&!userData.address_line1&&!userData.address_line2&&!userData.pincode&&!userData.phone_number){
-        toast.error('Fill the Details Properly ')
-        setButtonBg(false)
+      console.log(userData);
+      if (
+        !userData.first_name || 
+        !userData.last_name || 
+        !userData.address_line1 || 
+        !userData.address_line2 || 
+        !userData.pin_number || 
+        !userData.phone_number
+      ) {
+        toast.error('Fill the Details Properly');
+        console.log("no data");
+        setButtonBg(false);
       }
     if(pageNum==1){
       setModalVisible(true)
@@ -183,7 +192,6 @@ const handleSubmit = () => {
       return;
   }
 }
-console.log(selectedDate,'hiii');
   return (
     <div className=' bg-opacity-5 justify-center flex'>
       {loader&&<Loader/>}
@@ -230,7 +238,7 @@ console.log(selectedDate,'hiii');
     {isToggled&&
     <>
     <div className="flex items-center justify-center">
-    <form onSubmit={handleSubmit} className="text-center">
+    <form onSubmit={handleSubmit} className="text-center mb-2">
             <label htmlFor="datepicker" className="block mb-4">Select a Date:</label>
             <DatePicker
                 id="datepicker"
@@ -317,7 +325,7 @@ console.log(selectedDate,'hiii');
                 Confirm
             </button>
         ) : (
-            <button></button>
+            <button className='bg-gray-500 ml-3 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>Confirm</button>
         )
     ) : (
         <button onClick={() => { setModalOpen(false) }} className="bg-blue-500 ml-3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

@@ -6,13 +6,14 @@ import api from '../../axiosInterceptors'
 const OrderModal = ({props,setModal,orderfetch}) => {
   const [deteteModal,setDeleteModal]=useState(false)
   const [loading,setLoading]=useState(false)
+ 
     const handleClose=()=>{
         setModal(false)
     }
     const handleClancle=()=>{
       setDeleteModal(true)
     }
-    const handleDelete=()=>{
+    const handleOrderCancel=()=>{
       try {
         setLoading(true)
         const deleteOrdre=async()=>{
@@ -23,6 +24,9 @@ const OrderModal = ({props,setModal,orderfetch}) => {
           const response=await api.patch(`/orders/`,{data})
           setLoading(false)
           setModal(false)
+          if(response.status===204){
+            toast.error('This Order Not Cancel Is Shipped')
+          }
           if(response.status===200){
             orderfetch()
             toast.error('Order canceled')
@@ -34,6 +38,21 @@ const OrderModal = ({props,setModal,orderfetch}) => {
         toast.error(error?.message)
       }
     }
+    const handleDelete=async()=>{
+      try {
+        const response=await api.delete(`/orders/${props?._id}`)
+        setLoading(false)
+          setModal(false)
+          if(response.status===200){
+            orderfetch()
+            toast.error('Order Delete')
+          }
+      } catch (error) {
+        console.log(error);
+        toast.error(error?.message)
+      }
+    }
+    console.log(props);
   return (
     <>
     <Loader/>
@@ -58,15 +77,22 @@ const OrderModal = ({props,setModal,orderfetch}) => {
           <div className="relative w-auto max-w-lg mx-auto my-6">
             <div className="relative flex flex-col w-full bg-white border border-gray-300 rounded-lg shadow-lg outline-none">
               <div className="flex items-start justify-between p-5 border-b border-gray-300 rounded-t">
-                <h2 className="text-lg font-semibold">Warning : Are you sure you want to delete?</h2>
+                <h2 className="text-lg font-semibold">Warning : Are you sure you want to  {props?.deliveryStatus=="cancelled"?<span>Delete Order?</span>:<span>Cancel Order?</span>} </h2>
               </div>
               <div className="flex items-center justify-end px-6 py-4 bg-gray-50">
-                <button
+                {props?.deliveryStatus=="cancelled"?<button
                 onClick={()=>{handleDelete()}}
                   className="px-4 py-2 mr-4 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none"
                 >
-                  Delete
+                  Delete Order
+                </button>:
+                <button
+                onClick={()=>{handleOrderCancel()}}
+                  className="px-4 py-2 mr-4 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none"
+                >
+                  Order Cancel
                 </button>
+}
                 <button onClick={()=>{handleClose()}}
                   className="px-4 py-2 text-gray-700 bg-gray-200 rounded hover:bg-gray-300 focus:outline-none"
                 >
@@ -86,8 +112,8 @@ const OrderModal = ({props,setModal,orderfetch}) => {
             <h1>Order Details</h1>
             </div>
             <div className='text-center'>
-            <p className='text-lg mb-2 mt-1'>Order Number :#{props?._id}</p>
-            <p className='text-lg mb-2 mt-1'>Order Create At :{props?.purchaseDate}</p>
+            <p className='text-lg mb-2 mt-1'>Order Number :#{props?._id.slice(0,6)}</p>
+            <p className='text-lg mb-2 mt-1'>Order Create At :{new Date(props?.purchaseDate).toISOString().split('T')[0]}</p>
             <p className='text-lg mb-2 mt-1'k>Total :${props?.amount}</p>
             </div>
         </div>
@@ -109,9 +135,13 @@ const OrderModal = ({props,setModal,orderfetch}) => {
               <button onClick={()=>{handleClose()}} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 OK
               </button>
+              {props?.deliveryStatus==="cancelled"?<button onClick={()=>{handleClancle()}}  type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-red-400 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700   dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                Delete Order
+              </button>:
               <button onClick={()=>{handleClancle()}}  type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-red-400 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700   dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                Cancel
+                Cancel Order
               </button>
+           }
             </div>
             </>
         )}

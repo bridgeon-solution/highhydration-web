@@ -176,7 +176,8 @@ const OrdersList = () => {
                     </div>
                   </div>
                 )}
-                {starRate[order?._id] >= 1 ? (
+                
+                {starRate[order?._id] >= 1? (
                   <p
                     className="text-sm font-extralight text-blue-600 mb-2"
                     onClick={() => {

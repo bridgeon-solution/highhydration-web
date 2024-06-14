@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import api from '../../axiosInterceptors'
-import {PDFDownloadLink } from '@react-pdf/renderer';
-import Pdffile from './Pdffile';
 
-const PyamentCompleted = ({name}) => {
+import {PDFDownloadLink } from '@react-pdf/renderer';
+
+import api from '../axiosInterceptors';
+import Pdffile from './user/Pdffile';
+
+const PaymentCompleted2  = ({name}) => {
 
     const userid=localStorage.getItem('userId')
-    console.log(userid,"usususu");
-    const [payments,setPayments]=useState([])
-
+    const [paymentsMonth,setPaymentsMonth]=useState([])
 
 
 
@@ -17,8 +17,10 @@ const PyamentCompleted = ({name}) => {
     try {
           const response=await api.get(`payments/paymentsById/${userid}`)
            console.log(response,"respooo");
-           setPayments(response.data.data)
-    }
+           const data = response.data.userpay;
+           setPaymentsMonth(data)
+         
+      }
       catch (error) {
       console.log(error);
       toast.error(error?.message)
@@ -35,7 +37,7 @@ const PyamentCompleted = ({name}) => {
         setmodal(true)
     }
 
-  
+    console.log(paymentsMonth,"ordureded");
   return (
     <> 
 <div className="w-full">
@@ -53,7 +55,7 @@ const PyamentCompleted = ({name}) => {
                 Date
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Product Name
+                Month
               </th>
               <th scope="col" className="px-8 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Amount
@@ -64,22 +66,22 @@ const PyamentCompleted = ({name}) => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {payments.map((x) => (
-              <tr key={x.id}>
+            {paymentsMonth?.map((x,i) => (
+              <tr key={i}>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
-                  {x.purchaseDate.slice(0, 10)}
+                  {x.paymentDate.slice(0,10)}
                   <div className="mt-1 lg:hidden">
-                    <p className="font-normal text-gray-500">{x.purchaseDate.slice(0, 10)}</p>
+                    <p className="font-normal text-gray-500">{x?.paymentDate.slice(0,10)}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
-                  {x.product.productname}
+                  {x?.paymentMonth}
                   <div className="mt-1 lg:hidden">
-                    <p className="font-normal text-gray-500">{x.product.productname}</p>
+                    <p className="font-normal text-gray-500">{x?.paymentMonth}</p>
                   </div>
                 </td>
                 <td className="px-8 py-4 whitespace-nowrap text-right text-sm text-gray-600">
-                  {x.amount}
+                  {x?.amount}
                 </td>
                 <td className="px-8 py-4 whitespace-nowrap text-sm font-normal text-gray-500 lg:table-cell cursor-pointer"> 
                 {/* <PDFDownloadLink >
@@ -87,7 +89,7 @@ const PyamentCompleted = ({name}) => {
                     Download
                   </div>
                  </PDFDownloadLink> */}
-                       <PDFDownloadLink document={<Pdffile productName={x.product.productname} amount={x.amount} adress={x.address} name={name} />} fileName="invoice.pdf">
+                       <PDFDownloadLink document={<Pdffile productName={x.product?.productname} amount={x?.amount} adress={x?.address} name={name} />} fileName="invoice.pdf">
                         {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download')}
                       </PDFDownloadLink>
                 </td>
@@ -95,7 +97,7 @@ const PyamentCompleted = ({name}) => {
             ))}
           </tbody>
         </table>
-        {status&&<Pdffile  props={payments}/>}
+        {status &&<Pdffile  props={payments}/>}
       </div>
     </div>
   </div>
@@ -108,4 +110,6 @@ const PyamentCompleted = ({name}) => {
   )
 }
 
-export default PyamentCompleted
+export default PaymentCompleted2
+
+

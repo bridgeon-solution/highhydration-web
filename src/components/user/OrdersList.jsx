@@ -26,17 +26,25 @@ const OrdersList = ({setLoading}) => {
       toast.error(error?.message);
     }
   };
+  
+
+  useEffect(() => {
+    orderfetch();
+    starFetching()
+  }, []);
+
   const starFetching = async () => {
     try {
-      let ids = orders.map((i) => i.product);
-      let prodcutId = ids.map((i) => i._id); 
-      console.log(prodcutId);
+      
+      let prodcutId = orders
+      console.log(prodcutId,'hai');
       const data = {
         userId:userid,
         prodcutId,
       };
       const response = await api.get('/reviews/star', { params: { data } });
       console.log(response.data.reviews[0]._id);
+      setLoading(false)
       if (response.status === 200) {
         setStarRate((prevRatings) => ({
           ...prevRatings,
@@ -46,15 +54,9 @@ const OrdersList = ({setLoading}) => {
       } 
     } catch (error) {
       console.error(error);
-    } finally {
-      setLoading(false);
     }
   }
-  console.log(starRate);
-  useEffect(() => {
-    orderfetch();
-    starFetching()
-  }, []);
+
   const handelDetalis = (id) => {
     setProduct(orders.find((i) => i._id === id));
     setmodal(true);

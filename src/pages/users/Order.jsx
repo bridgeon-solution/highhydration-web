@@ -98,6 +98,7 @@ const stepdata=(a)=>{
         deliveryStatus:"ordered",
         preOrder:true,
         amount:price,
+        payed:"pending",
         address:{
           address_line1:userData.address_line1,
           address_line2:userData.address_line2,

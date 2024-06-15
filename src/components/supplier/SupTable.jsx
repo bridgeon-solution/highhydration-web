@@ -8,7 +8,7 @@ const SupTable = () => {
   const[data,setdata]=useState(null)
   const[pagination,setPagination]=useState(null)
   const [page,setpage]=useState(1)
-  const userId=localStorage.getItem('userid')
+  const userId=localStorage.getItem('supplierid')
 console.log(userId,"usurrrr");
   const[togle,setToggle]=useState(false)
   function toggleDropdown(){

@@ -12,7 +12,6 @@ const ReviewModals = ({ props, setReviewProduct, starRate,setStarRate,prodid}) =
     const [value,setValue]=useState('')
     console.log(prodid,'productId');
     const handleClose = () => {
-    setStarRate(0)
     setReviewProduct(false);
   };
   const handleColor = (a) => {

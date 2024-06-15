@@ -6,7 +6,7 @@ import OrderModal from "./OrderModal";
 import { FaStar } from "react-icons/fa";
 import ReviewModals from "./ReviewModals";
 
-const OrdersList = () => {
+const OrdersList = ({setLoading}) => {
   const userid = localStorage.getItem("userId");
   const [orders, setOrders] = useState([]);
   const [modal, setmodal] = useState(false);
@@ -18,6 +18,7 @@ const OrdersList = () => {
 
   const orderfetch = async () => {
     try {
+      setLoading(true)
       const response = await api.get(`/orders/order/${userid}`);
       setOrders(response.data.order);
     } catch (error) {
@@ -25,8 +26,34 @@ const OrdersList = () => {
       toast.error(error?.message);
     }
   };
+  const starFetching = async () => {
+    try {
+      let ids = orders.map((i) => i.product);
+      let prodcutId = ids.map((i) => i._id); 
+      console.log(prodcutId);
+      const data = {
+        userId:userid,
+        prodcutId,
+      };
+      const response = await api.get('/reviews/star', { params: { data } });
+      console.log(response.data.reviews[0]._id);
+      if (response.status === 200) {
+        setStarRate((prevRatings) => ({
+          ...prevRatings,
+          [response.data.reviews[0]?._id]:
+            prevRatings[response.data.reviews[0]?._id] === 1 && rating === 1 ? 0 : response.data.reviews[0]?.rating,
+        }));
+      } 
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  console.log(starRate);
   useEffect(() => {
     orderfetch();
+    starFetching()
   }, []);
   const handelDetalis = (id) => {
     setProduct(orders.find((i) => i._id === id));
@@ -47,7 +74,7 @@ const OrdersList = () => {
       [productId]: prevRatings[productId] === 1 && rating === 1 ? 0 : rating,
     }));
   };
-  console.log(prodid, "Orders");
+console.log(orders);
   return (
     <>
       <div>

@@ -35,7 +35,7 @@ try {
     if(email=='admin@123'){
       navigate('/admindashboard')
     }else{
-      if(response.data.data.roles){
+      if(response.data.data.roles==='admin'){
         navigate('/admindashboard')
       }else{
         navigate('/supdashbord')

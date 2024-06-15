@@ -18,7 +18,7 @@ const UserProfile = () => {
   const [userData, setUserData] = useState([])
   const [loading, setLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false) 
-  
+
   const[role,setRole]=useState('orders')
 
   useEffect(() => {

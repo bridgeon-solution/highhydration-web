@@ -5,6 +5,8 @@ import PaymentSectionAll from './PaymentSectionAll';
 import PaymentSectionPending from './PaymentSectionPending';
 import PaymentSectionPaid from './PaymentSectionPaid';
 import api from '../../axiosInterceptors';
+import { FaFilter } from 'react-icons/fa';
+import FilterModal from './modal/FilterModal';
 
 
 const PaymentSection = () => {
@@ -12,6 +14,7 @@ const [value,setValue]=useState("all")
 const [total,setTotal]=useState(0)
 const [success,setSuccess]=useState(0)
 const [pendingAmount,setPendingAmount]=useState(0)
+const [isOpen, setIsOpen] = useState(false);
 const currentDate = new Date(Date.now());
     const formattedDate = currentDate.toLocaleString('en-US', { month: 'short', day: '2-digit', hour: '2-digit' });
 
@@ -29,11 +32,15 @@ const currentDate = new Date(Date.now());
     }
     fetchData()
   },[])
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
   console.log(total);
   console.log(success);
   console.log(pendingAmount);
   return (
     <>
+    
     <div className='flex w-full h-scree bg-[#F8F8F8]'>
       <div className=' mt-2 min-h-screen' >
         <AdminSidebar />
@@ -62,8 +69,9 @@ const currentDate = new Date(Date.now());
         <h1 className='font-semibold text-xl text-gray-500'>Payment History</h1>
       </div>
       
-      <div className="border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-4">
-      <div className="hidden sm:flex sm:items-center sm:justify-between ">
+      <div className="border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-4 w-10/12 flex justify-between ">
+      
+      <div className="hidden sm:flex sm:items-center sm:justify-between">
         <div>
           <nav className="isolate inline-flex  -space-x-px rounded-md  w-80 justify-between" aria-label="Pagination">
             {/* Pagination buttons */}
@@ -91,8 +99,16 @@ const currentDate = new Date(Date.now());
           </nav>
         </div>
       </div>
+      <div>
+        {!isOpen && <FaFilter onClick={toggleDropdown} />}
+      
+      {isOpen&&
+    <FilterModal  isOpen={isOpen} setIsOpen={setIsOpen}/>
+    }
+      </div>
+      
     </div>
-    <div className=''>
+    <div className=''>   
       {value==="all"&&<PaymentSectionAll/>}
       {value==="paid"&&<PaymentSectionPaid/>}
       {value==="pending"&&<PaymentSectionPending/>}

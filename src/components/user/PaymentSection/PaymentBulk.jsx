@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import toast from 'react-hot-toast';
 import api from '../../../axiosInterceptors';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import Pdffile from '../Pdffile';
 
-const PaymentBulk = () => {
+const PaymentBulk = ({name}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [payments, setPayments] = useState([]);
   const itemsPerPage = 5; 
@@ -58,15 +60,20 @@ const PaymentBulk = () => {
               <th className="text-center font-light">Product Name</th>
               <th className="text-center font-light">Amount</th>
               <th className="text-center font-light">Invoice</th>
+           
+                       
             </tr>
           </thead>
           <tbody>
-            {currentItems.map((x, i) => (
+            {currentItems?.map((x, i) => (
               <tr key={i}>
                 <td className="text-center">{x.purchaseDate.slice(0, 10)}</td>
                 <td className="text-center">{x.product.productname}</td>
                 <td className="text-center">{x.amount}</td>
-                <td className="text-center">Download</td>
+       
+                <PDFDownloadLink document={<Pdffile productName={x.product?.productname} amount={x?.amount} adress={x?.address} name={name} />} fileName="invoice.pdf">
+                        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download')}
+                      </PDFDownloadLink>
               </tr>
             ))}
           </tbody>

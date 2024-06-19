@@ -14,6 +14,7 @@ import {
     Button,
   } from "@material-tailwind/react";
 import Footer from '../../../components/user/Footer';
+import Navbar from '../Navbar';
 const Service = () => {
     const shimmerVariants = {
         initial: { backgroundPosition: '200% center' },
@@ -42,6 +43,9 @@ const Service = () => {
         },
       };
   return (
+    <>
+    <Navbar/>
+   
     <div className="w-full bg-gradient-to-r bg-[#fdfdfd] flex flex-col justify-center items-center px-1 ">
 <div>
     <motion.h1
@@ -151,6 +155,7 @@ const Service = () => {
  </div>
  <Footer/>
   </div>
+  </>
   )
 }
 

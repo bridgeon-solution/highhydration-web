@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import api from '../../axiosInterceptors'
 import {PDFDownloadLink } from '@react-pdf/renderer';
-import Pdffile from './Pdffile';
+
 import PaymentBulk from './PaymentSection/PaymentBulk'
 import PaymentPre from './PaymentSection/PaymentPre';
 
@@ -17,7 +17,7 @@ const PyamentCompleted = ({name}) => {
 
     const orderfetch= async ()=>{
     try {
-          const response=await api.get(`payments/paymentsById/${userid}`)
+          const response=await api.get(`payments/paymentsById/${userid}`) 
      
            setPayments(response.data.data)
     }
@@ -74,7 +74,7 @@ const PyamentCompleted = ({name}) => {
     </div>
 
     <div className="h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[500px]">
-  {ispaymentModal==="bulkOrder" && <PaymentBulk/>}
+  {ispaymentModal==="bulkOrder" && <PaymentBulk name={name}/>}
   {ispaymentModal==="preOrder" && <PaymentPre/>}
 </div>
 

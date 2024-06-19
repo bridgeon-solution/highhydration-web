@@ -5,9 +5,13 @@ import { BsWhatsapp } from "react-icons/bs";
 import { LuInstagram } from "react-icons/lu";
 import { CiTwitter } from "react-icons/ci";
 import { LiaFacebookMessenger } from "react-icons/lia";
+import Navbar from '../Navbar';
 
 const Contact = () => {
   return (
+    <> 
+      <Navbar/> 
+   
     <div className='bg-[#EFF0F3] p-2'>
 
       <p className='text-center text-3xl font-bold'>Contact us</p>
@@ -85,6 +89,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

@@ -61,7 +61,7 @@ const Navbar = () => {
   return (
     <>
 
-      <nav className="bg-[#0E2C72] border-gray-200 fixed top-0 left-0 w-full z-50" >
+      <nav className="bg-[#0E2C72] border-gray-200 fixed top-0 left-0 w-full z-50 shadow-2xl" >
         <div className="max-w-full flex flex-wrap items-center justify-between  p-1">
           <img src={logo} className="h-10" alt="Logo" onClick={() => navigate('/home')} />
 

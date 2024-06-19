@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import api from '../../../axiosInterceptors';
+import PdfFile2 from './PdfFile2';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 const PaymentPre = () => {
     const orders = [
@@ -13,15 +15,15 @@ const PaymentPre = () => {
       const totalPages = Math.ceil(totalLength / 5); // Replace 5 with the actual number of items per page
       const userid=localStorage.getItem('userId')
       const [paymentsMonth,setPaymentsMonth]=useState([])
-  
+   
   
   
       const orderfetch= async ()=>{
       try {
-            const response=await api.get(`payments/paymentsById/${userid}`)
+            const response=await api.get(`payment/bill/${userid}`)
              console.log(response,"respooo");
-             const data = response.data.userpay;
-             setPaymentsMonth(data)
+           
+             setPaymentsMonth(response.data.data)
            
         }
         catch (error) {
@@ -40,32 +42,82 @@ const PaymentPre = () => {
           setmodal(true)
       }
   
+
+
+
+
       console.log(paymentsMonth,"ordureded");
   return (
     <div className="w-5/6">
     <div className="w-full bg-white rounded-2xl">
-      <table className="w-full bg-white rounded-2xl">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="text-center font-light">Order ID</th>
-            <th className="text-center font-light">Order Date</th>
-            <th className="text-center font-light">Amount</th>
-            <th className="text-center font-light">Type</th>
-            <th className="text-center font-light">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {paymentsMonth.map((x,i) => (
-            <tr key={i}>
-              <td className="text-center">{x.paymentDate.slice(0,10)}</td>
-              <td className="text-center">{x.paymentDate.slice(0,10)}</td>
-              <td className="text-center"> {x?.paymentMonth}</td>
-              <td className="text-center">{x?.amount}</td>
-              <td className="py-3 text-center">status</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+
+
+
+   <div className="w-full bg-gradient-to-r flex flex-col justify-center items-center p-5 space-y-10 ">
+        {paymentsMonth?.map((x) => (
+                <div key={x.month} className="bg-white border rounded-lg shadow-2xl p-6 w-full max-w-4xl">
+                    <h1 className="font-bold text-3xl my-4 text-center text-blue-600">{x.Month}</h1>
+                    <hr className="mb-4" />
+                    <div>
+                        <div className="flex justify-between mb-6">
+                            <h1 className="text-lg font-bold">Invoice</h1>
+                            <div className="text-gray-700 text-right">
+                                <div>Invoice #: INV12345</div>
+                            </div>
+                        </div>
+
+                        <table className="w-full mb-8">
+                            <thead>
+                                <tr>
+                                    <th className="text-left font-bold text-gray-700">Description</th>
+                                    <th className="text-right font-bold text-gray-700">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            {x.ProductIds?.map((x,i) => (
+   
+        <tr key={i}>
+            <td className="text-left text-gray-700">{x.productname}</td>
+            <td className="text-right text-gray-700">{x.price}</td>
+        </tr>
+    
+))}
+
+                            </tbody>
+                            <tfoot>
+                                <hr className="mb-4" />
+                                <tr>
+                                    <td className="text-left font-bold text-gray-700 text-2xl">Total</td>
+                                    <td className="text-right font-bold text-gray-700 text-2xl">{x.totalAmount}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div className='flex justify-between'>
+                            <div>
+                                <div className="text-gray-700 mb-2">Thank you for your business!</div>
+                                <div className="text-gray-700 text-sm">Please remit payment within 30 days.</div>
+                            </div>
+                            <div>
+                                {/* <button
+                                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                    
+                                >
+                                    Download
+                                </button> */}
+
+                     <PDFDownloadLink document={<PdfFile2  month={x.Month}  ProductIds={x.ProductIds}   />} fileName="invoice.pdf">
+                        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download')}
+                      </PDFDownloadLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+
+
       <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
         <div className="flex flex-1 justify-between sm:hidden">
           <a

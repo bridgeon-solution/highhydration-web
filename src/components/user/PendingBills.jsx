@@ -10,21 +10,23 @@ const PendingBills = () => {
     useEffect(() => {
         async function fetchApi() {
             try {
-                const response = await api.get(`orders/totalOrder/${userId}`);
+                const response = await api.get(`payment/billgeneration/${userId}`);
                 console.log(response, "response");
              
 
-                setOrders(response.data.orders);
+                setOrders(response.data.data);
                 setTotals(response.data.monthlyTotals);
 
-                console.log(orders, "orders");
-                console.log(totals, "totals");
+           
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
         fetchApi();
     }, [userId]);
+
+
+    console.log(orders,"kutta kutta");
 
     async function handleButton() {
         const monthNumber = new Date(orders[0].purchaseDate).getMonth() + 1;
@@ -47,9 +49,9 @@ const PendingBills = () => {
 
     return (
         <div className="w-full bg-gradient-to-r flex flex-col justify-center items-center p-5 space-y-10 ">
-            {totals?.map((x) => (
+        {orders?.map((x) => (
                 <div key={x.month} className="bg-white border rounded-lg shadow-2xl p-6 w-full max-w-4xl">
-                    <h1 className="font-bold text-3xl my-4 text-center text-blue-600">{x.month}</h1>
+                    <h1 className="font-bold text-3xl my-4 text-center text-blue-600">{x.Month}</h1>
                     <hr className="mb-4" />
                     <div>
                         <div className="flex justify-between mb-6">
@@ -67,18 +69,22 @@ const PendingBills = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {orders?.map((order) => (
-                                    <tr key={order.product.productname}>
-                                        <td className="text-left text-gray-700">{order.product.productname}</td>
-                                        <td className="text-right text-gray-700">{order.amount}</td>
-                                    </tr>
-                                ))}
+
+                            {x.ProductIds?.map((x,i) => (
+   
+        <tr key={i}>
+            <td className="text-left text-gray-700">{x.productname}</td>
+            <td className="text-right text-gray-700">{x.price}</td>
+        </tr>
+    
+))}
+
                             </tbody>
                             <tfoot>
                                 <hr className="mb-4" />
                                 <tr>
                                     <td className="text-left font-bold text-gray-700 text-2xl">Total</td>
-                                    <td className="text-right font-bold text-gray-700 text-2xl">{x.total}</td>
+                                    <td className="text-right font-bold text-gray-700 text-2xl">{x.totalAmount}</td>
                                 </tr>
                             </tfoot>
                         </table>

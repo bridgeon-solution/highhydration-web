@@ -35,7 +35,7 @@ try {
     if(email=='admin@123'){
       navigate('/admindashboard')
     }else{
-      if(response.data.data.roles){
+      if(response.data.data.roles==='admin'){
         navigate('/admindashboard')
       }else{
         navigate('/supdashbord')
@@ -44,7 +44,7 @@ try {
         localStorage.setItem('role',response.data.data._id)
       }
       localStorage.setItem('token',response.data.token)
-      localStorage.setItem('userid',response.data.data._id)
+      localStorage.setItem('supplierid',response.data.data._id)
     }
 
    }

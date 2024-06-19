@@ -4,11 +4,13 @@ import api from '../../axiosInterceptors';
 import AdminChatModal from '../../components/Admin/modal/AdminChatModal';
 import useConversation from '../../zustand/useConversation';
 
+
 const Complaints = () => {
-    const [conversations, setConversations] = useState([]);
+const [message, setMessage] = useState([]);
+    const[modal,setModal]=useState(false)
+const [conversations, setConversations] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { setSelectedConversation } = useConversation();
-
 
     useEffect(() => {
         const fetchMessages = async () => {
@@ -68,12 +70,52 @@ const Complaints = () => {
                 ))}
             </div>
 
+
+        <div className="relative flex flex-wrap justify-evenly gap-4 w-full p-4  overflow-scroll">
+    {message.map((message) => (
+        <div key={message._id} 
+        className="w-full sm:w-1/2 lg:w-2/5 flex flex-col items-center bg-white shadow-xl rounded-lg p-6 transform hover:scale-105 transition-transform duration-300 ease-in-out"
+        onClick={()=>setModal(true)}>
+            <div className="relative flex items-center gap-4 w-full">
+                <img
+                    src={message.userId?.image || "https://i.pinimg.com/736x/76/f3/f3/76f3f3007969fd3b6db21c744e1ef289.jpg"}
+                    alt={message.userId?.first_name || "User Image"}
+                    className="inline-block h-16 w-16 rounded-full object-cover object-center border-2 border-gray-300"
+                />
+                <div className="flex flex-col">
+                    <h5 className="font-sans text-xl font-semibold text-gray-900">
+                        {message.userId?.first_name || "Anonymous"}
+                    </h5>
+                    <p className="font-sans text-sm font-medium text-gray-600">
+                        {message.userId?.email || "No email provided"}
+                    </p>
+                </div>
+            </div>
+            <div className="w-full mt-4">
+                <p className="font-sans text-base font-light text-gray-700 leading-relaxed">
+                    {message.message || "No message content"}
+                </p>
+            </div>
+        </div>
+    ))}
+</div>
+
+
+{modal&&(
+    <ChatModal setModal={{setModal}} />
+)}
+
+ 
+
+  
+
             {isModalOpen && (
                 <AdminChatModal
                    
                     closeModal={closeModal}
                 />
             )}
+
         </div>
     );
 };

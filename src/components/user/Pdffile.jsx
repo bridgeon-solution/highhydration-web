@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 });
 
 const Pdffile = ({ productName, amount,adress,name }) => {
-  console.log(productName, amount,adress, "props");
+  // console.log(productName, amount,adress, "props");
 
   return (
     <Document>

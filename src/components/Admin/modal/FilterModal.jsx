@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { FaFilter } from 'react-icons/fa';
 import { IoIosCloseCircle } from 'react-icons/io';
 
-const FilterModal = ({isOpen,setIsOpen}) => {
+const FilterModal = ({isOpen,setIsOpen,setFilter}) => {
   
-
+const handleClick=(value)=>{
+setFilter(value)
+setIsOpen(false)
+}
   
 
   return (
@@ -15,15 +19,14 @@ const FilterModal = ({isOpen,setIsOpen}) => {
         style={{ transformOrigin: 'top' }}
       >
         <div className='flex justify-between m-2'>
-            <h3>Filter</h3>
+            <h3 className='mx-2 flex items-center'>Filter <FaFilter className='mx-1' size={10}/></h3> 
         <IoIosCloseCircle className='text-red-500' size={17} onClick={()=>setIsOpen(false)} />
         </div>
         <div className="py-1">
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 1</a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 2</a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 3</a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 4</a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Item 5</a>
+          <p onClick={()=>{handleClick("dfl")}} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Date First to Last</p>
+          <p onClick={()=>{handleClick("dlf")}} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Date Last to First</p>
+          <p onClick={()=>{handleClick("plh")}} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Price Low to High</p>
+          <p onClick={()=>{handleClick("phl")}} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Price High to Low</p>
         </div>
       </div>
     </div>

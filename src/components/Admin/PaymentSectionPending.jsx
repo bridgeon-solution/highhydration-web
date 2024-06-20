@@ -30,7 +30,42 @@ const PaymentSectionPending = () => {
   }
   fetchData()
   
-  },[])
+  },[page])
+  const handleClick=(p)=>{
+    if(p==="prev"&&page>1){
+      setPage(page-1)
+    }else if(p==="next"&&page<toatalpage){
+      setPage(page+1);
+    }else if(typeof p==='number'){
+      setPage(p)
+    }
+  }
+
+  const renderPageNumbers=()=>{
+    let startPage=Math.max(page-2,1);
+    let endPage=Math.min(page+3 ,toatalpage);
+    if(endPage-startPage<3){
+      startPage=Math.max(endPage-3,1)
+    }
+    const pageNumbers=[];
+    for(let i=startPage;i<=endPage;i++){
+      pageNumbers.push(
+        <p
+          key={i}
+          onClick={() => handleClick(i)}
+          className={`relative z-10 inline-flex items-center px-4 py-2 text-sm font-semibold ${
+            page === i
+              ? 'bg-indigo-600 text-white'
+              : 'text-gray-700 hover:bg-gray-50'
+          } focus:z-20 focus-visible:outline h-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer`}
+        >
+          {i}
+        </p>
+      )
+    }
+    return pageNumbers
+  }
+
   return (
     <div className='w-5/6'>
       <div className='w-full bg-white rounded-2xl'>
@@ -79,28 +114,20 @@ const PaymentSectionPending = () => {
           </p>
         </div>
         <div>
-          <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+        <nav className="isolate inline-flex  -space-x-px rounded-md shadow-sm" aria-label="Pagination">
             <a
-              href="#"
+              onClick={() => handleClick('prev')}
               className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </a>
-            {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
-            {[...Array(toatalpage)].map((_, index) => (
-  <a
-    key={index}
-    href="#"
-    aria-current="page"
-    className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-  >
-    {index + 1}
-  </a>
-))}
+            <div>
+            {renderPageNumbers()}
+            </div>
 
             <a
-              href="#"
+              onClick={() => handleClick('next')}
               className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Next</span>

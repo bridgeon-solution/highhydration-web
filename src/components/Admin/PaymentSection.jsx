@@ -15,6 +15,7 @@ const [total,setTotal]=useState(0)
 const [success,setSuccess]=useState(0)
 const [pendingAmount,setPendingAmount]=useState(0)
 const [isOpen, setIsOpen] = useState(false);
+const [filter,setFilter]=useState()
 const currentDate = new Date(Date.now());
     const formattedDate = currentDate.toLocaleString('en-US', { month: 'short', day: '2-digit', hour: '2-digit' });
 
@@ -103,15 +104,15 @@ const currentDate = new Date(Date.now());
         {!isOpen && <FaFilter onClick={toggleDropdown} />}
       
       {isOpen&&
-    <FilterModal  isOpen={isOpen} setIsOpen={setIsOpen}/>
+    <FilterModal  isOpen={isOpen} setIsOpen={setIsOpen} setFilter={setFilter}/>
     }
       </div>
       
     </div>
     <div className=''>   
-      {value==="all"&&<PaymentSectionAll/>}
-      {value==="paid"&&<PaymentSectionPaid/>}
-      {value==="pending"&&<PaymentSectionPending/>}
+      {value==="all"&&<PaymentSectionAll filter={filter}/>}
+      {value==="paid"&&<PaymentSectionPaid filter={filter}/>}
+      {value==="pending"&&<PaymentSectionPending filter={filter}/>}
     </div>
     </div>
       </div>

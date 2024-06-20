@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Pro1 from "../../assets/Users/pro1.png";
+import  { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaStar } from "react-icons/fa";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import {  useParams } from "react-router-dom";
 import Order from "./Order";
 import Loader from "../../components/Loader";
 import api from "../../axiosInterceptors";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
 const SingleProduct = () => {
   const { productId } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
@@ -73,7 +70,6 @@ const SingleProduct = () => {
             value: productId,
           },
         });
-        console.log(response, "reviews");
         setReview(response?.data?.reviews);
       } catch (error) {
         console.error(error);
@@ -160,8 +156,8 @@ const SingleProduct = () => {
           <div className="w-3/4 m-auto mt-5">
             <div className="slider-container">
               <Slider {...settings}>
-                {review?.map((i) => (
-                  <div className="bg-white mb-2  shadow text-black rounded-xls:h-[100px]">
+                {review?.map((i,ind) => (
+                  <div key={ind} className="bg-white mb-2  shadow text-black rounded-xls:h-[100px]">
                     <div className="h-40  sm:h-56 rounded-t-xl  flex justify-center items-center">
                       <img
                         className="h-20 w-20 sm:h-32 sm:w-32 rounded-full"

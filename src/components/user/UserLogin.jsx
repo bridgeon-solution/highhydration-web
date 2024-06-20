@@ -1,14 +1,10 @@
-
-import React, {useState } from 'react';
+import  {useState } from 'react';
 import logo from "../../assets/logo.png";
 import client from "../../assets/Supplier/Client.jpg";
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import Loader from '../Loader';
 import api from '../../axiosInterceptors';
-const baseUrl = import.meta.env.VITE_BASE_URL;
 const UserLogin = () => {
 
     const navigate=useNavigate()
@@ -26,11 +22,9 @@ const [loading,setLoading]=useState(false)
    }else{
     url='users/login'
    }
-console.log(url)
  
 try {
       const response=await api.post(`/${url}`,{email,password})
-    console.log(response);
     setLoading(false)
    if(response.status===200){
     if(email=='admin@123'){

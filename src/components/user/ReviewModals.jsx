@@ -110,7 +110,7 @@ const ReviewModals = ({ props, setReviewProduct, starRate,setStarRate,prodid,ord
               className={`text-${handleColor(
                 starRate[orderId]
               )}-500 mx-2`}
-            >
+            > 
               {handleText(starRate[orderId])}
             </p>
           </div>

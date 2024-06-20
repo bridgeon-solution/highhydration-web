@@ -6,14 +6,18 @@ import { FaStar } from "react-icons/fa";
 import toast from "react-hot-toast";
 import api from "../../axiosInterceptors";
 
-const ReviewModals = ({ props, setReviewProduct, starRate,setStarRate,prodid}) => {
+const ReviewModals = ({ props, setReviewProduct, starRate,setStarRate,prodid,orderId}) => {
     const [error,setError]=useState()
     const userId=localStorage.getItem('userId')
     const [value,setValue]=useState('')
-    console.log(prodid,'productId');
+    console.log(orderId,'productId',starRate,'starra');
     const handleClose = () => {
-    setStarRate(0)
     setReviewProduct(false);
+    setStarRate(prevState => {
+      const newState = { ...prevState };
+      delete newState[orderId];
+      return newState;
+  });
   };
   const handleColor = (a) => {
     switch (a) {
@@ -54,7 +58,7 @@ const ReviewModals = ({ props, setReviewProduct, starRate,setStarRate,prodid}) =
         const data={
           userId:userId,
           prodcutId:prodid,
-          rating:Object.values(starRate)[0],
+          rating:starRate[orderId],
           reviewText:description
         }
         console.log(data);
@@ -95,7 +99,7 @@ const ReviewModals = ({ props, setReviewProduct, starRate,setStarRate,prodid}) =
                 <FaStar
                   size={18}
                   className={`${
-                    Object.values(starRate)[0] > index
+                    starRate[orderId] > index
                       ? "text-yellow-400"
                       : "text-gray-500"
                   }`}
@@ -104,10 +108,10 @@ const ReviewModals = ({ props, setReviewProduct, starRate,setStarRate,prodid}) =
             ))}
             <p
               className={`text-${handleColor(
-                Object.values(starRate)[0]
+                starRate[orderId]
               )}-500 mx-2`}
             >
-              {handleText(Object.values(starRate)[0])}
+              {handleText(starRate[orderId])}
             </p>
           </div>
           <Form onSubmit={handleSubmit}>

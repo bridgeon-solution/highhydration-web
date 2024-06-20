@@ -52,7 +52,6 @@ const OrderModal = ({props,setModal,orderfetch}) => {
         toast.error(error?.message)
       }
     }
-    console.log(props);
   return (
     <>
     <Loader/>
@@ -137,11 +136,12 @@ const OrderModal = ({props,setModal,orderfetch}) => {
               </button>
               {props?.deliveryStatus==="cancelled"?<button onClick={()=>{handleClancle()}}  type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-red-400 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700   dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                 Delete Order
-              </button>:
+              </button>:props?.deliveryStatus=="delivered"?(
+              ""):(
               <button onClick={()=>{handleClancle()}}  type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-red-400 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700   dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                 Cancel Order
               </button>
-           }
+           )}
             </div>
             </>
         )}

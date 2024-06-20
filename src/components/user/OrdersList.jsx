@@ -6,7 +6,7 @@ import OrderModal from "./OrderModal";
 import { FaStar } from "react-icons/fa";
 import ReviewModals from "./ReviewModals";
 
-const OrdersList = () => {
+const OrdersList = ({setLoading}) => {
   const userid = localStorage.getItem("userId");
   const [orders, setOrders] = useState([]);
   const [modal, setmodal] = useState(false);
@@ -15,19 +15,35 @@ const OrdersList = () => {
   const [starRate, setStarRate] = useState(0);
   const [reviewProduct, setReviewProduct] = useState(false);
   const [prodid, setProdId] = useState(0);
+  const [orderId,setOrderId]=useState()
 
   const orderfetch = async () => {
     try {
+      setLoading(true)
       const response = await api.get(`/orders/order/${userid}`);
       setOrders(response.data.order);
+      if(response.data.review){
+      setStarRate((prevRatings) => {
+        const newRatings = { ...prevRatings };
+        response?.data?.order?.forEach((order, index) => {
+          const newRating = prevRatings[order._id] === 1 && response?.data?.review[index]?.rating === 1
+              ? 0
+              : response?.data?.review[index]?.rating;
+          if (typeof newRating !== 'undefined') {
+              newRatings[order._id] = newRating;
+          }
+      });
+            return newRatings;
+    });
+  }
+    setLoading(false)
     } catch (error) {
       console.log(error);
       toast.error(error?.message);
+      setLoading(false)
     }
   };
-  useEffect(() => {
-    orderfetch();
-  }, []);
+  console.log(starRate);
   const handelDetalis = (id) => {
     setProduct(orders.find((i) => i._id === id));
     setmodal(true);
@@ -41,13 +57,26 @@ const OrdersList = () => {
   const colourpicker = (status) => {
     return statusColors[status] || "gray";
   };
-  const handleStarClick = (rating, productId) => {
+  const handleStarClick = (rating, productId,pid) => {
+    console.log(starRate.hasOwnProperty(productId),'this is');
+    if (starRate.hasOwnProperty(productId)) {
+        console.error(`Error: productId ${productId} is not included in starRate object`);
+        toast.error(`This Product review Olrady Posted`);
+        
+        return;
+    }
     setStarRate((prevRatings) => ({
-      ...prevRatings,
-      [productId]: prevRatings[productId] === 1 && rating === 1 ? 0 : rating,
+        ...prevRatings,
+        [productId]: rating,
     }));
-  };
-  console.log(prodid, "Orders");
+    setOrderId(productId)
+    setReviewProduct(true);
+    setProdId(pid);
+};
+  useEffect(() => {
+    orderfetch();
+  }, []);
+
   return (
     <>
       <div>
@@ -58,6 +87,7 @@ const OrdersList = () => {
             starRate={starRate}
             setStarRate={setStarRate}
             prodid={prodid}
+            orderId={orderId}
           />
         )}
         {modal && (
@@ -157,12 +187,12 @@ const OrdersList = () => {
                 </div>
                 {order?.deliveryStatus == "delivered" && (
                   <div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 mb-2">
                       {[...Array(5)].map((i, index) => (
                         <div key={i || index}>
                           <FaStar
                             onClick={() =>
-                              handleStarClick(index + 1, order?._id)
+                              handleStarClick(index + 1, order?._id,order?.product?._id)
                             }
                             size={18}
                             className={`${
@@ -175,21 +205,6 @@ const OrdersList = () => {
                       ))}
                     </div>
                   </div>
-                )}
-                {starRate[order?._id] >= 1 ? (
-                  <p
-                    className="text-sm font-extralight text-blue-600 mb-2"
-                    onClick={() => {
-                      setReviewProduct(true);
-                      setProdId(order?.product?._id);
-                    }}
-                  >
-                    Write review
-                  </p>
-                ) : (
-                  <p className="text-sm font-extralight text-gray-600 mb-2">
-                    Rate this product now
-                  </p>
                 )}
               </div>
             </div>

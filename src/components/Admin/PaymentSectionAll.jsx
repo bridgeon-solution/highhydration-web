@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 
 
 
-const PaymentSectionAll = ({filter}) => {
+const PaymentSectionAll = ({filter,setLoading}) => {
   const [data,setData]=useState([])
   const [page,setPage]=useState(1)
   const [toatalpage,setTotalaPage]=useState()
@@ -12,14 +12,17 @@ const PaymentSectionAll = ({filter}) => {
   useEffect(()=>{
     
       const fetchData=async()=>{
+        setLoading(true)
         try {
         const response=await api.get('/payments/',{params:{page:page,filter}})
         console.log(response,'response');
         setData(response?.data?.payment)
         setTotalaPage(response?.data?.totalpage)
-        setTotalLength(response?.data?.totalLength) 
+        setTotalLength(response?.data?.totalLength)
+        setLoading(false)
       } catch (error) {
       console.log(error);
+      setLoading(false)
     }
   }
   fetchData()

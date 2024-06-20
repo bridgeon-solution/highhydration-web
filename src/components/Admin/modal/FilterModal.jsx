@@ -20,7 +20,7 @@ setIsOpen(false)
       >
         <div className='flex justify-between m-2'>
             <h3 className='mx-2 flex items-center'>Filter <FaFilter className='mx-1' size={10}/></h3> 
-        <IoIosCloseCircle className='text-red-500' size={17} onClick={()=>setIsOpen(false)} />
+        <IoIosCloseCircle className='text-red-400' size={17} onClick={()=>setIsOpen(false)} />
         </div>
         <div className="py-1">
           <p onClick={()=>{handleClick("dfl")}} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Date First to Last</p>

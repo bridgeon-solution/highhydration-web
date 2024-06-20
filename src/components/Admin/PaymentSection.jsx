@@ -7,7 +7,7 @@ import PaymentSectionPaid from './PaymentSectionPaid';
 import api from '../../axiosInterceptors';
 import { FaFilter } from 'react-icons/fa';
 import FilterModal from './modal/FilterModal';
-
+import Loader from '../Loader';
 
 const PaymentSection = () => {
 const [value,setValue]=useState("all")
@@ -16,6 +16,7 @@ const [success,setSuccess]=useState(0)
 const [pendingAmount,setPendingAmount]=useState(0)
 const [isOpen, setIsOpen] = useState(false);
 const [filter,setFilter]=useState()
+const [loading,setLoading]=useState(false)
 const currentDate = new Date(Date.now());
     const formattedDate = currentDate.toLocaleString('en-US', { month: 'short', day: '2-digit', hour: '2-digit' });
 
@@ -41,7 +42,7 @@ const currentDate = new Date(Date.now());
   console.log(pendingAmount);
   return (
     <>
-    
+    {loading&& <Loader />}
     <div className='flex w-full h-scree bg-[#F8F8F8]'>
       <div className=' mt-2 min-h-screen' >
         <AdminSidebar />
@@ -110,9 +111,9 @@ const currentDate = new Date(Date.now());
       
     </div>
     <div className=''>   
-      {value==="all"&&<PaymentSectionAll filter={filter}/>}
-      {value==="paid"&&<PaymentSectionPaid filter={filter}/>}
-      {value==="pending"&&<PaymentSectionPending filter={filter}/>}
+      {value==="all"&&<PaymentSectionAll filter={filter} setLoading={setLoading}/>}
+      {value==="paid"&&<PaymentSectionPaid filter={filter} setLoading={setLoading} />}
+      {value==="pending"&&<PaymentSectionPending filter={filter} setLoading={setLoading} />}
     </div>
     </div>
       </div>

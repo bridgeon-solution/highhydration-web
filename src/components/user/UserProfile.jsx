@@ -123,7 +123,7 @@ const UserProfile = () => {
       </div>
 
       {role==='orders' &&
-     <OrdersList/>
+     <OrdersList setLoading={setLoading}/>
       }
 
      {role==='payments' &&

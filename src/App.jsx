@@ -94,6 +94,7 @@ function App() {
         <Route path='/payment' element={<PaymentSection/>}/>
         <Route path='/orders' element ={<OrderManagement />} />
         <Route path='/complaints' element ={<Complaints />} />
+        <Route path='/rolemanagement' element={<RolesManagement/>}/>
         <Route path="payment/success/monthly" element={<PaymentSuccesMontly/>} /> 
  
       </Routes>

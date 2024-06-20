@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import adminApi from './utils/axiosInterceptors';
+import Navbar from '../common/Navbar';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 
@@ -29,6 +30,9 @@ const AllProducts = () => {
     },[])
     console.log(data,"datumm");
   return (
+    <>
+    <Navbar/>
+    
     <div className='flex w-full h-screen overflow-hidden bg-[#F8F8F8]'>
       {loading&&<Loader/>}
     <div className='mt-2 min-h-screen'>
@@ -119,7 +123,7 @@ const AllProducts = () => {
 
   </div>
   </div>
-
+  </>
   )
 }
 

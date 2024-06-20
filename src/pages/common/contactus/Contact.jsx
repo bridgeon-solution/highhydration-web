@@ -5,17 +5,19 @@ import { BsWhatsapp } from "react-icons/bs";
 import { LuInstagram } from "react-icons/lu";
 import { CiTwitter } from "react-icons/ci";
 import { LiaFacebookMessenger } from "react-icons/lia";
-import Navbar from "../Navbar";
+
+import Navbar from '../Navbar';
 
 const Contact = () => {
   return (
-    <div className="bg-[#EFF0F3] p-2">
-      <Navbar />
-      <p className="text-center text-3xl font-bold">Contact us</p>
+    <> 
+      <Navbar/> 
+   
+    <div className='bg-[#EFF0F3] p-2'>
+    <p className="text-center text-3xl font-bold">Contact us</p>
       <p className="text-center text-xl mt-2">
         Any question or remarks? just write a message!
       </p>
-
       <div className="flex flex-col md:flex-row mt-5 m-2">
         <div className="md:w-1/3 bg-[#22B6FE] p-6 rounded-lg text-white">
           <p className="text-center text-3xl font-bold">Contact Information</p>
@@ -97,6 +99,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

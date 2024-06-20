@@ -39,7 +39,7 @@ const UserProfile = () => {
     setIsModalOpen(!isModalOpen)
   }
 
- 
+
 
   return (
     <div className='w-full h-screen mt-2'>
@@ -127,7 +127,7 @@ const UserProfile = () => {
       }
 
      {role==='payments' &&
-     <PyamentCompleted name={`${userData?.first_name} ${userData?.last_name}`} />
+     <PyamentCompleted name={`${userData?.first_name} ${userData?.last_name}`} userData={userData} />
       }
  
 

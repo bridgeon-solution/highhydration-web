@@ -43,6 +43,9 @@ const Service = () => {
         },
       };
   return (
+    <>
+    <Navbar/>
+   
     <div className="w-full bg-gradient-to-r bg-[#fdfdfd] flex flex-col justify-center items-center px-1 ">
 <div>
 <Navbar/>
@@ -153,6 +156,7 @@ const Service = () => {
  </div>
  <Footer/>
   </div>
+  </>
   )
 }
 

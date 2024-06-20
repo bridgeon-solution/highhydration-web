@@ -70,17 +70,17 @@ const PyamentCompleted = ({name,userData}) => {
             </a>
           </nav>
         </div>
-      </div>
+      </div>  
     </div>
 
     <div className="h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[500px]">
   {ispaymentModal==="bulkOrder" && <PaymentBulk name={name}/>}
   {ispaymentModal==="preOrder" && <PaymentPre userData={userData}/>}
-</div>
+</div> 
 
 
 
-
+  
 
 
 

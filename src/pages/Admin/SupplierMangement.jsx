@@ -9,6 +9,7 @@ import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Loader from "../../components/Loader";
 import SupplierMangementModal from "../../components/Admin/SupplierManagementModal";
+import adminApi from "./utils/axiosInterceptors";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const manageUrl=import.meta.env.VITE_BASE_URL_SUPPLIERMANGEMENT;
 
@@ -55,7 +56,7 @@ const SupplierMangement = () => {
   const blockUnblock=async(id,status)=>{
     try {
       setLoading(true)
-      const response=await axios.patch(`${baseUrl}${manageUrl}`,{id,status})
+      const response=await adminApi.patch(`${manageUrl}`,{id,status})
       console.log(response);
       setLoading(false)
       if(response.status==200){
@@ -70,7 +71,7 @@ const SupplierMangement = () => {
       setLoading(true)
       const supplierId=id
 
-      const response=await axios.delete(`${baseUrl}${manageUrl}`, {
+      const response=await adminApi.delete(`${manageUrl}`, {
         data: { supplierId: supplierId },
       })
       setLoading(false)
@@ -84,7 +85,7 @@ const SupplierMangement = () => {
 const allusers=async()=>{
   try {
     setLoading(true)
-    const response=await axios.get(`${baseUrl}${manageUrl}`)
+    const response=await adminApi.get(`${manageUrl}`)
     setLoading(false)
     if(response.status==200){
       setSuppliers(response.data.data);

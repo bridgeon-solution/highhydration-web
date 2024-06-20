@@ -9,6 +9,7 @@ import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Loader from "../../components/Loader";
 import api from "../../axiosInterceptors";
+import adminApi from "./utils/axiosInterceptors";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const manageUrl=import.meta.env.VITE_BASE_URL_SUPPLIERMANGEMENT;
 
@@ -59,7 +60,7 @@ const UserManagement = () => {
       
       try {
         setLoading(true)
-        const response=await api.patch('/admin/users',{id,status})
+        const response=await adminApi.patch('/admin/users',{id,status})
         console.log(response,"resputinnnnn");
         setLoading(false)
         if(response.status==200){
@@ -75,7 +76,7 @@ const UserManagement = () => {
         setLoading(true)
         const userId=id
   
-        const response=await api.delete('/admin/users', {
+        const response=await adminApi.delete('/admin/users', {
           data: { userId: userId },
         })
         setLoading(false)
@@ -89,10 +90,11 @@ const UserManagement = () => {
   const allusers=async()=>{
     try {
       setLoading(true)
-      const response=await api.get('/admin/users')
+      const response=await adminApi.get('/admin/users')
       setLoading(false)
       if(response.status==200){
         setUsers(response.data.data);
+        // console.log(response);
       }else{
         console.log('responess Not Found');
       }

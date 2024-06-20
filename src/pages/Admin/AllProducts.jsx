@@ -5,6 +5,7 @@ import ad from '../../assets/Supplier/sup1.png';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
+import adminApi from './utils/axiosInterceptors';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 
@@ -16,7 +17,7 @@ const AllProducts = () => {
       const  fetchDatas=async()=>{
         try {
           setLoading(true)
-            const response= await axios.get(`${baseUrl}/admin/products`)
+            const response= await adminApi.get(`/admin/products`)
             setData(response.data.data)
             setLoading(false)
             console.log(response,'hiiii')

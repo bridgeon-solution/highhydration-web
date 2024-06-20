@@ -4,6 +4,7 @@ import ad from '../../assets/Supplier/sup1.png';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import api from '../../axiosInterceptors';
 import Loader from '../../components/Loader';
+import adminApi from './utils/axiosInterceptors';
 
 const Location = () => {
   const [pincodes, setPincodes] = useState([]);
@@ -27,8 +28,9 @@ const [loading,setLoading]=useState(false)
   const fetchPincodes = async () => {
     setLoading(true)
     try {
-      const response = await api.get(`/pincodes`);
+      const response = await adminApi.get(`/pincodes`);
       setPincodes(response.data.pincodes);
+      console.log(response);
       setLoading(false)
       
     } catch (error) {
@@ -39,7 +41,7 @@ const [loading,setLoading]=useState(false)
   const fetchSuppliers = async () => {
     setLoading(true)
     try {
-      const response = await api.get(`/admin/suppliers`);
+      const response = await adminApi.get(`/admin/suppliers`);
       setSuppliers(response.data.data);
       setLoading(false)
     } catch (error) {
@@ -50,7 +52,7 @@ const [loading,setLoading]=useState(false)
   const fetchCombinations = async () => {
     setLoading(true)
     try {
-      const response = await api.post(`/pincodes/supplierss`);
+      const response = await adminApi.post(`/pincodes/supplierss`);
       setSelectedCombinations(response.data.supplierPincodes);
       setLoading(false)
     } catch (error) {
@@ -61,7 +63,7 @@ const [loading,setLoading]=useState(false)
   const handleAddPincode = async () => {
     setLoading(true)
     try {
-      await api.post(`/pincodes`, { pincode: newPincode });
+      await adminApi.post(`/pincodes`, { pincode: newPincode });
       fetchPincodes();
       setNewPincode('');
       setLoading(false)
@@ -82,7 +84,7 @@ const [loading,setLoading]=useState(false)
   const handleSavePincode = async () => {
     setLoading(true)
     try {
-      await api.put(`/pincodes/${editingPincodeId}`, { pincode: editingPincodeValue });
+      await adminApi.put(`/pincodes/${editingPincodeId}`, { pincode: editingPincodeValue });
       fetchPincodes();
       setEditingPincodeId(null);
       setEditingPincodeValue('');
@@ -96,7 +98,7 @@ const [loading,setLoading]=useState(false)
   const handleDeletePincode = async (pincodeId) => {
     setLoading(true)
     try {
-      await api.delete(`/pincodes/${pincodeId}`);
+      await adminApi.delete(`/pincodes/${pincodeId}`);
       fetchPincodes();
       setLoading(false)
     } catch (error) {
@@ -109,7 +111,7 @@ const [loading,setLoading]=useState(false)
     // Check if both supplier and pincode are selected
     if (selectedSupplier && selectedPincode) {
       try {
-       await api.post(`/pincodes/suppliers`, { supplierId: selectedSupplier, pincodeId: selectedPincode });
+       await adminApi.post(`/pincodes/suppliers`, { supplierId: selectedSupplier, pincodeId: selectedPincode });
         fetchCombinations();
         setLoading(false)
         // Reset dropdowns
@@ -131,7 +133,7 @@ const [loading,setLoading]=useState(false)
   const handleSaveCombination = async () => {
     setLoading(true)
     try {
-     await api.put(`/pincodes/suppliers/${editingCombinationId}`, {
+     await adminApi.put(`/pincodes/suppliers/${editingCombinationId}`, {
         supplierId: editingSupplierId,
         pincodeId: editingCombinationPincodeId
       });
@@ -148,7 +150,7 @@ const [loading,setLoading]=useState(false)
   const handleDeleteCombination = async (combinationId) => {
     setLoading(true)
     try {
-      await api.delete(`/pincodes/suppliers/${combinationId}`);
+      await adminApi.delete(`/pincodes/suppliers/${combinationId}`);
       setLoading(false)
       fetchCombinations();
     } catch (error) {

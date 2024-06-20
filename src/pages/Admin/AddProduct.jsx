@@ -21,6 +21,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdOutlineSaveAlt } from "react-icons/md";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import Typography from "@mui/material/Typography";
+import adminApi from './utils/axiosInterceptors'
 
 const style = {
   position: "absolute",
@@ -95,7 +96,7 @@ const AddProduct = () => {
     
         // const response = await axios.post(`${baseUrl}/admin/addProducts`, formData);
         setLoading(true)
-        const response = await axios.post(`${baseUrl}/admin/products`, formData);
+        const response = await adminApi.post(`admin/products`, formData);
         setLoading(false)
         if(response.status===203){
           toast.error('Product already exist');
@@ -126,7 +127,7 @@ const AddProduct = () => {
 
   const fetchCategory = async () => {
     try {
-      const response = await api.get('/admin/category');
+      const response = await adminApi.get('/admin/category');
       setCategories(response.data.category);
     } catch (error) {
       console.error('Error fetching categories:', error);
@@ -151,7 +152,7 @@ const AddProduct = () => {
 
   const handleSave = async ()=>{
     try {
-      const response = await api.post('/admin/category',{name:newCategory})
+      const response = await adminApi.post('/admin/category',{name:newCategory})
       console.log(response,'add new category')
       if(response.status===201){
         fetchCategory()
@@ -170,7 +171,7 @@ const AddProduct = () => {
 
   const handleSaveClick = async(id) => {
     try {
-      const response = await api.put(`/admin/category/${id}` , { name: editedValue })
+      const response = await adminApi.put(`/admin/category/${id}` , { name: editedValue })
       if(response.status===200){
         fetchCategory()
       }
@@ -184,7 +185,7 @@ const AddProduct = () => {
 
 const handleDeleteCategory = async(id)=>{
   try {
-    const response = await api.delete(`/admin/category/${id}`)
+    const response = await adminApi.delete(`/admin/category/${id}`)
     if(response.status===200){
       fetchCategory()
     }

@@ -42,6 +42,8 @@ import SupTable from './components/supplier/SupTable'
 import PaymentSuccesMontly from './components/user/PaymentSuccesMontly'
 import PaymentCompleted2 from './components/PaymentCompleted2'
 
+import ProtectRouter from './pages/users/utils/ProtectRouter'
+
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -77,7 +79,8 @@ function App() {
         <Route path='/admindashboard' element={<AdminDashbord />} />
         <Route path='/addproduct' element={<AddProduct />} />
         <Route path='/userRegistration' element={<UserRegister />} />
-        <Route path='/userlogin' element={<UserLogin />} />        
+        <Route path='/userlogin' element={<UserLogin />} />   
+        <Route element={<ProtectRouter />}></Route>
          <Route path='/userpro' element={<UserProfile />} /> 
         <Route path='/editPro' element={<EditProfile />} />
         <Route path='/product' element={<AllProducts />} />

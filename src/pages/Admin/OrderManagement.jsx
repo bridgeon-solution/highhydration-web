@@ -13,6 +13,7 @@ import Paper from '@mui/material/Paper';
 import AdminSidebar from '../../components/Admin/AdminSidebar';
 import api from '../../axiosInterceptors';
 import OrderDetailsModal from '../../components/Admin/OrderDetailsModal';
+import adminApi from './utils/axiosInterceptors'
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,7 +58,7 @@ export default function OrderManagement() {
 
   const fetchAllOrders = async () => {
     try {
-      const response = await api.get('/orders');
+      const response = await adminApi.get('/orders');
       if (response.status === 200) {
         const orders = response.data.orders;
         setAllOrders(orders);

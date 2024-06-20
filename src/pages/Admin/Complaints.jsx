@@ -3,6 +3,7 @@ import AdminSidebar from '../../components/Admin/AdminSidebar';
 import api from '../../axiosInterceptors';
 import AdminChatModal from '../../components/Admin/modal/AdminChatModal';
 import useConversation from '../../zustand/useConversation';
+import adminApi from './utils/axiosInterceptors';
 
 
 const Complaints = () => {
@@ -15,7 +16,7 @@ const [conversations, setConversations] = useState([]);
     useEffect(() => {
         const fetchMessages = async () => {
             try {
-                const response = await api.get('/messages/users');
+                const response = await adminApi.get('/messages/users');
                 if (response.status === 200) {
                     setConversations(response.data.conversation);
                 }

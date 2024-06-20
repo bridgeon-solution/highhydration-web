@@ -1,6 +1,4 @@
-import { useState } from "react"
-import { IoMdSend } from "react-icons/io";
-import api from "../../../axiosInterceptors"
+
 import TextInput from "./TextInput";
 import ModalMessages from "./ModalMessages";
 import useListenMessages from "../../../hooks/useListenMessages";

@@ -6,7 +6,7 @@ import {PDFDownloadLink } from '@react-pdf/renderer';
 import PaymentBulk from './PaymentSection/PaymentBulk'
 import PaymentPre from './PaymentSection/PaymentPre';
 
-const PyamentCompleted = ({name}) => {
+const PyamentCompleted = ({name,userData}) => {
   const[ispaymentModal,setIspaymentModal]=useState('bulkOrder')
     const userid=localStorage.getItem('userId')
    
@@ -75,7 +75,7 @@ const PyamentCompleted = ({name}) => {
 
     <div className="h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[500px]">
   {ispaymentModal==="bulkOrder" && <PaymentBulk name={name}/>}
-  {ispaymentModal==="preOrder" && <PaymentPre/>}
+  {ispaymentModal==="preOrder" && <PaymentPre userData={userData}/>}
 </div>
 
 

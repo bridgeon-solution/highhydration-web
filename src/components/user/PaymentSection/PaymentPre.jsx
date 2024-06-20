@@ -3,8 +3,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import api from '../../../axiosInterceptors';
 import PdfFile2 from './PdfFile2';
 import { PDFDownloadLink } from '@react-pdf/renderer';
+import toast from 'react-hot-toast';
 
-const PaymentPre = () => {
+const PaymentPre = ({userData}) => {
     const orders = [
         { _id: '123456', createdAt: '2024-06-14T12:00:00Z', amount: 100, type: 'Type1', status: 'Pending' },
         { _id: '234567', createdAt: '2024-06-13T12:00:00Z', amount: 200, type: 'Type2', status: 'Completed' },
@@ -46,7 +47,7 @@ const PaymentPre = () => {
 
 
 
-      console.log(paymentsMonth,"ordureded");
+  
   return (
     <div className="w-5/6">
     <div className="w-full bg-white rounded-2xl">
@@ -62,7 +63,7 @@ const PaymentPre = () => {
                         <div className="flex justify-between mb-6">
                             <h1 className="text-lg font-bold">Invoice</h1>
                             <div className="text-gray-700 text-right">
-                                <div>Invoice #: INV12345</div>
+                                <div>{x?._id}</div>
                             </div>
                         </div>
 
@@ -106,7 +107,7 @@ const PaymentPre = () => {
                                     Download
                                 </button> */}
 
-                     <PDFDownloadLink document={<PdfFile2  month={x.Month}  ProductIds={x.ProductIds}   />} fileName="invoice.pdf">
+                     <PDFDownloadLink document={<PdfFile2  month={x.Month}  ProductIds={x.ProductIds} total={x.totalAmount} userData={userData} billno={x?._id} /> } fileName="invoice.pdf">
                         {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download')}
                       </PDFDownloadLink>
                             </div>

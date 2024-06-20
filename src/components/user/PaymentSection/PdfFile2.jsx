@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
-const PdfFile2 = ({ProductIds,month }) => {
-    console.log(ProductIds, "kannappan");
+const PdfFile2 = ({ ProductIds, month, total, userData, billno }) => {
+    // console.log(userData, "kannappan");
     
     const styles = StyleSheet.create({
         page: {
@@ -12,6 +12,7 @@ const PdfFile2 = ({ProductIds,month }) => {
             flexDirection: 'column',
             justifyContent: 'flex-start',
             alignItems: 'center',
+            fontFamily: 'Helvetica',
         },
         section: {
             marginBottom: 10,
@@ -23,9 +24,16 @@ const PdfFile2 = ({ProductIds,month }) => {
             alignItems: 'center',
         },
         header: {
-            fontSize: 20,
+            fontSize: 24,
             textAlign: 'center',
             marginBottom: 10,
+            fontWeight: 'bold',
+        },
+        subHeader: {
+            fontSize: 18,
+            textAlign: 'center',
+            marginBottom: 20,
+            color: '#666',
         },
         detailsContainer: {
             width: '100%',
@@ -36,6 +44,8 @@ const PdfFile2 = ({ProductIds,month }) => {
         details: {
             width: '48%',
             textAlign: 'left',
+            fontSize: 12,
+            lineHeight: 1.5,
         },
         table: {
             display: 'table',
@@ -69,6 +79,17 @@ const PdfFile2 = ({ProductIds,month }) => {
             fontSize: 12,
             fontWeight: 'bold',
         },
+        totalContainer: {
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            marginTop: 20,
+            paddingRight: 10,
+        },
+        totalText: {
+            fontSize: 14,
+            fontWeight: 'bold',
+        },
     });
 
     return (
@@ -77,6 +98,8 @@ const PdfFile2 = ({ProductIds,month }) => {
                 {/* Header Section */}
                 <View style={styles.section}>
                     <Text style={styles.header}>Invoice</Text>
+                    <Text style={styles.subHeader}>Invoice No: {billno}</Text>
+                    <Text style={styles.subHeader}>{month}</Text>
                 </View>
 
                 {/* Details Section */}
@@ -91,13 +114,13 @@ const PdfFile2 = ({ProductIds,month }) => {
                     </View>
 
                     {/* Customer Details */}
-                    {/* <View style={styles.details}>
-                        <Text style={styles.boldText}>Customer Name: {paymentsMonth?.address?.name}</Text>
-                        <Text style={styles.text}>Address: {paymentsMonth?.address?.address_line1}</Text>
-                        <Text style={styles.text}>Pincode: {paymentsMonth?.address?.pincode}</Text>
-                        <Text style={styles.text}>Phone Number: {paymentsMonth?.address?.phone_number}</Text>
-                        <Text style={styles.text}>Email: {paymentsMonth?.address?.email}</Text>
-                    </View> */}
+                    <View style={styles.details}>
+                        <Text style={styles.boldText}>Customer Name: {userData?.first_name + ' ' + userData?.last_name}</Text>
+                        <Text style={styles.text}>Address: {userData?.address_line1}</Text>
+                        <Text style={styles.text}>Pincode: {userData?.pin_number}</Text>
+                        <Text style={styles.text}>Phone Number: {userData?.phone_number}</Text>
+                        <Text style={styles.text}>Email: {userData?.email}</Text>
+                    </View>
                 </View>
 
                 {/* Product Details */}
@@ -123,8 +146,9 @@ const PdfFile2 = ({ProductIds,month }) => {
                     ))}
                 </View>
 
-                <View style={styles.detailsContainer}>
-                    <Text style={styles.boldText}>Total Amount: paymentsMonth?.totalAmount</Text>
+                {/* Total Amount */}
+                <View style={styles.totalContainer}>
+                    <Text style={styles.totalText}>Total Amount: {total}</Text>
                 </View>
             </Page>
         </Document>

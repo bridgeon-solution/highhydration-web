@@ -57,7 +57,7 @@ const PendingBills = () => {
                         <div className="flex justify-between mb-6">
                             <h1 className="text-lg font-bold">Invoice</h1>
                             <div className="text-gray-700 text-right">
-                                <div>Invoice #: INV12345</div>
+                                <div>Invoice #:{x?._id}</div>
                             </div>
                         </div>
 

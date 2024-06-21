@@ -9,12 +9,12 @@ import Navbar from '../Navbar';
 
 const Contact = () => {
   return (
-    <> 
+    <div className='h-screen overflow-hidden'> 
       <Navbar/> 
    
-    <div className='bg-[#EFF0F3] p-2'>
+    <div className='bg-[#EFF0F3] p-2 h-screen'>
 
-      <p className='text-center text-3xl font-bold'>Contact us</p>
+      <p className='text-center text-3xl font-bold mt-3'>Contact us</p>
       <p className='text-center text-xl mt-2'>Any question or remarks? just write a message!</p>
 
       <div className='flex flex-col md:flex-row mt-5 m-2'>
@@ -89,7 +89,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
-    </>
+    </div>
   );
 }
 

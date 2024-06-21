@@ -5,6 +5,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import api from '../../axiosInterceptors';
 import toast from 'react-hot-toast';
 import { IoIosNotificationsOutline } from "react-icons/io";
+import NotificationModal from '../../components/user/modals/notification/NotificationModal';
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -13,6 +14,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [loading, setLoading] = useState(false)
   const [userData, setUserData] = useState([])
+  const [isOpen,setIsOpen]=useState(false)
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -84,8 +86,10 @@ const Navbar = () => {
                 <p onClick={() => navigate('/contactus')} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact us</p>
               </li>
               <li className='bg-whit'>
-               <IoIosNotificationsOutline className="text-4xl text-white"/>
+               <IoIosNotificationsOutline onClick={()=>setIsOpen(true)} className="text-4xl text-white"/>
+               {isOpen&&<NotificationModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
               </li>
+
               {userId ? (
                 <button
                   className="relative"

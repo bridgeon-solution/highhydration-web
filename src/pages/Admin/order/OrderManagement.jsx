@@ -11,14 +11,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import AdminSidebar from "../../components/Admin/AdminSidebar";
-import api from "../../axiosInterceptors";
-import OrderDetailsModal from "../../components/Admin/OrderDetailsModal";
-import Loader from "../../components/Loader";
+import AdminSidebar from "../../../components/Admin/AdminSidebar";
+import OrderDetailsModal from "../../../components/Admin/OrderDetailsModal";
+import Loader from "../../../components/Loader";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { FaFilter } from "react-icons/fa";
-import FilterModalOrder from "../../components/Admin/modal/FilterModalOrder";
-import adminApi from "./utils/axiosInterceptors";
+import FilterModalOrder from "../../../components/Admin/modal/FilterModalOrder";
+import adminApi from "./../utils/axiosInterceptors";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;

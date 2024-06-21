@@ -7,12 +7,12 @@ import StepLabel from '@mui/material/StepLabel';
 import DatePicker from 'react-datepicker';
 import { FaCheckCircle } from 'react-icons/fa';
 import 'react-datepicker/dist/react-datepicker.css';
-import api from '../../axiosInterceptors'
+import api from '../../../axiosInterceptors'
 import { IoAddCircle } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
-import Loader from '../../components/Loader';
+import Loader from '../../../components/Loader';
 import toast from 'react-hot-toast'; 
-import OrderDetails from '../../components/user/OrderDetails';
+import OrderDetails from '../../../components/user/OrderDetails';
 const Order = ({product,setModalOpen}) => {
 const [count,setcound]=useState(1)
 const steps = [

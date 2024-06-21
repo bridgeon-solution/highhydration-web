@@ -1,14 +1,14 @@
 
 import React, { useEffect, useState } from 'react'
-import ad from '../../assets/Supplier/sup1.png'
-import AdminSidebar from '../../components/Admin/AdminSidebar'
-import AdminChart from '../../components/Admin/AdminChart'
-import RadarChart from '../../components/Admin/RadarChart'
-import TinyChartComp from '../../components/Admin/TinyChartComp'
-import AttendenceChart from '../../components/Admin/AttendenceChart'
-import adminRound  from '../../components/Admin/AdminRoundChart'
-import AdminRoundChart from '../../components/Admin/AdminRoundChart'
-import api from '../../axiosInterceptors'
+import ad from '../../../assets/Supplier/sup1.png'
+import AdminSidebar from '../../../components/Admin/AdminSidebar'
+import AdminChart from '../../../components/Admin/AdminChart'
+import RadarChart from '../../../components/Admin/RadarChart'
+import TinyChartComp from '../../../components/Admin/TinyChartComp'
+import AttendenceChart from '../../../components/Admin/AttendenceChart'
+import adminRound  from '../../../components/Admin/AdminRoundChart'
+import AdminRoundChart from '../../../components/Admin/AdminRoundChart'
+import api from '../../../axiosInterceptors'
 
 const AdminDashbord = () => {
 

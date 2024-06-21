@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import AdminSidebar from '../../components/Admin/AdminSidebar'
+import AdminSidebar from '../../../components/Admin/AdminSidebar'
 import { IoIosSave, IoMdAdd } from 'react-icons/io';
-import ad from '../../assets/Supplier/sup1.png';
+import ad from '../../../assets/Supplier/sup1.png';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-import Loader from '../../components/Loader';
-import adminApi from './utils/axiosInterceptors';
-import Navbar from '../common/Navbar';
+import Loader from '../../../components/Loader';
+import adminApi from './../utils/axiosInterceptors';
+import Navbar from '../../common/Navbar';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 

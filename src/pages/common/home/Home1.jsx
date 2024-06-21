@@ -57,7 +57,7 @@ const Home1 = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{  duration: 0.5 }}
-            onClick={()=>navigate('/productList')}
+            onClick={()=>navigate('/products')}
           >
             Buy
           </motion.button>

@@ -4,9 +4,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaStar } from "react-icons/fa";
 import {  useParams } from "react-router-dom";
-import Order from "./Order";
-import Loader from "../../components/Loader";
-import api from "../../axiosInterceptors";
+import Order from "../order/Order";
+import Loader from "../../../components/Loader";
+import api from "../../../axiosInterceptors";
 import toast from "react-hot-toast";
 
 const SingleProduct = () => {

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import AdminSidebar from '../../components/Admin/AdminSidebar';
-import ad from '../../assets/Supplier/sup1.png';
-import img from '../../assets/Supplier/uploadimage.jpg';
+import AdminSidebar from '../../../components/Admin/AdminSidebar';
+import ad from '../../../assets/Supplier/sup1.png';
+import img from '../../../assets/Supplier/uploadimage.jpg';
 import { IoMdAdd } from "react-icons/io";
 import { IoIosSave } from "react-icons/io";
 import { useFormik } from 'formik';
-import { addproductValidation } from '../../components/Admin/validation/addproductValidation';
+import { addproductValidation } from '../../../components/Admin/validation/addproductValidation';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Loader from '../../components/Loader';
-import api from '../../axiosInterceptors';
+import Loader from '../../../components/Loader';
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -21,7 +20,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdOutlineSaveAlt } from "react-icons/md";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import Typography from "@mui/material/Typography";
-import adminApi from './utils/axiosInterceptors'
+import adminApi from './../utils/axiosInterceptors'
 
 const style = {
   position: "absolute",

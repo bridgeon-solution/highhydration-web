@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import client from "../../assets/Supplier/Client.jpg";
 import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
-import Loader from '../Loader';
+import Loader from '../../components/Loader';
 import api from '../../axiosInterceptors';
 const UserLogin = () => {
 

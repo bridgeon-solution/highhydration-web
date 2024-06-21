@@ -4,11 +4,11 @@ import React, { useEffect, useState } from 'react'
 import client from "../../assets/Supplier/Client.jpg"
 import { useNavigate } from 'react-router-dom'
 import api from '../../axiosInterceptors'
-import Loader from '../Loader'
-import OrdersList from './OrdersList'
-import PyamentCompleted from './PyamentCompleted'
-import PendingBills from './PendingBills'
-import ChatModal from './modals/ChatModal'
+import Loader from '../../components/Loader'
+import OrdersList from '../../components/user/OrdersList'
+import PyamentCompleted from '../../components/user/PyamentCompleted'
+import PendingBills from '../../components/user/PendingBills'
+import ChatModal from '../../components/user/modals/ChatModal'
 
 
 const UserProfile = () => {

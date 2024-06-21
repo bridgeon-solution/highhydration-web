@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import AdminSidebar from '../../components/Admin/AdminSidebar';
-import api from '../../axiosInterceptors';
-import AdminChatModal from '../../components/Admin/modal/AdminChatModal';
-import useConversation from '../../zustand/useConversation';
-import adminApi from './utils/axiosInterceptors';
+import AdminSidebar from '../../../components/Admin/AdminSidebar';
+import AdminChatModal from '../../../components/Admin/modal/AdminChatModal';
+import useConversation from '../../../zustand/useConversation';
+import adminApi from './../utils/axiosInterceptors';
 
 
 const Complaints = () => {

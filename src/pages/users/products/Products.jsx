@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import ProductList from "../../components/user/ProductList";
-import backgroundImg from "../../assets/Users/paint3.png";
+import ProductList from "../../../components/user/ProductList";
+import backgroundImg from "../../../assets/Users/paint3.png";
 import { MdWater } from "react-icons/md";
-import Pro1 from "../../assets/Users/pro1.png";
-import Pro2 from "../../assets/Users/pro2.png";
-import Pro3 from "../../assets/Users/pro3.png";
-import Pro4 from "../../assets/Users/pro5.png";
+import Pro1 from "../../../assets/Users/pro1.png";
+import Pro2 from "../../../assets/Users/pro2.png";
+import Pro3 from "../../../assets/Users/pro3.png";
+import Pro4 from "../../../assets/Users/pro5.png";
 
-import Loader from "../../components/Loader";
-import api from "../../axiosInterceptors";
-import Navbar from "../common/Navbar";
+import Loader from "../../../components/Loader";
+import api from "../../../axiosInterceptors";
+import Navbar from "../../common/Navbar";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const Products = () => {
   const [productss, setProduct] = useState([]);

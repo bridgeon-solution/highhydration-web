@@ -2,9 +2,10 @@ import React from 'react'
 import { Outlet, Navigate } from "react-router-dom";
 
 
-const ProtectRouter = () => {
- const user = true
- return user ? <Outlet/> : <Navigate to="/userlogin"/>
+const UserProtectRouter = () => {
+ const user = localStorage.getItem("access_token") 
+ const userRefresh = localStorage.getItem("refresh_token")
+ return user || userRefresh ? <Outlet/> : <Navigate to="/userlogin"/>
 }
 
-export default ProtectRouter
+export default UserProtectRouter

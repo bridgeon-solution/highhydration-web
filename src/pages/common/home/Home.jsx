@@ -4,7 +4,7 @@ import Home1 from './Home1';
 import Home2 from './Home2';
 import Countup from '../../../components/user/Countup';
 import Footer from '../../../components/user/Footer';
-import Products from '../../users/Products'
+import Products from '../../users/products/Products'
 import ProductList from '../../../components/user/ProductList';
 import Navbar from '../Navbar';
 function App() {

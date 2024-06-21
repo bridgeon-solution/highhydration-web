@@ -1,49 +1,50 @@
 import React from "react";
 import SupLogin from "./components/supplier/SupLogin";
-import SupplierPro from "./pages/supplier/SupplierPro";
-import SupplyHome from "./pages/supplier/SupplyHome";
+import SupplierPro from "./pages/supplier/profile/SupplierPro";
+import SupplyHome from "./pages/supplier/dashboard/SupplyHome";
 import SupplierRegister from "./components/supplier/SupplierRegister";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { gapi } from "gapi-script";
-import AdminDashbord from "./pages/Admin/AdminDashbord";
-import AddProduct from "./pages/Admin/AddProduct";
-import SupplierMangement from "./pages/Admin/SupplierMangement";
+import AdminDashbord from "./pages/Admin/dashboard/AdminDashbord";
+import AddProduct from "./pages/Admin/products/AddProduct";
+import SupplierMangement from "./pages/Admin/supplier/SupplierMangement";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
-import Location from './pages/Admin/Location'
-import Navbar from './pages/common/Navbar'
-import UserProfile from './components/user/UserProfile'
-import UserRegister from './components/user/UserRegister'
-import UserLogin from './components/user/UserLogin'
-import EditProfile from './components/user/EditProfile'
-import AllProducts from './pages/Admin/AllProducts'
-import SingleProduct from './pages/users/SingleProduct'
-import Order from './pages/users/Order'
-import Home from './pages/common/home/Home'
-import Wellcome from './pages/common/Wellcome'
-import PaymentSuccess from './components/user/PaymentSuccess'
-import PaymentCancel from './components/user/PaymentCancel'
-import Contact from './pages/common/contactus/Contact'
-import { Toaster } from 'react-hot-toast'
-import Service from './pages/common/service/Service'
-import { NavigationProvider } from './utils/NavigationContext'
-import Aboutus from './pages/common/about/Aboutus'
-import UserManagement from './pages/Admin/UserManagement'
-import OrderDetails from './components/user/OrderDetails'
-import PaymentSection from './components/Admin/PaymentSection'
-import Pdffile from './components/user/Pdffile'
-import OrderManagement from './pages/Admin/OrderManagement'
-import Complaints from './pages/Admin/Complaints'
-import api from './axiosInterceptors'
-import RolesManagement from './components/Admin/RolesManagement'
+import Location from "./pages/Admin/location/Location";
+import Navbar from "./pages/common/Navbar";
+import UserProfile from "./pages/users/UserProfile";
+import UserRegister from "./pages/users/UserRegister";
+import UserLogin from "./pages/users/UserLogin";
+import EditProfile from "./components/user/EditProfile";
+import AllProducts from "./pages/Admin/products/AllProducts";
+import SingleProduct from "././pages/users/products/SingleProduct";
+import Order from "././pages/users/order/Order";
+import Home from "./pages/common/home/Home";
+import Wellcome from "./pages/common/Wellcome";
+import PaymentSuccess from "./components/user/PaymentSuccess";
+import PaymentCancel from "./components/user/PaymentCancel";
+import Contact from "./pages/common/contactus/Contact";
+import { Toaster } from "react-hot-toast";
+import Service from "./pages/common/service/Service";
+import { NavigationProvider } from "./utils/NavigationContext";
+import Aboutus from "./pages/common/about/Aboutus";
+import UserManagement from "./pages/Admin/users/UserManagement";
+import OrderDetails from "./components/user/OrderDetails";
+import PaymentSection from "./components/Admin/PaymentSection";
+import Pdffile from "./components/user/Pdffile";
+import OrderManagement from "./pages/Admin/order/OrderManagement";
+import Complaints from "./pages/Admin/complaints/Complaints";
+import api from "./axiosInterceptors";
+import RolesManagement from "./components/Admin/RolesManagement";
 
-import SupTable from './components/supplier/SupTable'
-import PaymentSuccesMontly from './components/user/PaymentSuccesMontly'
-import PaymentCompleted2 from './components/PaymentCompleted2'
-import Products from './pages/common/products/Products'
-import Notification from './pages/supplier/notification/Notification'
+import SupTable from "./pages/supplier/orders/SupTable";
+import PaymentSuccesMontly from "./components/user/PaymentSuccesMontly";
+import PaymentCompleted2 from "./components/PaymentCompleted2";
+import Products from "./pages/common/products/Products";
+import Notification from "./pages/supplier/notification/Notification";
 import AdminProtectRouter from "./pages/Admin/utils/ProtectRouter";
 import SupplierProtectRoute from "./pages/supplier/utils/ProtectRouter";
+import UserProtectRouter from "./pages/users/utils/ProtectRouter";
 
 const clientId =
   "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
@@ -72,19 +73,18 @@ function App() {
           <Route path="/service" element={<Service />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/contactus" element={<Contact />} />
-          <Route path="/supregistration" element={<SupplierRegister />} />
-          <Route path="/suplogin" element={<SupLogin />} />
-          <Route path='/suppliers/notification' element={<Notification />} />
-          <Route element={<SupplierProtectRoute />}>
-          <Route path="/supprofile" element={<SupplierPro />} />
-          <Route path="/supdashbord" element={<SupplyHome />} />
-
-
-          </Route>
-
-
           <Route path="/userRegistration" element={<UserRegister />} />
           <Route path="/userlogin" element={<UserLogin />} />
+          <Route path="/supregistration" element={<SupplierRegister />} />
+          <Route path="/suplogin" element={<SupLogin />} />
+          <Route path="/products" element={<Products />} />
+          <Route element={<SupplierProtectRoute />}>
+            <Route path="/supprofile" element={<SupplierPro />} />
+            <Route path="/supdashbord" element={<SupplyHome />} />
+            <Route path="/orderAllocation" element={<SupTable />} />
+            <Route path="/suppliers/notification" element={<Notification />} />
+          </Route>
+
           <Route element={<AdminProtectRouter />}>
             <Route path="/admindashboard" element={<AdminDashbord />} />
             <Route path="/addproduct" element={<AddProduct />} />
@@ -94,31 +94,27 @@ function App() {
             <Route path="/orders" element={<OrderManagement />} />
             <Route path="/complaints" element={<Complaints />} />
             <Route path="/location" element={<Location />} />
-          <Route path="/suppliermanagement" element={<SupplierMangement />} />
+            <Route path="/suppliermanagement" element={<SupplierMangement />} />
+            <Route path="/rolemanagement" element={<RolesManagement />} />
           </Route>
 
+          <Route element={<UserProtectRouter />}>
+            <Route path="/userpro" element={<UserProfile />} />
+            <Route path="/editPro" element={<EditProfile />} />
+            <Route path="/productList/:productId" element={<SingleProduct />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="payment/success" element={<PaymentSuccess />} />
+            <Route path="payment/cancel" element={<PaymentCancel />} />
+            <Route path="/orderdetails" element={<OrderDetails />} />
+            <Route
+              path="payment/success/monthly"
+              element={<PaymentSuccesMontly />}
+            />
+          </Route>
 
-          <Route path="/userpro" element={<UserProfile />} />
-          <Route path="/editPro" element={<EditProfile />} />
-          <Route path="/orderAllocation" element={<SupTable />} />
-        <Route path='/products' element={<Products />} />
-          <Route path="/productList/:productId" element={<SingleProduct />} />
-          <Route path="/order" element={<Order />} />
-          <Route path="payment/success" element={<PaymentSuccess />} />
-          <Route path="payment/cancel" element={<PaymentCancel />} />
-          <Route path="/orderdetails" element={<OrderDetails />} />
-          <Route
-            path="payment/success/monthly"
-            element={<PaymentSuccesMontly />}
-          />
-              <Route path='/userRegistration' element={<UserRegister />} />
-        <Route path='/userlogin' element={<UserLogin />} />        
-
-        <Route path='/rolemanagement' element={<RolesManagement/>}/>
+          <Route path="/userRegistration" element={<UserRegister />} />
+          <Route path="/userlogin" element={<UserLogin />} />
         </Routes>
-
-    
-
       </NavigationProvider>
       <Toaster position="top-center" reverseOrder={false} />
     </>

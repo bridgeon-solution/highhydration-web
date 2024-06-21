@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import AdminSidebar from '../../components/Admin/AdminSidebar';
-import ad from '../../assets/Supplier/sup1.png';
+import AdminSidebar from '../../../components/Admin/AdminSidebar';
+import ad from '../../../assets/Supplier/sup1.png';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import api from '../../axiosInterceptors';
-import Loader from '../../components/Loader';
-import adminApi from './utils/axiosInterceptors';
+import Loader from '../../../components/Loader';
+import adminApi from './../utils/axiosInterceptors';
 
 const Location = () => {
   const [pincodes, setPincodes] = useState([]);

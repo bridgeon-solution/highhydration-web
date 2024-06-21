@@ -45,23 +45,28 @@ const UserProfile = () => {
     <div className='w-full h-screen'>
       {loading && <Loader />}
 
-      <div className='w-full flex flex-col md:flex-row h-1/3 bg-gradient-to-b from-blue-200 to-blue-100 rounded-bl-2xl rounded-br-2xl '>
+      <div className='w-full flex flex-col md:flex-row h-1/3 bg-gradient-to-b from-blue-200 to-blue-100 rounded-bl-2xl rounded-br-2xl justify-between'>
         <div className='w-full md:w-1/3  flex items-center justify-center'>
           <img className='h-56 w-56 border rounded-full' src={userData?.image} alt="User" />
         </div>
-        <div className='w-full md:w-1/3 h-3/5  flex items-center justify-center mt-5 md:mt-0'>
-          <div>
-            <p className='text-white text-2xl ' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Email: {userData?.email}</p>
-            <p className='mt-10 text-white text-2xl' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Phone: {userData?.phone_number}</p>
-          </div>
-        </div>
-        <div className='w-full md:w-1/3 h-3/5  flex items-center justify-center mt-5 md:mt-0'>
-          <div>
-            <p className='text-white text-2xl ' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Address: {userData?.address_line1}</p>
-            <p className='mt-10 text-white text-2xl' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Landmark: {userData?.address_line2}</p>
-          </div>
-        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center p-2 lg:mr-5 mx-5">
+  <div class="w-full bg-gradient-to-b from-blue-200 to-blue-100 lg:ml-2 lg:mr-0 rounded-lg ">
+    <p class="text-2xl font-bold text-center mt-2 bg-gradient-to-b from-blue-200 to-blue-200 py-2 rounded-t-lg">Personal Details</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 p-4">
+      <div class="flex flex-col items-center lg:items-start space-y-2 bg-gradient-to-b from-blue-200 to-blue-100 shadow-xl rounded-lg p-4">
+        <p class="text-lg font-semibold text-gray-700">First Name <span class="text-gray-500">{userData?.first_name}</span></p>
+        <p class="text-lg font-semibold text-gray-700">Last Name <span class="text-gray-500">{userData?.last_name}</span></p>
       </div>
+
+      <div class="flex flex-col items-center lg:items-start space-y-2 bg-gradient-to-b from-blue-200 to-blue-100 shadow-xl rounded-lg p-4">
+        <p class="text-lg font-semibold text-gray-700">Email <span class="text-gray-500">{userData?.email}</span></p>
+        <p class="text-lg font-semibold text-gray-700">Phone <span class="text-gray-500">{userData?.phone_number}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
       <div className='w-full font-bold flex items-center mt-5'>
         <p className='ml-8 text-3xl text-slate-600'>{userData?.first_name} {userData?.last_name}</p>

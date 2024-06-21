@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../axiosInterceptors'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import adminApi from '../../pages/Admin/utils/axiosInterceptors'
 
 
 
@@ -13,7 +14,7 @@ const PaymentSectionAll = () => {
     
       const fetchData=async()=>{
         try {
-        const response=await api.get('/payments/',{params:{page:page}})
+        const response=await adminApi.get('/payments/',{params:{page:page}})
         console.log(response);
         setData(response?.data?.payment)
         setTotalaPage(response?.data?.totalpage)

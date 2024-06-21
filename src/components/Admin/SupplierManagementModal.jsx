@@ -7,6 +7,7 @@ import { SiAdblock } from "react-icons/si";
 import { RiUserSettingsFill } from "react-icons/ri";
 import api from "../../axiosInterceptors";
 import toast from "react-hot-toast";
+import adminApi from "../../pages/Admin/utils/axiosInterceptors";
 
 const Overlay = styled(motion.div)`
   position: fixed;
@@ -66,7 +67,7 @@ const SupplierMangementModal = ({ handleClose, isOpen, fethcData }) => {
     const handleSubmit=async()=>{
         try {
             if(setSeletedValue){
-                const response=await api.patch('/role/',{value:seletedValue,supplierId:isOpen?._id})
+                const response=await adminApi.patch('/role/',{value:seletedValue,supplierId:isOpen?._id})
                 if(response.status==200){
                     toast.success('Updated',{seletedValue})
                     handleClose(false)

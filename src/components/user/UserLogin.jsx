@@ -35,7 +35,7 @@ try {
    if(response.status===200){
     if(email=='admin@123'){
       navigate('/admindashboard')
-      localStorage.setItem('token',response.data.token)
+      localStorage.setItem('admin_token',response.data.token)
     }else{
       navigate('/home')
       localStorage.setItem('access_token',response.data.accessToken)

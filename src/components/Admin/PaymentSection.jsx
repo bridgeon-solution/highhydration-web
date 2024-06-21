@@ -5,6 +5,7 @@ import PaymentSectionAll from './PaymentSectionAll';
 import PaymentSectionPending from './PaymentSectionPending';
 import PaymentSectionPaid from './PaymentSectionPaid';
 import api from '../../axiosInterceptors';
+import adminApi from '../../pages/Admin/utils/axiosInterceptors';
 
 
 const PaymentSection = () => {
@@ -18,7 +19,7 @@ const currentDate = new Date(Date.now());
   useEffect(()=>{
     const fetchData=async (req,res)=>{
       try {
-        const response=await api.get('/payments/details/')
+        const response=await adminApi.get('/payments/details/')
         console.log(response);
         setTotal(response.data.totalAmount[0].totalAmount)
         setSuccess(response.data.totalSuccessAmount[0].totalAmount)

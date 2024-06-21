@@ -5,6 +5,7 @@ import { FiMessageCircle } from 'react-icons/fi'
 import { MdDeleteOutline, MdOutlineMoreHoriz } from 'react-icons/md'
 import api from '../../axiosInterceptors'
 import RoleModal from './RoleModal'
+import adminApi from '../../pages/Admin/utils/axiosInterceptors'
 
 const RolesManagement = () => {
 const [suppliers,setSuppliers]=useState([])
@@ -13,7 +14,7 @@ const [isOpen,setIsOpen]=useState(false)
 useEffect(()=>{
     const fetchData=async ()=>{
     try {
-        const response= await api.get('/admin/role',{params:{value:"admin"}})  
+        const response= await adminApi.get('/admin/role',{params:{value:"admin"}})  
         console.log(response);
         setSuppliers(response?.data?.supplier)
     } catch (error) {

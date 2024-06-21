@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../axiosInterceptors'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import adminApi from '../../pages/Admin/utils/axiosInterceptors'
 
 
 
@@ -13,7 +14,7 @@ const PaymentSectionPending = () => {
     
       const fetchData=async()=>{
         try {
-        const response=await api.get('/payments/',{
+        const response=await adminApi.get('/payments/',{
             params: {
               value: "pending",
               page:page

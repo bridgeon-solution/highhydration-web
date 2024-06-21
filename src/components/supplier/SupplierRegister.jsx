@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import {useFormik,Formik,Form,Field} from 'formik'
 import { registerValidation } from './registerValidation';
 import Loader from '../Loader';
+import supplierApi from '../../pages/supplier/utils/axiosInterceptors';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 // const onSuccess = (res) => {
 //   console.log('LOGIN SUCCESS Current user:',res.profileObj);
@@ -65,7 +66,7 @@ const [loader,setLoading]=useState(false)
 
 
        setLoading(true)
-        const response = await axios.post(`${baseUrl}/suppliers/register`, formData);
+        const response = await supplierApi.post(`/suppliers/register`, formData);
         console.log(response);
         setOpen(true);
         setLoading(false)

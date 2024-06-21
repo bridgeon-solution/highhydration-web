@@ -34,11 +34,15 @@ try {
    if(response.status===200){
     if(email=='admin@123'){
       navigate('/admindashboard')
+      localStorage.setItem('admin_token',response.data.token)
     }else{
       if(response.data.data.roles==='admin'){
         navigate('/admindashboard')
+        
       }else{
         navigate('/supdashbord')
+        localStorage.setItem('supplier_token',response.data.token)
+
       }
       if(response.data.data.roles =='admin'){
         localStorage.setItem('role',response.data.data._id)

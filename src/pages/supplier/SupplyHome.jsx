@@ -2,6 +2,7 @@ import React from 'react'
 import ad from "../../assets/Supplier/sup1.png"
 import SupTable from './SupTable'
 import SideBar from '../../components/supplier/Sidebar'
+import SupplierChart1 from '../../components/supplier/SupplierChart1'
 
 
 
@@ -17,7 +18,7 @@ const SupplyHome  = () => {
 
       <div className='mt-2 w-full overflow-scroll   m-2 bg-[#e5e1e6]  '>
 
-        <div className=' w-full h-90 flex border mt-2 rounded-lg bg-gradient-to-b from-blue-600 to-blue-400' >
+        <div className=' w-full h-90 flex border mt-2 rounded-lg bg-gradient-to-b from-blue-800 to-blue-200' >
           <div className='w-3/4'>
             <p className='text-white s:flex s:justify-center s:text-2xl s:items-center    md:text-6xl   font-bold md:pt-12 md:pl-'>Welcome To High Hydration</p>
           </div>
@@ -58,7 +59,17 @@ const SupplyHome  = () => {
 </div>
 
 
+{/* graph */}
 
+<div className='w-full flex'>
+<div className='w-1/2'> 
+<SupplierChart1/>
+</div>
+
+<div className='w-1/2'> 
+<SupplierChart1/>
+</div>
+</div>
 
 
 

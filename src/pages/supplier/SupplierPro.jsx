@@ -31,63 +31,53 @@ return (
 <div className=' w-full s:p-0  overflow-scroll  bg-[#e5e1e6]  '>
      
 
-<div className=' flex   s:flex-col lg:flex-row lg:h-72  mt-3 ml-2 mr-2 shadow-md rounded-xl'>
-    <div className='flex  s:flex-row sm:w-full sm:items-center sm:p-3  lg:w-1/3     lg:flex-row '> 
+<div className=' flex   s:flex-col lg:flex-row lg:h-72  bg-[#EFF0F3] mt-3 ml-2 mr-2 shadow-md rounded-xl'>
+    <div className='flex  s:flex-row sm:w-full sm:items-center sm:p-3  lg:w-1/2 b    lg:flex-row '> 
     <img className=' flex s:w-24 s:h-24 sm:w-36 sm:h-36    lg:h-52  lg:w-52  rounded-full lg:mt-10' src={data?.image} />
     <p className='text-slate-700 text-4xl  pt-10  pl-5 font-bold  font-serif s:text-xl sm:text-2xl lg:text-4xl lg:mb-36 lg:ml-16 lg:mt-9'>{data?.first_name+" "+data?.last_name}</p>
     </div>
 
 
-
-    <div className="lg:w-2/3 flex flex-col md:flex-row justify-between   lg:flex-row xl:flex-row w-full p-2 lg:mr-5">
-
-  <div className="w-full lg:w-1/2 bg-[#e5e1e6]  ">
-    <p className='text-2xl font-bold text-center mt-2'>Personal Details</p>
-
-    <div className="flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-8 p-4 bg-gray-100 rounded-lg shadow-md">
-  <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-2">
-    <p className="text-lg font-semibold text-gray-700">First Name</p>
-    <p className="text-xl font-bold text-gray-900">Vyshnav</p>
-  </div>
-  
-  <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-2">
-    <p className="text-lg font-semibold text-gray-700">Last Name</p>
-    <p className="text-xl font-bold text-gray-900">Doe</p>
-  </div>
-  
-  <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-2">
-    <p className="text-lg font-semibold text-gray-700">Email</p>
-    <p className="text-xl font-bold text-gray-900">vyshnav@example.com</p>
-  </div>
-  
-  <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-2">
-    <p className="text-lg font-semibold text-gray-700">Phone</p>
-    <p className="text-xl font-bold text-gray-900">123-456-7890</p>
-  </div>
+<div className='  lg:w-1/2  flex s:w-full  s:p-2 s:justify-end sm:justify-end lg:justify-end items-end lg:mr-5  '> 
+<button 
+class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full  lg:w-36 mb-4 mr-4 "
+onClick={()=>setIsModal(true)}>
+Edit Profile
+</button>
+<button class="bg-white hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full pl-3     lg:w-36 mb-4 border border-black">
+More
+</button>
 </div>
-
-
 
 </div>
 
 
 
-  <div className="flex justify-end items-end mt-4 md:mt-0 lg:mt-0">
-    <button 
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-full md:w-auto lg:w-36 mb-4 mr-4"
-      onClick={() => setIsModal(true)}>
-      Edit Profile
-    </button>
-    <button className="bg-white hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full w-full md:w-auto lg:w-36 mb-4 border border-black">
-      More
-    </button>
+
+{/* personal profile */}
+
+
+
+<div class="flex flex-col md:flex-row justify-between items-center p-2 lg:mr-5">
+  <div class="w-full bg-gray-200 lg:ml-2 lg:mr-0 rounded-lg shadow-md">
+    <p class="text-2xl font-bold text-center mt-2 bg-gray-300 py-2 rounded-t-lg">Personal Details</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 p-4">
+      <div class="flex flex-col items-center lg:items-start space-y-2 bg-white rounded-lg p-4">
+        <p class="text-lg font-semibold text-gray-700">First Name <span class="text-gray-500">{data?.first_name}</span></p>
+        <p class="text-lg font-semibold text-gray-700">Last Name <span class="text-gray-500">{data?.last_name}</span></p>
+      </div>
+
+      <div class="flex flex-col items-center lg:items-start space-y-2 bg-white rounded-lg p-4">
+        <p class="text-lg font-semibold text-gray-700">Email <span class="text-gray-500">{data?.email}</span></p>
+        <p class="text-lg font-semibold text-gray-700">Phone <span class="text-gray-500">{data?.phone_number}</span></p>
+      </div>
+    </div>
   </div>
 </div>
 
 
-
-
-</div>
+{/* personalprofile end */}
 
 
 <div  className='flex  s:justify-center   md:justify-around flex-wrap  s:mt-5 xl:mt-5 '> 
@@ -125,7 +115,7 @@ return (
    
 </div>
 
-<div className='flex s:w-full overflow-scroll    lg:justify-center lg:mb-10'>
+<div className='flex s:w-full overflow-scroll mt-5   lg:justify-center lg:mb-10'>
   <SupplyChart/>
 
 </div>

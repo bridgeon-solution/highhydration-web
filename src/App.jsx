@@ -37,7 +37,7 @@ import Complaints from './pages/Admin/Complaints'
 import api from './axiosInterceptors'
 import RolesManagement from './components/Admin/RolesManagement'
 
-import SupTable from './components/supplier/SupTable'
+import SupTable from './pages/supplier/SupTable'
 import PaymentSuccesMontly from './components/user/PaymentSuccesMontly'
 import PaymentCompleted2 from './components/PaymentCompleted2'
 import Products from './pages/common/products/Products'

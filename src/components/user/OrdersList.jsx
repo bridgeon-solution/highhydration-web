@@ -22,18 +22,20 @@ const OrdersList = ({setLoading}) => {
       setLoading(true)
       const response = await api.get(`/orders/order/${userid}`);
       setOrders(response.data.order);
+      if(response.data.review){
       setStarRate((prevRatings) => {
         const newRatings = { ...prevRatings };
-        response.data.order.forEach((order, index) => {
-          const newRating = prevRatings[order._id] === 1 && response.data.review[index]?.rating === 1
+        response?.data?.order?.forEach((order, index) => {
+          const newRating = prevRatings[order._id] === 1 && response?.data?.review[index]?.rating === 1
               ? 0
-              : response.data.review[index]?.rating;
+              : response?.data?.review[index]?.rating;
           if (typeof newRating !== 'undefined') {
               newRatings[order._id] = newRating;
           }
       });
             return newRatings;
     });
+  }
     setLoading(false)
     } catch (error) {
       console.log(error);

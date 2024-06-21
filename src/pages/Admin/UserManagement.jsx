@@ -131,7 +131,7 @@ return (
       </div>
       <div className=" w-full h-screen ">
         <div className="flex w-full h-28 justify-between items-center">
-          <p className="ml-5 text-2xl font-bold">Manage Suppliers</p>
+          <p className="ml-5 text-2xl font-bold">Manage Users</p>
           <div className="flex mr-2">
             <input
               type="text"

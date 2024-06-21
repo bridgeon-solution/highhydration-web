@@ -1,15 +1,14 @@
-import SideBar from "../../../components/supplier/Sidebar";
-import api from "../../../axiosInterceptors";
-import { useEffect, useState } from "react";
+import  { useEffect, useState } from 'react'
+import AdminSidebar from '../../../components/Admin/AdminSidebar'
+import api from '../../../axiosInterceptors';
 
-
-const Notification = () => {  
-    const supplierid = localStorage.getItem("supplierid")
+const AdminNotification = () => {
+    const adminId = import.meta.env.VITE_ADMIN_ID;
     const [notification , setNotification] = useState([])
     useEffect(()=>{
         const fetchNotification = async()=>{
             try {
-                const response = await api.get(`/notifications/${supplierid}`)
+                const response = await api.get(`/notifications/${adminId}`)
                 console.log(response)
                 if(response.status===200){
                     setNotification(response.data.notification)
@@ -20,15 +19,15 @@ const Notification = () => {
             }
         }
         fetchNotification()
-    },[supplierid])
+    },[adminId])
   return (
-    <div className="flex w-full h-screen overflow-hidden">
-      <div className="mt-2 min-h-screen w-1/4shadow-lg">
-        <SideBar />
+    <div className='flex h-screen'>
+      <div>
+        <AdminSidebar />
       </div>
-      <div className="w-full pt-5 overflow-scroll">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-semibold mb-6">Notifications</h1>
+      <div className="w-full p-4  overflow-scroll">
+        <div className="max-w-4xl ">
+          <h1 className="text-3xl font-semibold mb-6">Notifications</h1> <hr /><br />
           <div className="space-y-4">
             {/* Example Notification */}
             { 
@@ -48,7 +47,7 @@ const Notification = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Notification;
+export default AdminNotification

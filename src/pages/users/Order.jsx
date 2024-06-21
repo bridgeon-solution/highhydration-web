@@ -68,6 +68,12 @@ const handlechnge=(a)=>{
 }
 const stepdata=(a)=>{
   if(a==="+"){
+    if(isToggled){
+  if (!selectedDate) {
+      toast.error("Please select a date")
+      return
+}
+    }
     if(pageNum===0){
     
       if (
@@ -184,16 +190,11 @@ if(a==="-"){
   }
 }
   }
-const handleSubmit = () => {
-  if (!selectedDate) {
-      alert("Please select a date");
-      return;
-  }
-}
+
   return (
     <div className=' bg-opacity-5 justify-center flex'>
       {loader&&<Loader/>}
-        <div className='shadow-[0_35px_30px_10px_rgba(0,0,0,0.3)] mt-3 p-1 h-[800px] md:w-1/3 s:w-full rounded-xl'>
+        <div className='shadow-[10px_35px_30px_10px_rgba(0,0,0,0.3)] mt-4 p-1  md:w-1/4 s:w-full rounded-xl '>
             <div className='mt-6'>
         <Box  sx={{ width: '100%' }}>
       <Stepper activeStep={pageNum} alternativeLabel>
@@ -236,7 +237,7 @@ const handleSubmit = () => {
     {isToggled&&
     <>
     <div className="flex items-center justify-center">
-    <form onSubmit={handleSubmit} className="text-center mb-2">
+    <form  className="text-center mb-2">
             <label htmlFor="datepicker" className="block mb-4">Select a Date:</label>
             <DatePicker
                 id="datepicker"
@@ -310,7 +311,7 @@ const handleSubmit = () => {
     </div>
 )}
       
-    <div className='flex justify-around mr-5'>
+    <div className='flex justify-around mr-5 mb-3'>
 <button onClick={()=>{stepdata("-")}} className="bg-white hover:bg-black  text-black border-black border hover:text-white font-bold py-2 px-4 rounded">back</button>
 {pageNum < 1 ? (
     <button onClick={() => { stepdata("+") }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

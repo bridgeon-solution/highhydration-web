@@ -159,191 +159,181 @@ const [loading,setLoading]=useState(false)
   };
 
   return (
-    <div className='flex w-full h-screen overflow-hidden bg-[#F8F8F8]'>
-      {loading&& <Loader/>}
-      <div className='mt-2 min-h-screen'>
-        <AdminSidebar />
+    <div className="flex w-full h-screen overflow-hidden bg-[#F8F8F8]">
+  {loading && <Loader />}
+  <div className="min-h-screen">
+    <AdminSidebar />
+  </div>
+  <div className="flex-1 overflow-scroll p-2">
+    <div className="w-full h-1/4 flex flex-col lg:flex-row border rounded-lg" style={{ backgroundColor: '#303c6c' }}>
+      <div className="flex-1 flex items-center justify-center p-4 lg:p-0">
+        <p className="text-white text-2xl md:text-6xl font-bold text-center">Welcome To High Hydration</p>
       </div>
-
-      <div className='mt-1 w-full overflow-scroll overscroll-none'>
-        <div className='w-full h-1/4 flex border rounded-lg' style={{ backgroundColor: '#303c6c' }}>
-          <div className='w-3/4'>
-            <p className='text-white flex justify-center items-center text-2xl md:text-6xl font-bold md:pt-12'>
-              Welcome To High Hydration
-            </p>
-          </div>
-          <div className='p-1 md:p-5'>
-            <img className='h-14 w-14 md:h-36 md:w-36 xl:h-36 xl:w-40' src={ad} alt="Advertisement" />
-          </div>
-        </div>
-
-        {/* pincode to suppplier and Add Pincode */}
-<div className="flex flex-wrap items-center justify-between pb-4 mt-4 space-y-4 md:space-y-0">
-
-  <div className="relative flex items-center space-x-2">
-    <input
-      type="text"
-      value={newPincode}
-      onChange={(e) => setNewPincode(e.target.value)}
-      className="block w-full p-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-      placeholder="Add Pincode..."
-    />
-    <button
-      onClick={handleAddPincode}
-      className="px-4 py-2 text-sm text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-    >Add</button>
-  </div>
-  <div className="flex items-center justify-between pb-4 mt-4 space-y-4 md:space-y-0">
-    <div className="relative">
-      <select
-        value={selectedSupplier}
-        onChange={(e) => setSelectedSupplier(e.target.value)}
-        className="block w-60 p-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-      >
-        <option value="">Select Supplier</option>
-        {suppliers.map((supplier) => (
-          <option key={supplier._id} value={supplier._id}>{`${supplier.first_name} ${supplier.last_name}` }</option>
-        ))}
-      </select>
+      <div className="flex items-center justify-center p-4 lg:p-5">
+        <img className="h-14 w-14 md:h-36 md:w-36 xl:h-36 xl:w-40" src={ad} alt="Advertisement" />
+      </div>
     </div>
-    <div className="relative">
-      <select
-        value={selectedPincode}
-        onChange={(e) => setSelectedPincode(e.target.value)}
-        className="block w-60 p-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-      >
-        <option value="">Select Pincode</option>
-        {pincodes.map((pincode) => (
-          <option key={pincode._id} value={pincode._id}>{pincode.pincode}</option>
-        ))}
-      </select>
-    </div>
-    <button
-      onClick={handleAddCombination}
-      className="px-4 py-2 text-sm text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-    >Save</button>
-  </div>
-</div>
 
-        {/* Table */}
-        <div className='flex   md:flex-col md:items-center   lg:flex-row sm:flex-col '>
-  <div className="overflow-x-auto w-1/2 shadow-md sm:rounded-lg">
-    <div className="overflow-x-auto">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead className="text-xs uppercase bg-[#303c6c] text-white">
-          <tr>
-            <th scope="col" className="px-6 py-3">ID</th>
-            <th scope="col" className="px-6 py-3">Pincode</th>
-            <th scope="col" className="px-6 py-3">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pincodes.map((pincode, index) => (
-            <tr key={pincode._id} className="bg-white border-b hover:bg-gray-50">
-              <td className="px-6 py-4">
-                <p>{index + 1}</p>
-              </td>
-              <td className="px-6 py-4">
-                {editingPincodeId === pincode._id ? (
-                  <input
-                    type="text"
-                    value={editingPincodeValue}
-                    onChange={handleEditPincodeChange}
-                    className="block w-full p-1 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                  />
-                ) : (
-                  <p>{pincode.pincode}</p>
-                )}
-              </td>
-              <td className="px-6 py-4 flex items-center space-x-6">
-                {editingPincodeId === pincode._id ? (
-                  <button
-                    onClick={handleSavePincode}
-                    className="text-blue-500 cursor-pointer"
-                  >
-                    Save
-                  </button>
-                ) : (
-                  <FaEdit className="text-blue-500 cursor-pointer" onClick={() => startEditingPincode(pincode)} />
-                )}
-                <FaTrash className="text-red-500 cursor-pointer" onClick={() => handleDeletePincode(pincode._id)} />
-              </td>
-            </tr>
+    {/* Pincode to supplier and Add Pincode */}
+    <div className="flex flex-wrap items-center justify-between pb-4 mt-4 space-y-4 md:space-y-0">
+      <div className="relative flex items-center space-x-2 w-full md:w-auto">
+        <input
+          type="text"
+          value={newPincode}
+          onChange={(e) => setNewPincode(e.target.value)}
+          className="block w-full p-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Add Pincode..."
+        />
+        <button
+          onClick={handleAddPincode}
+          className="px-4 py-2 text-sm text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
+          Add
+        </button>
+      </div>
+      <div className="flex flex-wrap items-center space-x-2 w-full md:w-auto">
+        <select
+          value={selectedSupplier}
+          onChange={(e) => setSelectedSupplier(e.target.value)}
+          className="block w-full md:w-60 p-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option value="">Select Supplier</option>
+          {suppliers.map((supplier) => (
+            <option key={supplier._id} value={supplier._id}>
+              {`${supplier.first_name} ${supplier.last_name}`}
+            </option>
           ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-       
-
-  <div className="overflow-x-auto w-1/2 ml-2 shadow-md sm:rounded-lg">
-  <div className="overflow-x-auto">
-    <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-      <thead className="text-xs uppercase bg-[#303c6c] text-white">
-        <tr>
-          <th scope="col" className="px-6 py-3">Supplier</th>
-          <th scope="col" className="px-6 py-3">Pincode</th>
-          <th scope="col" className="px-6 py-3">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {selectedCombinations.map((combination) => (
-          <tr key={combination._id} className="bg-white border-b hover:bg-gray-50">
-            <td className="px-6 py-4">
-              {editingCombinationId === combination._id ? (
-                <select
-                  value={editingSupplierId}
-                  onChange={(e) => setEditingSupplierId(e.target.value)}
-                  className="block w-full p-1 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                >
-                  <option value="">Select Supplier</option>
-                  {suppliers.map((supplier) => (
-                    <option key={supplier._id} value={supplier._id}>{`${supplier.first_name} ${supplier.last_name}`}</option>
-                  ))}
-                </select>
-              ) : (
-                <p>{combination?.supplierId?.first_name}</p>
-              )}
-            </td>
-            <td className="px-6 py-4">
-              {editingCombinationId === combination._id ? (
-                <select
-                  value={editingPincodeId}
-                  onChange={(e) => setEditingCombinationPincodeId(e.target.value)}
-                  className="block w-full p-1 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                >
-                  <option value="">Select Pincode</option>
-                  {pincodes.map((pincode) => (
-                    <option key={pincode._id} value={pincode._id}>{pincode.pincode}</option>
-                  ))}
-                </select>
-              ) : (
-                <p>{combination?.pincodeId?.pincode}</p>
-              )}
-            </td>
-            <td className="px-6 py-4 flex items-center space-x-6">
-              {editingCombinationId === combination._id ? (
-                <button
-                  onClick={handleSaveCombination}
-                  className="text-blue-500 cursor-pointer"
-                >
-                  Save
-                </button>
-              ) : (
-                <FaEdit className="text-blue-500 cursor-pointer" onClick={() => startEditingCombination(combination)} />
-              )}
-              <FaTrash className="text-red-500 cursor-pointer" onClick={() => handleDeleteCombination(combination._id)} />
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
-        </div>
+        </select>
+        <select
+          value={selectedPincode}
+          onChange={(e) => setSelectedPincode(e.target.value)}
+          className="block w-full md:w-60 p-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option value="">Select Pincode</option>
+          {pincodes.map((pincode) => (
+            <option key={pincode._id} value={pincode._id}>
+              {pincode.pincode}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={handleAddCombination}
+          className="px-4 py-2 text-sm text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
+          Save
+        </button>
       </div>
     </div>
+
+    {/* Tables */}
+    <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+      {/* Pincode Table */}
+      <div className="overflow-x-auto w-full lg:w-1/2 shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left text-gray-500">
+          <thead className="text-xs uppercase bg-[#303c6c] text-white">
+            <tr>
+              <th scope="col" className="px-6 py-3">ID</th>
+              <th scope="col" className="px-6 py-3">Pincode</th>
+              <th scope="col" className="px-6 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pincodes.map((pincode, index) => (
+              <tr key={pincode._id} className="bg-white border-b hover:bg-gray-50">
+                <td className="px-6 py-4">{index + 1}</td>
+                <td className="px-6 py-4">
+                  {editingPincodeId === pincode._id ? (
+                    <input
+                      type="text"
+                      value={editingPincodeValue}
+                      onChange={handleEditPincodeChange}
+                      className="block w-full p-1 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  ) : (
+                    <p>{pincode.pincode}</p>
+                  )}
+                </td>
+                <td className="px-6 py-4 flex items-center space-x-6">
+                  {editingPincodeId === pincode._id ? (
+                    <button onClick={handleSavePincode} className="text-blue-500 cursor-pointer">Save</button>
+                  ) : (
+                    <FaEdit className="text-blue-500 cursor-pointer" onClick={() => startEditingPincode(pincode)} />
+                  )}
+                  <FaTrash className="text-red-500 cursor-pointer" onClick={() => handleDeletePincode(pincode._id)} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Supplier-Pincode Table */}
+      <div className="overflow-x-auto w-full lg:w-1/2 shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left text-gray-500">
+          <thead className="text-xs uppercase bg-[#303c6c] text-white">
+            <tr>
+              <th scope="col" className="px-6 py-3">Supplier</th>
+              <th scope="col" className="px-6 py-3">Pincode</th>
+              <th scope="col" className="px-6 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {selectedCombinations.map((combination) => (
+              <tr key={combination._id} className="bg-white border-b hover:bg-gray-50">
+                <td className="px-6 py-4">
+                  {editingCombinationId === combination._id ? (
+                    <select
+                      value={editingSupplierId}
+                      onChange={(e) => setEditingSupplierId(e.target.value)}
+                      className="block w-full p-1 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      <option value="">Select Supplier</option>
+                      {suppliers.map((supplier) => (
+                        <option key={supplier._id} value={supplier._id}>
+                          {`${supplier.first_name} ${supplier.last_name}`}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <p>{combination?.supplierId?.first_name}</p>
+                  )}
+                </td>
+                <td className="px-6 py-4">
+                  {editingCombinationId === combination._id ? (
+                    <select
+                      value={editingPincodeId}
+                      onChange={(e) => setEditingCombinationPincodeId(e.target.value)}
+                      className="block w-full p-1 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      <option value="">Select Pincode</option>
+                      {pincodes.map((pincode) => (
+                        <option key={pincode._id} value={pincode._id}>
+                          {pincode.pincode}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <p>{combination?.pincodeId?.pincode}</p>
+                  )}
+                </td>
+                <td className="px-6 py-4 flex items-center space-x-6">
+                  {editingCombinationId === combination._id ? (
+                    <button onClick={handleSaveCombination} className="text-blue-500 cursor-pointer">Save</button>
+                  ) : (
+                    <FaEdit className="text-blue-500 cursor-pointer" onClick={() => startEditingCombination(combination)} />
+                  )}
+                  <FaTrash className="text-red-500 cursor-pointer" onClick={() => handleDeleteCombination(combination._id)} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
   );
 };
 

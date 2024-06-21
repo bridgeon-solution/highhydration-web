@@ -123,7 +123,7 @@ const UserProfile = () => {
       </div>
 
       {role==='orders' &&
-     <OrdersList/>
+     <OrdersList setLoading={setLoading}/>
       }
 
      {role==='payments' &&
@@ -134,7 +134,7 @@ const UserProfile = () => {
  {role==='pending' &&
      <PendingBills/>
       }
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="max-w-xl mx-auto flex w-full flex-col border rounded-lg bg-white p-8">
             <h2 className="title-font mb-1 text-lg font-medium text-gray-900">Feedback</h2>
@@ -151,7 +151,7 @@ const UserProfile = () => {
             <p className="mt-3 text-xs text-gray-500">Feel free to connect with us on social media platforms.</p>
           </div>
         </div>
-      )}
+      )} */}
 
  {isModalOpen && <ChatModal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
 

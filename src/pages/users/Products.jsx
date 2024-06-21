@@ -18,11 +18,11 @@ const Products = () => {
     const fetchDatas = async () => {
       setLoading(true);
       try {
-        const response = await api.get(`/products`);
-        console.log(response);
-        setProduct(response.data.products);
-        setLoading(false);
-        console.log(response, "hiiii");
+
+          const response= await api.get(`/products`)
+          setProduct(response.data.products)
+          setLoading(false)
+
       } catch (error) {
         console.log(error);
       }

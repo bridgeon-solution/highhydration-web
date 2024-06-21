@@ -35,7 +35,7 @@ return (
             <NavLink  to="/supprofile" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon='user'>Profile </CDBSidebarMenuItem>
             </NavLink>
-            <NavLink  activeClassName="activeClicked">
+            <NavLink to='/suppliers/notification' activeClassName="activeClicked">
               <CDBSidebarMenuItem icon='fas fa-bell'>Notification</CDBSidebarMenuItem>
             </NavLink>
            

@@ -1,4 +1,3 @@
-import React from 'react'
 import { MdWorkspacePremium } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
 import { SlBasket } from "react-icons/sl";
@@ -9,9 +8,7 @@ import { motion } from 'framer-motion';
 import {
     Card,
     CardBody,
-    CardFooter,
     Typography,
-    Button,
   } from "@material-tailwind/react";
 import Footer from '../../../components/user/Footer';
 import Navbar from '../Navbar';
@@ -28,20 +25,20 @@ const Service = () => {
         },
       };
     
-      const drippingVariants = {
-        initial: { y: 0, opacity: 1 },
-        animate: {
-          y: [0, 100, 110, 100],
-          opacity: [1, 1, 0, 0],
-          transition: {
-            duration:10,
-            ease: 'easeInOut',
-            repeat: Infinity,
-            repeatDelay:10,
+      // const drippingVariants = {
+      //   initial: { y: 0, opacity: 1 },
+      //   animate: {
+      //     y: [0, 100, 110, 100],
+      //     opacity: [1, 1, 0, 0],
+      //     transition: {
+      //       duration:10,
+      //       ease: 'easeInOut',
+      //       repeat: Infinity,
+      //       repeatDelay:10,
 
-          },
-        },
-      };
+      //     },
+      //   },
+      // };
   return (
     <>
     <Navbar/>
@@ -79,7 +76,6 @@ const Service = () => {
     Enjoy our premium mineral water, sourced from pristine springs and rigorously filtered for unmatched purity and taste. Rich in essential minerals, it quenches thirst and replenishes vital nutrients.
     </Typography>
   </CardBody>
-  <CardFooter className="pt-0"></CardFooter>
 </Card>
 
 
@@ -96,7 +92,6 @@ const Service = () => {
     Our flexible delivery options ensure your orders arrive promptly and conveniently. Choose from one-time deliveries or regular schedules to fit your needs, guaranteeing fresh water whenever you need it
     </Typography>
   </CardBody>
-  <CardFooter className="pt-0"></CardFooter>
 </Card>
 
 
@@ -110,7 +105,6 @@ const Service = () => {
     Select from a wide range of products tailored to meet your hydration needs. From standard bottles to mineral-enriched options, our diverse selection offers something for everyone, ensuring top quality and value.
     </Typography>
   </CardBody>
-  <CardFooter className="pt-0"></CardFooter>
 </Card>
 
 <Card className="mt-6 w-96 border-2 border-black">
@@ -123,7 +117,6 @@ const Service = () => {
     We prioritize your health with stringent hygiene and safety measures. Our facilities are regularly cleaned, and staff follow best practices for hygiene, ensuring every bottle is pure and safely handled.
     </Typography>
   </CardBody>
-  <CardFooter className="pt-0"></CardFooter>
 </Card>
 
 
@@ -137,7 +130,6 @@ const Service = () => {
     Committed to sustainability, we source from ethical suppliers, use eco-friendly packaging, and implement energy-efficient processes. Enjoy pure water while supporting our mission to protect the environment. 
     </Typography>
   </CardBody>
-  <CardFooter className="pt-0"></CardFooter>
 </Card>
  
   
@@ -148,10 +140,9 @@ const Service = () => {
     Customer Satisfaction Guarantee
     </Typography>
     <Typography className="text-center p-4 leading-relaxed max-w-md">
-    Your satisfaction is our priority. We offer a comprehensive guarantee, with our dedicated team ready to assist with exchanges, refunds, or replacements if you're not completely happy with your purchase.
+    {`Your satisfaction is our priority. We offer a comprehensive guarantee, with our dedicated team ready to assist with exchanges, refunds, or replacements if you're not completely happy with your purchase.`}
 </Typography>
   </CardBody>
-  <CardFooter className="pt-0"></CardFooter>
 </Card>
  </div>
  <Footer/>

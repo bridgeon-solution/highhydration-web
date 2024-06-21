@@ -1,12 +1,17 @@
-import React from "react";
-import ad from "../../assets/Supplier/sup1.png";
-import AdminSidebar from "../../components/Admin/AdminSidebar";
-import AdminChart from "../../components/Admin/AdminChart";
-import RadarChart from "../../components/Admin/RadarChart";
-import TinyChartComp from "../../components/Admin/TinyChartComp";
-import AttendenceChart from "../../components/Admin/AttendenceChart";
+
+import React, { useEffect, useState } from 'react'
+import ad from '../../assets/Supplier/sup1.png'
+import AdminSidebar from '../../components/Admin/AdminSidebar'
+import AdminChart from '../../components/Admin/AdminChart'
+import RadarChart from '../../components/Admin/RadarChart'
+import TinyChartComp from '../../components/Admin/TinyChartComp'
+import AttendenceChart from '../../components/Admin/AttendenceChart'
+import adminRound  from '../../components/Admin/AdminRoundChart'
+import AdminRoundChart from '../../components/Admin/AdminRoundChart'
+import api from '../../axiosInterceptors'
 
 const AdminDashbord = () => {
+
   return (
     <div className="flex w-full h-screen overflow-hidden bg-[#F8F8F8]">
       <div className=" mt-2 min-h-screen">
@@ -37,16 +42,19 @@ const AdminDashbord = () => {
         </div>
 
         {/* orderlist over */}
+        <div className="w-full flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row">
+      <div className="w-full sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2">
+        <AdminChart />
+      </div>
+      <div className="w-full sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2">
+        <AdminRoundChart />
+      </div>
+    </div>
 
-        <div className="flex w-full  ">
-          <div className=" w-1/2">
-            <AdminChart />
-          </div>
 
-          <div className="w-1/2 ">
-            <AttendenceChart />
-          </div>
-        </div>
+
+
+
       </div>
     </div>
   );

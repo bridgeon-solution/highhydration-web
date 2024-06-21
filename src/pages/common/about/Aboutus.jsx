@@ -89,10 +89,10 @@ const Aboutus = () => {
           height="415"
           src="https://www.youtube.com/embed/v_8AcH7N98s?si=yUHR180kupEX-1Ce"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
         ></iframe>
       </div>
       <div className="flex justify-center items-center mt-2 mb-2">

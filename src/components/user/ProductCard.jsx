@@ -23,12 +23,12 @@ function  ProductCard({ product }) {
     <div className="h-96 w-56 bg-white rounded-t-l rounded-b-3xl sm:mt-7 ">
       {loading&&<Loader/>}
         <div className='flex justify-center mt-1'>
-            <img className='rounded-l h-56' src={product?.image} alt="" />
+            <img className='rounded-l h-56' src={product?.image} alt="productImage" />
         </div>
         <p className=' text-center mt-2'>{product?.productname}</p>
         <div className='flex mx-3 mt-3'>
         {[...Array(5)].map((i,ind)=>(
-           <FaStar key={ind||i?.id} className={`${overallRating<ind+1 ? 'text-[#EEEEEE]':'text-yellow-500'  } mt-1`} />
+           <FaStar key={ind} className={`${overallRating<ind+1 ? 'text-[#EEEEEE]':'text-yellow-500'  } mt-1`} />
         ))}
         <p className='ml-5 font-light'>({ratings?.length}Reviews)</p>
 

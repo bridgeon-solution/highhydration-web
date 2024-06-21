@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import client from "../../assets/Supplier/Client.jpg"
 import { CgUnblock } from 'react-icons/cg';
-import SideBar from './Sidebar';
+import SideBar from '../../components/supplier/Sidebar';
 import api from '../../axiosInterceptors';
 
 const SupTable = () => {
@@ -61,14 +61,15 @@ function handleIncrement(){
 }
 
   return (
-    <div className='flex w-full h-screen overflow-hidden '> 
+    <div className='flex w-full h-screen bg-[#e5e1e6]   overflow-hidden '> 
+
     <div className='mt-2 min-h-screen'>
        <SideBar/>
     </div>
 
 
-      <div className="relative w-full overflow-x-auto shadow-md sm:rounded-lg mt-5">
-        <div className="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+      <div className="relative w-full overflow-x-auto shadow-md  h-screen  sm:rounded-lg mt-5 m-2">
+        {/* <div className="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
 
       
 
@@ -77,11 +78,11 @@ function handleIncrement(){
          <input type="text" id="table-search-users" className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for users......."/>
           </div>
 
-        </div>
+        </div> */}
         
 
    <div className="overflow-x-auto">
-  <table className="min-w-full divide-y divide-gray-200">
+  <table className="min-w-full         divide-y divide-gray-200">
     <thead className="bg-gray-50">
       <tr>
         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -187,3 +188,5 @@ function handleIncrement(){
 }
 
 export default SupTable;
+
+

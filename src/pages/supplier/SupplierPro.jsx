@@ -1,4 +1,3 @@
-import React from 'react'
 import client from "../../assets/Supplier/Client.jpg"
 import SupplyChart from './SupplyChart'
 import SideBar from '../../components/supplier/Sidebar'
@@ -24,10 +23,10 @@ const SupplierPro = () => {
 
 
 <div className='  lg:w-1/2  flex s:w-full  s:p-2 s:justify-end sm:justify-end lg:justify-end items-end lg:mr-5 '> 
-<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full  lg:w-36 mb-4 mr-4 ">
+<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full  lg:w-36 mb-4 mr-4 ">
 Edit Profile
 </button>
-<button class="bg-white hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full pl-3     lg:w-36 mb-4 border border-black">
+<button className="bg-white hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full pl-3     lg:w-36 mb-4 border border-black">
 More
 </button>
       </div>

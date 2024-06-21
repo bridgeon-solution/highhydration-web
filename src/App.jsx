@@ -17,7 +17,6 @@ import UserRegister from './components/user/UserRegister'
 import UserLogin from './components/user/UserLogin'
 import EditProfile from './components/user/EditProfile'
 import AllProducts from './pages/Admin/AllProducts'
-import Products from './pages/users/Products'
 import SingleProduct from './pages/users/SingleProduct'
 import Order from './pages/users/Order'
 import Home from './pages/common/home/Home'
@@ -41,6 +40,8 @@ import RolesManagement from './components/Admin/RolesManagement'
 import SupTable from './components/supplier/SupTable'
 import PaymentSuccesMontly from './components/user/PaymentSuccesMontly'
 import PaymentCompleted2 from './components/PaymentCompleted2'
+import Products from './pages/common/products/Products'
+import Notification from './pages/supplier/notification/Notification'
 
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -74,6 +75,7 @@ function App() {
         <Route path='/suplogin' element={<SupLogin/>} />
         <Route path='/supprofile' element={<SupplierPro />} />
         <Route path='/supdashbord' element={<SupplyHome />} />
+        <Route path='/suppliers/notification' element={<Notification />} />
         <Route path='/admindashboard' element={<AdminDashbord />} />
         <Route path='/addproduct' element={<AddProduct />} />
         <Route path='/userRegistration' element={<UserRegister />} />
@@ -85,7 +87,7 @@ function App() {
         <Route path='/orderAllocation' element={<SupTable/>} />
         <Route path='/usermanagement' element={<UserManagement/>} />
         <Route path='/location' element={<Location />} />
-        <Route path='/productList' element={<Products />} />
+        <Route path='/products' element={<Products />} />
         <Route path='/productList/:productId' element={<SingleProduct />} />
         <Route path='/order' element={<Order />} />
         <Route path="payment/success" element={<PaymentSuccess />} /> 

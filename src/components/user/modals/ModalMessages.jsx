@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import useConversation from '../../../zustand/useConversation';
 import api from '../../../axiosInterceptors';
 let adminId = import.meta.env.VITE_ADMIN_ID;

@@ -1,12 +1,11 @@
 
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import DatePicker from 'react-datepicker';
 import { FaCheckCircle } from 'react-icons/fa';
-import { Tooltip } from 'react-tippy';
 import 'react-datepicker/dist/react-datepicker.css';
 import api from '../../axiosInterceptors'
 import { IoAddCircle } from "react-icons/io5";
@@ -29,7 +28,6 @@ const [loader,setLoading]=useState(false)
 const [buttonBg,setButtonBg]=useState(true)
 const userid = localStorage.getItem('userId');
 const navigate=useNavigate()
-const [startDate,setStartDate]=useState(null)
 const[userData,setUserData]=useState([])
 const [visible,setVisble]=useState(true)
 const [modalVisible,setModalVisible]=useState(false)
@@ -71,7 +69,7 @@ const handlechnge=(a)=>{
 const stepdata=(a)=>{
   if(a==="+"){
     if(pageNum===0){
-      console.log(userData);
+    
       if (
         !userData.first_name || 
         !userData.last_name || 
@@ -81,7 +79,7 @@ const stepdata=(a)=>{
         !userData.phone_number
       ) {
         toast.error('Fill the Details Properly');
-        console.log("no data");
+       
         setButtonBg(false);
       }
     if(pageNum==1){
@@ -113,7 +111,6 @@ const stepdata=(a)=>{
       const createOrder=async()=>{
         try {
           const response=await api.post('/orders/',orderData)
-          console.log(response,'orderresponse');
           setOrderDetails(response?.data?.savedOrder)
           if(response.status===201){
             toast.success(response?.data?.message)
@@ -125,10 +122,10 @@ const stepdata=(a)=>{
               type:'preorder'
             }
             const res=await api.post('/payments/',paymentData)
-            console.log(response);
+        
           }
         } catch (error) {
-          console.log(error);
+        
           toast.error(error?.message)
         }
       }
@@ -145,7 +142,7 @@ const stepdata=(a)=>{
         quantity:count,
         selectedDate:selectedDate
        }
-       console.log(queryParams);
+
        const fetchData=async()=>{
         try {
           const response=await api.post(`/payment/payment`,queryParams)

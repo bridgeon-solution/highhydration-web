@@ -38,6 +38,7 @@ return (
     </div>
 
 
+
     <div className="lg:w-2/3 flex flex-col md:flex-row justify-between   lg:flex-row xl:flex-row w-full p-2 lg:mr-5">
 
   <div className="w-full lg:w-1/2 bg-[#e5e1e6]  ">
@@ -82,6 +83,7 @@ return (
     </button>
   </div>
 </div>
+
 
 
 

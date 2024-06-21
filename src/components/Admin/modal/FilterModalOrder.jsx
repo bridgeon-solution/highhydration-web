@@ -11,7 +11,7 @@ setIsOpen(false)
   
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left ">
       <div
         className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-transform transform ${
           isOpen ? 'scale-y-100' : 'scale-y-0'
@@ -19,7 +19,7 @@ setIsOpen(false)
         style={{ transformOrigin: 'top' }}
       >
         <div className='flex justify-between m-2'>
-            <h3 className='mx-2 flex items-center'>Filter <FaFilter className='mx-1' size={10}/></h3> 
+            <h3 className='mx-2 flex items-center text-black'>Filter <FaFilter className='mx-1' size={10}/></h3> 
         <IoIosCloseCircle className='text-red-400' size={17} onClick={()=>setIsOpen(false)} />
         </div>
         <div className="py-1">

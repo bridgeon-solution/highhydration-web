@@ -42,6 +42,7 @@ import PaymentSuccesMontly from './components/user/PaymentSuccesMontly'
 import PaymentCompleted2 from './components/PaymentCompleted2'
 import Products from './pages/common/products/Products'
 import Notification from './pages/supplier/notification/Notification'
+import AdminNotification from './pages/Admin/notification/AdminNotification'
 
 const clientId = "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -99,6 +100,9 @@ function App() {
         <Route path='/rolemanagement' element={<RolesManagement/>}/>
         <Route path="payment/success/monthly" element={<PaymentSuccesMontly/>} /> 
  
+
+
+        <Route path='/admin/notification' element ={<AdminNotification />} />
       </Routes>
       </NavigationProvider>
       <Toaster

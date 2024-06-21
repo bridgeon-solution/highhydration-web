@@ -30,7 +30,7 @@ const AllProducts = () => {
     console.log(data,"datumm");
   return (
     <>
-    <Navbar/>
+    
     
     <div className='flex w-full h-screen overflow-hidden bg-[#F8F8F8]'>
       {loading&&<Loader/>}

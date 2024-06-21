@@ -206,7 +206,9 @@ console.log(userData,"usurrrrrrr");
               />
               {errors.phone_number && <small className="text-xs italic text-red-500">{errors.phone_number}</small>}
               <div className="flex justify-end mt-4">
-                <button type="button" className="hover:bg-[#22B6FE] text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 rounded">
+                <button type="button" 
+                onClick={()=>navigate('/userPro')}
+                className="hover:bg-[#22B6FE] text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 rounded">
                   Cancel
                 </button>
               </div>

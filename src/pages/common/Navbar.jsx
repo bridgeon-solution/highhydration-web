@@ -109,7 +109,7 @@ const Navbar = () => {
 </li>
 
                      <li>
-                       <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate()}>Account</p>
+                       <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate('/orderdetails')}>Orders</p>
                      </li>
                      <li>
                        <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate("/userpro")}>Profile</p>

@@ -26,14 +26,6 @@ function OrderDetails({props}) {
             <p className='text-blue-400 mb-2 mt-1'>{props?.address?.phone_number}</p>
             </div>
         </div>
-        <div className='flex flex-col items-center'>
-            <div className='flex justify-center text-xl font-bold mt-2 mb-2'>
-            <h1>Payment Methord</h1>
-            </div>
-            <div>
-            <p className='text-lg mb-2 mt-1'>Invoce</p>
-            </div>
-        </div>
     </div>
     </>
   )

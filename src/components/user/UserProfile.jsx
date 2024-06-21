@@ -42,23 +42,23 @@ const UserProfile = () => {
 
 
   return (
-    <div className='w-full h-screen mt-2'>
+    <div className='w-full h-screen'>
       {loading && <Loader />}
 
-      <div className='w-full flex flex-col md:flex-row h-1/3 bg-blue-800 '>
+      <div className='w-full flex flex-col md:flex-row h-1/3 bg-gradient-to-b from-blue-200 to-blue-100 rounded-bl-2xl rounded-br-2xl '>
         <div className='w-full md:w-1/3  flex items-center justify-center'>
           <img className='h-56 w-56 border rounded-full' src={userData?.image} alt="User" />
         </div>
         <div className='w-full md:w-1/3 h-3/5  flex items-center justify-center mt-5 md:mt-0'>
           <div>
-            <p className='text-white text-2xl'>Email: {userData?.email}</p>
-            <p className='mt-10 text-white text-2xl'>Phone: {userData?.phone_number}</p>
+            <p className='text-white text-2xl ' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Email: {userData?.email}</p>
+            <p className='mt-10 text-white text-2xl' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Phone: {userData?.phone_number}</p>
           </div>
         </div>
-        <div className='w-full md:w-1/3 h-3/5 bg-gradient-to-r  flex items-center justify-center mt-5 md:mt-0'>
+        <div className='w-full md:w-1/3 h-3/5  flex items-center justify-center mt-5 md:mt-0'>
           <div>
-            <p className='text-white text-2xl'>Address: {userData?.address_line1}</p>
-            <p className='mt-10 text-white text-2xl'>Landmark: {userData?.address_line2}</p>
+            <p className='text-white text-2xl ' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Address: {userData?.address_line1}</p>
+            <p className='mt-10 text-white text-2xl' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Landmark: {userData?.address_line2}</p>
           </div>
         </div>
       </div>

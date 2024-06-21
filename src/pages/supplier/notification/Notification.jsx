@@ -2,15 +2,15 @@ import { useEffect } from "react";
 import SideBar from "../../../components/supplier/Sidebar";
 import api from "../../../axiosInterceptors";
 
-useEffect(()=>{
-    // const fetchNotification = async()=>{
-    //     try {
-    //         const response = await a
-    //     } catch (error) {
-    //         console.log('error in fetch notification')
-    //     }
-    // }
-},[])
+// useEffect(()=>{
+//     // const fetchNotification = async()=>{
+//     //     try {
+//     //         const response = await a
+//     //     } catch (error) {
+//     //         console.log('error in fetch notification')
+//     //     }
+//     // }
+// },[])
 
 const Notification = () => {
   return (

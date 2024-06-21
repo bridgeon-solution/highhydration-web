@@ -34,6 +34,7 @@ const Navbar = () => {
         localStorage.clear();
         toast.success(response.data.message)
         navigate('/home')
+        setUserData([])
       }
       console.log(response);
     } catch (error) {
@@ -86,7 +87,7 @@ const Navbar = () => {
                 <p onClick={() => navigate('/contactus')} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact us</p>
               </li>
               <li className='bg-whit'>
-               <IoIosNotificationsOutline onClick={()=>setIsOpen(true)} className="text-4xl text-white"/>
+               <IoIosNotificationsOutline size={25} onClick={()=>setIsOpen(true)} className="text-4xl mt-2 mx-2 text-white"/>
                {isOpen&&<NotificationModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
               </li>
 
@@ -101,7 +102,7 @@ const Navbar = () => {
                    <div className="absolute z-10 top-16 right-0 bg-slate-500 border rounded-md shadow-lg">
                    <ul className="py-2">
                    <li>
-  <div className="flex items-center space-x-2 py-2  cursor-pointer rounded-lg">
+  <div className="flex items-center space-x-2 py-2 cursor-pointer rounded-lg">
     <img src={userData.image} className="w-10 h-10 rounded-full border" alt="User" />
     <p className="text-white truncate">{userData?.first_name}</p>
   </div>

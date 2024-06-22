@@ -10,7 +10,7 @@ import {
     CardBody,
     Typography,
   } from "@material-tailwind/react";
-import Footer from '../../../components/user/Footer';
+import Footer from '../../../components/user/footer/Footer';
 import Navbar from '../Navbar';
 const Service = () => {
     const shimmerVariants = {
@@ -45,6 +45,7 @@ const Service = () => {
    
     <div className="w-full bg-gradient-to-r bg-[#e5e1e6] flex flex-col justify-center items-center px-1 ">
 <div>
+<Navbar/>
     <motion.h1
   className="text-5xl sm:text-5xl md:text-7xl text-center font-bold text-white relative my-2"
   style={{

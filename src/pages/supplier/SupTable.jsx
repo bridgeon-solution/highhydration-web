@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import client from "../../assets/Supplier/Client.jpg"
 import { CgUnblock } from 'react-icons/cg';
-import SideBar from '../../components/supplier/Sidebar';
-import api from '../../axiosInterceptors';
+import SideBar from '../../components/supplier/sidebar/Sidebar'
+import supplierApi from '../supplier/utils/axiosInterceptors';
 
 const SupTable = () => {
   const[data,setdata]=useState(null)
@@ -16,7 +16,7 @@ console.log(userId,"usurrrr");
   }
   console.log(togle);
   async function fetchData(){
-    const response=await api.get(`/suppliers/supplierPincode/`,{
+    const response=await supplierApi.get(`/suppliers/supplierPincode/`,{
       params: {
         id:userId,
         page:page
@@ -39,7 +39,7 @@ async function  handleButton(id){
 console.log(id,"huzzzzz");
 
 try {
-  const response=await api.patch('suppliers/order',{_id:id})
+  const response=await supplierApi.patch('suppliers/order',{_id:id})
   console.log(response,"huhuhu");
   if(response.status===200){
     fetchData()

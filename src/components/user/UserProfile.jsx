@@ -9,7 +9,8 @@ import OrdersList from './OrdersList'
 import PyamentCompleted from './PyamentCompleted'
 import PendingBills from './PendingBills'
 import ChatModal from './modals/ChatModal'
-
+import Navbar from '../../pages/common/Navbar'
+import EditProfile from './EditProfile'
 
 const UserProfile = () => {
   const userId = localStorage.getItem('userId');
@@ -18,7 +19,7 @@ const UserProfile = () => {
   const [userData, setUserData] = useState([])
   const [loading, setLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false) 
-
+  const[cardData,setCardData]=useState([])
   const[role,setRole]=useState('orders')
 
   useEffect(() => {
@@ -26,7 +27,9 @@ const UserProfile = () => {
       try {
         setLoading(true)
         const response = await api.get(`/users/${userId}`)
+        const response2 = await api.get(`/users/profileData/${userId}`)
         setUserData(response.data.data)
+       setCardData(response2.data.data)
         setLoading(false)
       } catch (error) {
         console.log(error);
@@ -42,26 +45,60 @@ const UserProfile = () => {
 
 
   return (
+    <> 
+    <Navbar/>
     <div className='w-full h-screen'>
+    
       {loading && <Loader />}
 
-      <div className='w-full flex flex-col md:flex-row h-1/3 bg-gradient-to-b from-blue-200 to-blue-100 rounded-bl-2xl rounded-br-2xl '>
+      {/* <div className='w-full flex flex-col  md:flex-row h-1/3 bg-gradient-to-b from-blue-200 to-blue-100 rounded-bl-2xl rounded-br-2xl justify-between'>
+
         <div className='w-full md:w-1/3  flex items-center justify-center'>
           <img className='h-56 w-56 border rounded-full' src={userData?.image} alt="User" />
         </div>
-        <div className='w-full md:w-1/3 h-3/5  flex items-center justify-center mt-5 md:mt-0'>
-          <div>
-            <p className='text-white text-2xl ' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Email: {userData?.email}</p>
-            <p className='mt-10 text-white text-2xl' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Phone: {userData?.phone_number}</p>
-          </div>
+        <div class="flex flex-col md:flex-row justify-between items-center p-2 lg:mr-5 mx-5">
+
+  <div class="w-full bg-gradient-to-b from-blue-200 to-blue-100 lg:ml-2 lg:mr-0 rounded-lg ">
+    <p class="text-2xl font-bold text-center mt-2 bg-gradient-to-b from-blue-200 to-blue-200 py-2 rounded-t-lg">Personal Details</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 p-4">
+      <div class="flex flex-col items-center lg:items-start space-y-2 bg-gradient-to-b from-blue-200 to-blue-100 shadow-xl rounded-lg p-4">
+        <p class="text-lg font-semibold text-gray-700">First Name <span class="text-gray-500">{userData?.first_name}</span></p>
+        <p class="text-lg font-semibold text-gray-700">Last Name <span class="text-gray-500">{userData?.last_name}</span></p>
+      </div>
+
+      <div class="flex flex-col items-center lg:items-start space-y-2 bg-gradient-to-b from-blue-200 to-blue-100 shadow-xl rounded-lg p-4">
+        <p class="text-lg font-semibold text-gray-700">Email <span class="text-gray-500">{userData?.email}</span></p>
+        <p class="text-lg font-semibold text-gray-700">Phone <span class="text-gray-500">{userData?.phone_number}</span></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div> */}
+
+<div className="w-full flex flex-col md:flex-row h-auto bg-gradient-to-b from-blue-500 to-blue-200 rounded-bl-2xl rounded-br-2xl justify-between p-4 md:p-0">
+  <div className="w-full md:w-1/3 flex items-center justify-center p-4 md:p-0">
+    <img className="h-56 w-56 border rounded-full" src={userData?.image} alt="User" />
+  </div>
+  <div className="w-full md:w-2/3 flex flex-col justify-center p-4">
+    <div className="w-full bg-gradient-to-b from-blue-500 to-blue-200 rounded-lg shadow-lg">
+      <p className="text-2xl font-bold text-center mt-2 bg-gradient-to-b from-blue-500 to-blue-200 py-2 rounded-t-lg">Personal Details</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div className="flex flex-col items-center md:items-start space-y-2 bg-gradient-to-b from-blue-400 to-blue-100 shadow-xl rounded-lg p-4">
+          <p className="text-lg font-semibold text-gray-700">First Name <span className="text-gray-500">{userData?.first_name}</span></p>
+          <p className="text-lg font-semibold text-gray-700">Last Name <span className="text-gray-500">{userData?.last_name}</span></p>
         </div>
-        <div className='w-full md:w-1/3 h-3/5  flex items-center justify-center mt-5 md:mt-0'>
-          <div>
-            <p className='text-white text-2xl ' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Address: {userData?.address_line1}</p>
-            <p className='mt-10 text-white text-2xl' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #728398, #39414c)', '-webkit-background-clip': 'text' }}>Landmark: {userData?.address_line2}</p>
-          </div>
+        <div className="flex flex-col items-center md:items-start space-y-2 bg-gradient-to-b from-blue-400 to-blue-100 shadow-xl rounded-lg p-4">
+          <p className="text-lg font-semibold text-gray-700">Email <span className="text-gray-500">{userData?.email}</span></p>
+          <p className="text-lg font-semibold text-gray-700">Phone <span className="text-gray-500">{userData?.phone_number}</span></p>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+
 
       <div className='w-full font-bold flex items-center mt-5'>
         <p className='ml-8 text-3xl text-slate-600'>{userData?.first_name} {userData?.last_name}</p>
@@ -74,7 +111,10 @@ const UserProfile = () => {
         <button className="bg-[#3751FE] text-white rounded-2xl px-5 py-2">
           Open to
         </button>
-        <button className="bg-[#D9D9D9] text-[#3751FE] rounded-2xl px-5 py-2" onClick={() => navigate('/editPro')}>
+        <button className="bg-[#D9D9D9] text-[#3751FE] rounded-2xl px-5 py-2"
+         onClick={() => navigate('/editPro')}
+       
+         >
           Add Profile Section
         </button>
         <button className="bg-[#3751FE] text-white rounded-2xl px-5 py-2" onClick={toggleModal}>
@@ -84,40 +124,56 @@ const UserProfile = () => {
 
       <div className='flex justify-around flex-wrap m-5'  >
 
- 
-        <div className="w-full sm:w-6/12 md:w-6/12 lg:w-3/12 px-3 text-center mb-5" onClick={()=>setRole('orders')} >
-          <div className="py-4 border rounded-lg bg-gray-200 shadow-xl">
-            <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-black text-lg font-bold tracking-wide">Total Orders</h6>
-            <div className="flex items-center justify-center">
-              <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-black text-lg font-bold tracking-wide">20</h6>
-            </div>
-            <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-black text-lg font-thin tracking-wide">last updated at 23/04/200</h6>
-          </div>
-        </div>
+      <div className='flex justify-around flex-wrap m-5'>
+</div>
 
 
 
-        <div className="w-full sm:w-6/12 md:w-6/12 lg:w-3/12 px-3 text-center mb-5" onClick={()=>setRole('payments')}  >
-          <div className="py-4 border rounded-lg bg-gray-200 shadow-xl">
-            <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-gradient-to-tl from-green-700 to-green-500 text-lg font-bold tracking-wide">Last Payments</h6>
-            <div className="flex items-center justify-center">
-              <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-gradient-to-tl from-green-700 to-green-500 text-lg font-bold tracking-wide">10</h6>
-            </div>
-            <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-black text-lg font-thin tracking-wide">last updated at 23/04/200</h6>
-          </div>
-        </div>
 
+
+
+<div onClick={()=>setRole('orders')} 
+className="bg-gradient-to-b from-red-200 to-red-100 w-80 h-40 rounded-lg p-6 flex flex-col justify-center items-center shadow-lg transform hover:scale-105 transition-transform duration-300">
+  <p className="text-gray-500 font-light text-lg mb-1">Total Orders</p>
+  <p className="text-4xl md:text-5xl font-semibold text-transparent bg-gradient-to-b from-blue-500 to-blue-300 bg-clip-text">
+    {cardData?.orders}
+  </p>
+  <h6 className="mt-2 text-transparent bg-clip-text bg-gradient-to-b from-black to-gray-800 text-sm font-thin tracking-wide">
+    Last updated at {cardData?.formattedDate}
+  </h6>
+</div>
+
+
+<div  onClick={()=>setRole('payments')}
+className="bg-gradient-to-b from-green-200 to-green-100 w-80 h-40 rounded-lg p-6 flex flex-col justify-center items-center shadow-lg transform hover:scale-105 transition-transform duration-300">
+  <p className="text-gray-500 font-light text-lg mb-1">Last Payments</p>
+  <p className="text-4xl md:text-5xl font-semibold text-transparent bg-gradient-to-b from-blue-500 to-blue-300 bg-clip-text">
+    {cardData?.payment}
+  </p>
+  <h6 className="mt-2 text-transparent bg-clip-text bg-gradient-to-b from-black to-gray-800 text-sm font-thin tracking-wide">
+    Last updated at {cardData?.formattedDate}
+  </h6>
+</div>
+
+
+<div  onClick={()=>setRole('pending')}
+className="bg-gradient-to-b from-red-200 to-red-100 w-80 h-40 rounded-lg p-6 flex flex-col justify-center items-center shadow-lg transform hover:scale-105 transition-transform duration-300">
+  <p className="text-gray-500 font-light text-lg mb-1">Last Payments</p>
+  <p className="text-4xl md:text-5xl font-semibold text-transparent bg-gradient-to-b from-blue-500 to-blue-300 bg-clip-text">
+    3
+  </p>
+  <h6 className="mt-2 text-transparent bg-clip-text bg-gradient-to-b from-black to-gray-800 text-sm font-thin tracking-wide">
+    Last updated at {cardData?.formattedDate}
+  </h6>
+</div>
+   
+
+
+
+   
   
     
-        <div className="w-full sm:w-6/12 md:w-6/12 lg:w-3/12 px-3 text-center mb-5"  onClick={()=>setRole('pending')}>
-          <div className="py-4 border rounded-lg bg-gray-200 shadow-xl">
-            <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-gradient-to-tl from-red-700 to-red-500 text-lg font-bold tracking-wide">Pending</h6>
-            <div className="flex items-center justify-center">
-              <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-gradient-to-tl from-red-700 to-red-500 text-lg font-bold tracking-wide">10</h6>
-            </div>
-            <h6 className="mb-2 text-transparent z-1 bg-clip-text bg-black text-lg font-thin tracking-wide">last updated at 23/04/200</h6>
-          </div>
-        </div>
+      
       
 
       </div>
@@ -156,6 +212,7 @@ const UserProfile = () => {
  {isModalOpen && <ChatModal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
 
     </div>
+    </>
   )
 }
 

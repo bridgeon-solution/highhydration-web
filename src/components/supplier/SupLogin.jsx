@@ -78,7 +78,7 @@ return (
         </div>
         <Link to={'/userlogin'}>
 
-<button className="md:w-[200px]   w-[150px] h-[50px] sm:px-8  rounded-lg font-medium bg-violet-500 text-white-500 hover:bg-violet-800 transition-all duration-300 ease-in-out focus:outline-none mb-6"   >
+<button className="md:w-[200px]   w-[150px] h-[50px] sm:px-8 text-white   rounded-lg font-medium bg-violet-500 text-white-500 hover:bg-violet-800 transition-all duration-300 ease-in-out focus:outline-none mb-6"   >
  Supplier Login
 </button>
 </Link>
@@ -88,7 +88,7 @@ return (
               <div className="mx-auto max-w-xs">
                 <input className="w-full mb-5  px-4 sm:px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200  text-black placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white " type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} />
                 <input className="w-full mb-5   px-4 sm:px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 text-black placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white " type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                <button className="w-full px-4 sm:px-8 py-3 rounded-lg font-medium bg-violet-500 text-white-500 hover:bg-violet-800 transition-all duration-300 ease-in-out focus:outline-none mb-6"
+                <button className="w-full px-4 sm:px-8 py-3 text-white   rounded-lg font-medium bg-violet-500  hover:bg-violet-800 transition-all duration-300 ease-in-out focus:outline-none mb-6"
                 onClick={handleSubmit}>
                   Login In
                 </button>

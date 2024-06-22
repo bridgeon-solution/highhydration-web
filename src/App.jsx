@@ -11,7 +11,6 @@ import AddProduct from './pages/Admin/AddProduct'
 import SupplierMangement from './pages/Admin/SupplierMangement'
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import Location from './pages/Admin/Location'
-import Navbar from './pages/common/Navbar'
 import UserProfile from './components/user/UserProfile'
 import UserRegister from './components/user/UserRegister'
 import UserLogin from './components/user/UserLogin'

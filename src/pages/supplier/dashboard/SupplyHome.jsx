@@ -1,7 +1,7 @@
 import React from 'react'
 import ad from "../../../assets/Supplier/sup1.png"
 import SupTable from '../orders/SupTable'
-import SideBar from '../../../components/supplier/Sidebar'
+import SideBar from '../../../components/supplier/sidebar/Sidebar'
 
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AdminSidebar from "../../../components/Admin/AdminSidebar";
+import AdminSidebar from "../../../components/Admin/sidebar/AdminSidebar";
 import { CiSearch } from "react-icons/ci";
 import { FiMessageCircle } from "react-icons/fi";
 import { MdBlock, MdDeleteOutline } from "react-icons/md";
@@ -8,7 +8,7 @@ import { Button, IconButton } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Loader from "../../../components/Loader";
-import SupplierMangementModal from "../../../components/Admin/SupplierManagementModal";
+import SupplierMangementModal from "../../../components/Admin/modal/SupplierManagementModal";
 import adminApi from "./../utils/axiosInterceptors";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const manageUrl=import.meta.env.VITE_BASE_URL_SUPPLIERMANGEMENT;

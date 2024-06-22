@@ -12,7 +12,7 @@ import { IoAddCircle } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../../components/Loader';
 import toast from 'react-hot-toast'; 
-import OrderDetails from '../../../components/user/OrderDetails';
+import OrderDetails from '../../../components/user/order/OrderDetails';
 const Order = ({product,setModalOpen}) => {
 const [count,setcound]=useState(1)
 const steps = [

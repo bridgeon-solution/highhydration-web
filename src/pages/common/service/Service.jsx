@@ -10,7 +10,7 @@ import {
     CardBody,
     Typography,
   } from "@material-tailwind/react";
-import Footer from '../../../components/user/Footer';
+import Footer from '../../../components/user/footer/Footer';
 import Navbar from '../Navbar';
 const Service = () => {
     const shimmerVariants = {

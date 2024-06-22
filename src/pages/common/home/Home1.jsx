@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { motion } from 'framer-motion';
-import HomeCarousel from '../../../components/user/HomeCorousel';
+import HomeCarousel from '../../../components/user/home/HomeCorousel';
 import {useNavigate } from 'react-router-dom';
 
 

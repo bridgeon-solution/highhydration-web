@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductList from "../../../components/user/ProductList";
+import ProductList from "../../../components/user/products/ProductList";
 import backgroundImg from "../../../assets/Users/paint3.png";
 import { MdWater } from "react-icons/md";
 import Pro1 from "../../../assets/Users/pro1.png";

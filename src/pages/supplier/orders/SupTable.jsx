@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import client from "../../../assets/Supplier/Client.jpg"
 import { CgUnblock } from 'react-icons/cg';
-import SideBar from '../../../components/supplier/Sidebar';
+import SideBar from '../../../components/supplier/sidebar/Sidebar';
 import api from '../../../axiosInterceptors';
 import supplierApi from '../utils/axiosInterceptors';
 

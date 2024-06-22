@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AdminSidebar from '../../../components/Admin/AdminSidebar';
+import AdminSidebar from '../../../components/Admin/sidebar/AdminSidebar';
 import ad from '../../../assets/Supplier/sup1.png';
 import img from '../../../assets/Supplier/uploadimage.jpg';
 import { IoMdAdd } from "react-icons/io";

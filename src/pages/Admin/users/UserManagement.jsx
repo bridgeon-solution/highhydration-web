@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AdminSidebar from "../../../components/Admin/AdminSidebar";
+import AdminSidebar from "../../../components/Admin/sidebar/AdminSidebar";
 import { CiSearch } from "react-icons/ci";
 import { FiMessageCircle } from "react-icons/fi";
 import { MdBlock, MdDeleteOutline } from "react-icons/md";

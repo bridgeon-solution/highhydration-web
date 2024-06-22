@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AdminSidebar from '../../../components/Admin/AdminSidebar';
+import AdminSidebar from '../../../components/Admin/sidebar/AdminSidebar';
 import AdminChatModal from '../../../components/Admin/modal/AdminChatModal';
 import useConversation from '../../../zustand/useConversation';
 import adminApi from './../utils/axiosInterceptors';

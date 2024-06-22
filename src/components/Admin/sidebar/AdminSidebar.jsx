@@ -76,14 +76,21 @@ const AdminSidebar = () => {
 
               <CDBSidebarMenuItem icon='fas fa-shopping-bag'>Products</CDBSidebarMenuItem>
             </NavLink>
+
+            <NavLink   to={'/admin/notification'}  activeClassName="activeClicked" >
+              <CDBSidebarMenuItem icon='fas fa-bell'>Notification</CDBSidebarMenuItem>
+            </NavLink>
+
             {supplierAuth.includes('/suppliermanagement') ?
             <NavLink  to="/suppliermanagement" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon='user'>Supplier </CDBSidebarMenuItem>
-            </NavLink>:""}
+              <CDBSidebarMenuItem icon='fas fa-truck'>Supplier </CDBSidebarMenuItem>
+            </NavLink>     :""}
+  
+
             {supplierAuth.includes('/usermanagement') ?
-            <NavLink   to={'/usermanagement'}  activeClassName="activeClicked" >
-              <CDBSidebarMenuItem icon='fas fa-bell'>Users</CDBSidebarMenuItem>
-            </NavLink>:""}
+            <NavLink to={'/usermanagement'} activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon='fas fa-user'>Users</CDBSidebarMenuItem>
+            </NavLink>    :""}
            
             <NavLink to="/location"  activeClassName="activeClicked">
               <CDBSidebarMenuItem icon='fas fa-map-marker-alt'>Location</CDBSidebarMenuItem>

@@ -45,6 +45,7 @@ import Notification from "./pages/supplier/notification/Notification";
 import AdminProtectRouter from "./pages/Admin/utils/ProtectRouter";
 import SupplierProtectRoute from "./pages/supplier/utils/ProtectRouter";
 import UserProtectRouter from "./pages/users/utils/ProtectRouter";
+import AdminNotification from './pages/Admin/notification/AdminNotification'
 
 const clientId =
   "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
@@ -84,7 +85,6 @@ function App() {
             <Route path="/orderAllocation" element={<SupTable />} />
             <Route path="/suppliers/notification" element={<Notification />} />
           </Route>
-
           <Route element={<AdminProtectRouter />}>
             <Route path="/admindashboard" element={<AdminDashbord />} />
             <Route path="/addproduct" element={<AddProduct />} />
@@ -96,6 +96,8 @@ function App() {
             <Route path="/location" element={<Location />} />
             <Route path="/suppliermanagement" element={<SupplierMangement />} />
             <Route path="/rolemanagement" element={<RolesManagement />} />
+            <Route path='/admin/notification' element ={<AdminNotification />} />
+
           </Route>
 
           <Route element={<UserProtectRouter />}>
@@ -115,6 +117,10 @@ function App() {
           <Route path="/userRegistration" element={<UserRegister />} />
           <Route path="/userlogin" element={<UserLogin />} />
         </Routes>
+
+
+
+
       </NavigationProvider>
       <Toaster position="top-center" reverseOrder={false} />
     </>

@@ -120,9 +120,9 @@ allusers()
       <div>
         <AdminSidebar />
       </div>
-      <div className=" w-full h-screen ">
+      <div className=" w-full h-screen bg-[#e5e1e6] ">
         <div className="flex w-full h-28 justify-between items-center">
-          <p className="ml-5 text-2xl font-bold">Manage Suppliers</p>
+          <p className="ml-5 text-2xl  text-     font-bold">Manage Suppliers</p>
           <div className="flex mr-2">
             <input
               type="text"
@@ -158,12 +158,7 @@ allusers()
                 >
                   Join Date
                 </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-l font-medium "
-                >
-                  Message
-                </th>
+          
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-l font-medium "
@@ -194,13 +189,7 @@ allusers()
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {person.createdAt || "Nodate"}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {" "}
-                    {/* Assuming there's a message field in the person object */}
-                    <button className="btn bg-[#0A65CC] w-20 flex justify-center rounded-md">
-                      <FiMessageCircle />
-                    </button>
-                  </td>
+              
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {person?.is_blocked==true? (
                       <button onClick={()=>blockUnblock(person._id,true)} className="btn bg-orange-400 w-20 flex justify-center rounded-md">

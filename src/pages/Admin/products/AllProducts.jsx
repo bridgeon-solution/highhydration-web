@@ -31,15 +31,15 @@ const AllProducts = () => {
     console.log(data,"datumm");
   return (
     <>
-    <Navbar/>
     
-    <div className='flex w-full h-screen overflow-hidden bg-[#F8F8F8]'>
+    
+    <div className='flex w-full h-screen overflow-hidden bg-[#e5e1e6]'>
       {loading&&<Loader/>}
     <div className='mt-2 min-h-screen'>
       <AdminSidebar />
     </div>
   
-    <div className='mt-1 w-full overflow-scroll overscroll-none'>
+    <div className='mt-1 m-2 w-full overflow-scroll overscroll-none'>
 
       <div className='w-full h-1/4 flex border rounded-lg' style={{ backgroundColor: '#303c6c' }}>
         <div className='w-3/4'>

@@ -158,7 +158,7 @@ const [loading,setLoading]=useState(false)
   };
 
   return (
-    <div className="flex w-full h-screen overflow-hidden bg-[#F8F8F8]">
+    <div className="flex w-full h-screen overflow-hidden bg-[#e5e1e6]">
   {loading && <Loader />}
   <div className="min-h-screen">
     <AdminSidebar />

@@ -125,14 +125,14 @@ const UserManagement = () => {
 
   
 return (
-    <div className="flex h-screen ">
+    <div className="flex h-screen  bg-[#e5e1e6]">
       {loading&&<Loader/>}
       <div>
         <AdminSidebar />
       </div>
       <div className=" w-full h-screen ">
         <div className="flex w-full h-28 justify-between items-center">
-          <p className="ml-5 text-2xl font-bold">Manage Suppliers</p>
+          <p className="ml-5 text-2xl font-bold">Manage Users</p>
           <div className="flex mr-2">
             <input
               type="text"
@@ -168,12 +168,7 @@ return (
                 >
                   email
                 </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-l font-medium "
-                >
-                  Message
-                </th>
+           
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-l font-medium "
@@ -203,13 +198,7 @@ return (
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {person.email }
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {" "}
                
-                    <button className="btn bg-[#0A65CC] w-20 flex justify-center rounded-md">
-                      <FiMessageCircle />
-                    </button>
-                  </td>
              
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
   {person?.is_blocked ? (
@@ -320,6 +309,8 @@ return (
           >
            Delete
           </button>
+
+
           <button 
             type="button" 
             className="text-gray-700 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg px-5 py-2.5 text-center"

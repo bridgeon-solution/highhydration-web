@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import client from "../../../assets/Supplier/Client.jpg"
+import client from "../../assets/Supplier/Client.jpg"
 import { CgUnblock } from 'react-icons/cg';
-import SideBar from '../../../components/supplier/sidebar/Sidebar';
-import supplierApi from '../utils/axiosInterceptors';
+import SideBar from '../../components/supplier/sidebar/Sidebar'
+import supplierApi from '../supplier/utils/axiosInterceptors';
 
 const SupTable = () => {
   const[data,setdata]=useState(null)

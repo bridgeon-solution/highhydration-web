@@ -66,7 +66,7 @@ try {
       </div>
       <Link to={'/suplogin'}>
 
-<button className="md:w-[200px]   w-[150px] h-[50px] sm:px-8  rounded-lg font-medium bg-blue-500 text-white-500 hover:bg-violet-800 transition-all duration-300 ease-in-out focus:outline-none mb-6"   >
+<button className="md:w-[200px]  text-white w-[150px] h-[50px] sm:px-8  rounded-lg font-medium bg-blue-500 text-white-500 hover:bg-violet-800 transition-all duration-300 ease-in-out focus:outline-none mb-6"   >
   User Login
 </button>
 </Link>

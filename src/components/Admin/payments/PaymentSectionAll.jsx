@@ -65,7 +65,7 @@ const PaymentSectionAll = ({filter,setLoading}) => {
   }
 
   return (
-    <div className='w-5/6'>
+    <div className='w-5/6 overflow-auto'>
       <div className='w-full bg-white rounded-2xl'>
         <table className='w-full bg-white rounded-2xl'>
         <thead className="bg-gray-50 ">

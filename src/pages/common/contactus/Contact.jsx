@@ -10,21 +10,17 @@ import Navbar from '../Navbar';
 
 const Contact = () => {
   return (
-    <> 
+    <div className='h-screen overflow-hidden'> 
       <Navbar/> 
-   
-    <div className='bg-[#EFF0F3] p-2'>
-    <p className="text-center text-3xl font-bold">Contact us</p>
-      <p className="text-center text-xl mt-2">
-        Any question or remarks? just write a message!
-      </p>
-      <div className="flex flex-col md:flex-row mt-5 m-2">
-        <div className="md:w-1/3 bg-[#22B6FE] p-6 rounded-lg text-white">
-          <p className="text-center text-3xl font-bold">Contact Information</p>
-          <p className="text-center text-xl mb-6">
-            Any question or remarks? just write a message!
-          </p>
+    <div className='bg-[#EFF0F3] p-2 h-screen'>
 
+      <p className='text-center text-3xl font-bold mt-3'>Contact us</p>
+      <p className='text-center text-xl mt-2'>Any question or remarks? just write a message!</p>
+
+      <div className='flex flex-col md:flex-row mt-5 m-2'>
+        <div className='md:w-1/3 bg-[#22B6FE] p-6 rounded-lg text-white'>
+          <p className='text-center text-3xl font-bold'>Contact Information</p>
+          <p className='text-center text-xl mb-6'>Any question or remarks? just write a message!</p>
           <div className="flex items-center p-4 mb-4 rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out">
             <FiPhoneCall className="mr-2 text-2xl" />
             <p className="text-lg font-semibold">+9596979894</p>
@@ -99,7 +95,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
-    </>
+    </div>
   );
 };
 

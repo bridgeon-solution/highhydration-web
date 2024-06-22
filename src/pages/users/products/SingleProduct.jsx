@@ -152,7 +152,7 @@ const SingleProduct = () => {
         </div>
       )}
       <div>
-        {!modalOpen && (
+        {!modalOpen &&!loader && (
           <div className="w-3/4 m-auto mt-5">
             <div className="slider-container">
               <Slider {...settings}>
@@ -165,8 +165,8 @@ const SingleProduct = () => {
                         alt={i?.userId?.first_name}
                       />
                     </div>
-                    <div className="p-4">
-                      <p className="text-lg sm:text-xl font-semibold">
+                    <div className="p-4 mt-[-70px]">
+                      <p className="text-lg sm:text-4xl font-semibold">
                         {i?.username}
                       </p>
                       <p className="mt-2 text-sm sm:text-base text-center">

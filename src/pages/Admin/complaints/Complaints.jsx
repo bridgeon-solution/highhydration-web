@@ -72,6 +72,12 @@ const [conversations, setConversations] = useState([]);
 
 
         <div className="relative flex flex-wrap justify-evenly gap-4 w-full p-4  overflow-scroll">
+        {isModalOpen && (
+                <AdminChatModal
+                   
+                    closeModal={closeModal}
+                />
+            )}
     {message.map((message) => (
         <div key={message._id} 
         className="w-full sm:w-1/2 lg:w-2/5 flex flex-col items-center bg-white shadow-xl rounded-lg p-6 transform hover:scale-105 transition-transform duration-300 ease-in-out"
@@ -109,12 +115,7 @@ const [conversations, setConversations] = useState([]);
 
   
 
-            {isModalOpen && (
-                <AdminChatModal
-                   
-                    closeModal={closeModal}
-                />
-            )}
+        
 
         </div>
     );

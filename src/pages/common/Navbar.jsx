@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../assets/logorm.png'
+import logo from '../../assets/logorm.png';
 import client from '../../assets/Clientimage.jpg';
 import { Navigate, useNavigate } from 'react-router-dom';
 import api from '../../axiosInterceptors';
 import toast from 'react-hot-toast';
 import { IoIosNotificationsOutline } from "react-icons/io";
 import NotificationModal from '../../components/user/modals/notification/NotificationModal';
+import useConversation from '../../zustand/useConversation';
+import useListenNotification from '../../hooks/useListenNotification';
 
 const Navbar = () => {
-  const navigate = useNavigate()
-  const userId = localStorage.getItem('userId')
+  const navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [loading, setLoading] = useState(false)
-  const [userData, setUserData] = useState([])
-  const [isOpen,setIsOpen]=useState(false)
+  const [loading, setLoading] = useState(false);
+  const [userData, setUserData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const { notification, setNotification } = useConversation();
+  const [unseenCount, setUnseenCount] = useState(0);
+
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
-  }
+  };
 
   async function logout() {
     const refreshToken = localStorage.getItem("refresh_token");
@@ -32,9 +38,9 @@ const Navbar = () => {
       });
       if (response.status === 200) {
         localStorage.clear();
-        toast.success(response.data.message)
-        navigate('/home')
-        setUserData([])
+        toast.success(response.data.message);
+        navigate('/home');
+        setUserData([]);
       }
       console.log(response);
     } catch (error) {
@@ -42,31 +48,70 @@ const Navbar = () => {
     }
   }
 
-
-
-
-
   useEffect(() => {
     async function fetchData() {
       try {
-        setLoading(true)
-        const response = await api.get(`/users/${userId}`)
-        setUserData(response.data.data)
-        setLoading(false)
+        setLoading(true);
+        const response = await api.get(`/users/${userId}`);
+        setUserData(response.data.data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
     }
-    fetchData()
-  }, [])
+    fetchData();
+  }, [userId]);
+ 
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const response = await api.get(`/notifications/${userId}`);
+        if (response.status === 200) {
+          setNotification(response.data.notification);
+          setUnseenCount(notification.filter(n => !n.user_seen).length);
+        }
+      } catch (error) {
+        console.log('error in get notification', error);
+      }
+    };
+
+    if (userId) {
+      fetchNotifications();
+    }
+  }, [notification.length]);
 
 
+  const handleNotificationClick = () => {
+    setIsOpen(true);
+    markNotificationsAsSeen();
+  };
 
+  const markNotificationsAsSeen = async () => {
+    try {
+      const unseenNotifications = notification.filter(n => !n.user_seen);
+      if (unseenNotifications.length > 0) {
+        await api.post(`/notifications/mark-seen/${userId}`, {
+          userType:'user',
+          notificationIds: unseenNotifications.map(n => n._id),
+        });
+        // Update local state to mark notifications as seen
+        const updatedNotifications = notification.map(n => ({
+          ...n,
+          user_seen: true
+        }));
+        setNotification(updatedNotifications);
+        setUnseenCount(0);
+      }
+    } catch (error) {
+      console.log('error in marking notifications as seen', error);
+    }
+  };
+  console.log(notification,'navbar notiiii')
+  useListenNotification()
   return (
     <>
-
-      <nav className="bg-[#0E2C72] border-gray-200 fixed top-0 left-0 w-full z-50 shadow-2xl" >
-        <div className="max-w-full flex flex-wrap items-center justify-between  p-1">
+      <nav className="bg-[#0E2C72] border-gray-200 fixed top-0 left-0 w-full z-50 shadow-2xl">
+        <div className="max-w-full flex flex-wrap items-center justify-between p-1">
           <img src={logo} className="h-10" alt="Logo" onClick={() => navigate('/home')} />
 
           <div className={`w-full md:block md:w-auto ${isMenuOpen ? 'block' : 'hidden'}`} id="navbar-default">
@@ -86,9 +131,14 @@ const Navbar = () => {
               <li>
                 <p onClick={() => navigate('/contactus')} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact us</p>
               </li>
-              <li className='bg-whit'>
-               <IoIosNotificationsOutline size={25} onClick={()=>setIsOpen(true)} className="text-4xl mt-2 mx-2 text-white"/>
-               {isOpen&&<NotificationModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
+              <li className='relative'>
+                <IoIosNotificationsOutline size={25} onClick={handleNotificationClick} className="text-4xl mt-2 mx-2 text-white" />
+                {unseenCount > 0 && (
+                  <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                    {unseenCount}
+                  </span>
+                )}
+                {isOpen && <NotificationModal isOpen={isOpen} setIsOpen={setIsOpen} />}
               </li>
 
               {userId ? (

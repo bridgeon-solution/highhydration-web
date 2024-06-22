@@ -3,12 +3,14 @@ import client from "../../assets/Supplier/Client.jpg"
 import { CgUnblock } from 'react-icons/cg';
 import SideBar from '../../components/supplier/Sidebar';
 import api from '../../axiosInterceptors';
+import useConversation from '../../zustand/useConversation';
 
 const SupTable = () => {
   const[data,setdata]=useState(null)
   const[pagination,setPagination]=useState(null)
   const [page,setpage]=useState(1)
   const userId=localStorage.getItem('supplierid')
+  const { notification, setNotification } = useConversation();
 console.log(userId,"usurrrr");
   const[togle,setToggle]=useState(false)
   function toggleDropdown(){
@@ -39,9 +41,12 @@ async function  handleButton(id){
 console.log(id,"huzzzzz");
 
 try {
-  const response=await api.patch('suppliers/order',{_id:id})
+  const response=await api.patch(`/suppliers/order/${userId}`,{_id:id})
   console.log(response,"huhuhu");
   if(response.status===200){
+    const data = response?.data?.newNotification;
+    console.log(response?.data?.newNotification,'sub order status')
+    setNotification([...notification, data]);
     fetchData()
   }
 } catch (error) {

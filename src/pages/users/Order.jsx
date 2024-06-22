@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import toast from 'react-hot-toast'; 
 import OrderDetails from '../../components/user/OrderDetails';
+import useListenNotification from '../../hooks/useListenNotification';
+import useConversation from '../../zustand/useConversation';
 const Order = ({product,setModalOpen}) => {
 const [count,setcound]=useState(1)
 const steps = [
@@ -32,6 +34,7 @@ const[userData,setUserData]=useState([])
 const [visible,setVisble]=useState(true)
 const [modalVisible,setModalVisible]=useState(false)
 const [orderDetails,setOrderDetails]=useState()
+const {notification , setNotification} = useConversation()
 
 useEffect(()=>{
 async function fetchData(){
@@ -118,7 +121,10 @@ const stepdata=(a)=>{
         try {
           const response=await api.post('/orders/',orderData)
           setOrderDetails(response?.data?.savedOrder)
+          console.log(response?.data?.savedNotification,'noti')
           if(response.status===201){
+            const data = response?.data?.savedNotification;
+            setNotification([...notification, data]);
             toast.success(response?.data?.message)
             const paymentData={
               userId:userid,
@@ -128,6 +134,7 @@ const stepdata=(a)=>{
               type:'preorder'
             }
             const res=await api.post('/payments/',paymentData)
+          
         
           }
         } catch (error) {
@@ -190,7 +197,7 @@ if(a==="-"){
   }
 }
   }
-
+  useListenNotification()
   return (
     <div className=' bg-opacity-5 justify-center flex'>
       {loader&&<Loader/>}

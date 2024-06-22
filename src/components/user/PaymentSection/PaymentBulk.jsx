@@ -3,7 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import toast from 'react-hot-toast';
 import api from '../../../axiosInterceptors';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import Pdffile from '../Pdffile';
+import Pdffile from './Pdffile';
 
 const PaymentBulk = ({name}) => {
   const [currentPage, setCurrentPage] = useState(1);

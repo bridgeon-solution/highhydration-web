@@ -85,12 +85,12 @@ const UserProfile = () => {
       <p className="text-2xl font-bold text-center mt-2 bg-gradient-to-b from-blue-500 to-blue-200 py-2 rounded-t-lg">Personal Details</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
         <div className="flex flex-col items-center md:items-start space-y-2 bg-gradient-to-b from-blue-400 to-blue-100 shadow-xl rounded-lg p-4">
-          <p className="text-lg font-semibold text-gray-700">First Name <span className="text-gray-500">{userData?.first_name}</span></p>
-          <p className="text-lg font-semibold text-gray-700">Last Name <span className="text-gray-500">{userData?.last_name}</span></p>
+          <p className="text-lg font-semibold text-gray-700">First Name: <span className="text-gray-500">{userData?.first_name}</span></p>
+          <p className="text-lg font-semibold text-gray-700">Last Name: <span className="text-gray-500">{userData?.last_name}</span></p>
         </div>
         <div className="flex flex-col items-center md:items-start space-y-2 bg-gradient-to-b from-blue-400 to-blue-100 shadow-xl rounded-lg p-4">
-          <p className="text-lg font-semibold text-gray-700">Email <span className="text-gray-500">{userData?.email}</span></p>
-          <p className="text-lg font-semibold text-gray-700">Phone <span className="text-gray-500">{userData?.phone_number}</span></p>
+          <p className="text-lg font-semibold text-gray-700">Email: <span className="text-gray-500">{userData?.email}</span></p>
+          <p className="text-lg font-semibold text-gray-700">Phone: <span className="text-gray-500">{userData?.phone_number}</span></p>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@ const UserProfile = () => {
 
       <div className="ml-2 mt-3 md:ml-8 flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3">
         <button className="bg-[#3751FE] text-white rounded-2xl px-5 py-2">
-          Open to
+          Notification
         </button>
         <button className="bg-[#D9D9D9] text-[#3751FE] rounded-2xl px-5 py-2"
          onClick={() => navigate('/editPro')}

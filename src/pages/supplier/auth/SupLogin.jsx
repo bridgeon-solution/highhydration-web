@@ -83,7 +83,7 @@ return (
         <Link to={'/userlogin'}>
 
 <button className="md:w-[200px]   w-[150px] h-[50px] sm:px-8 text-white   rounded-lg font-medium bg-violet-500 text-white-500 hover:bg-violet-800 transition-all duration-300 ease-in-out focus:outline-none mb-6"   >
- Supplier Login
+ User Login
 </button>
 </Link>
           <div className=" flex flex-col items-center bg-white">

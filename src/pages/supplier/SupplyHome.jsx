@@ -3,6 +3,9 @@ import ad from "../../assets/Supplier/sup1.png"
 import SupTable from './SupTable'
 import SideBar from '../../components/supplier/Sidebar'
 import SupplierChart1 from '../../components/supplier/SupplierChart1'
+import map from '../../assets/map1.png'
+
+
 
 
 
@@ -11,12 +14,12 @@ import SupplierChart1 from '../../components/supplier/SupplierChart1'
 const SupplyHome  = () => {
   return (
 
-    <div className=' flex w-full h-screen overflow-hidden' >
+    <div className=' flex w-full h-screen overflow-hidden ' >
       <div className=' mt-2 min-h-screen' >
       <SideBar/>
       </div>
 
-      <div className='mt-2 w-full overflow-scroll   m-2 bg-[#e5e1e6]  '>
+      <div className='mt-2 w-full overflow-y-scroll   m-2 bg-[#e5e1e6]  '>
 
         <div className=' w-full h-90 flex border mt-2 rounded-lg bg-gradient-to-b from-blue-800 to-blue-200' >
           <div className='w-3/4'>
@@ -61,14 +64,8 @@ const SupplyHome  = () => {
 
 {/* graph */}
 
-<div className='w-full flex'>
-<div className='w-1/2'> 
-<SupplierChart1/>
-</div>
-
-<div className='w-1/2'> 
-<SupplierChart1/>
-</div>
+<div className='w-full flex  justify-center items-center'>
+  <img src={map}/>
 </div>
 
 
@@ -90,3 +87,6 @@ const SupplyHome  = () => {
 }
 
 export default SupplyHome
+
+
+

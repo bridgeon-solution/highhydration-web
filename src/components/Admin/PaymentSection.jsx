@@ -48,32 +48,48 @@ const currentDate = new Date(Date.now());
         <AdminSidebar />
       </div>
       <div className='w-full'>
-        <div className='flex w-full gap-10 mt-3  pl-6 pt-3'>
-          <div className='bg-blue-100 w-80 h-32 rounded-lg text-start pl-3'>
-           
-            <p className='text-gray-500 font-light text-lg'>Total Amount</p>
-            <p className='text-2xl font-semibold' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(to bottom, #87CEEB, #00008B)', '-webkit-background-clip': 'text' }}>${total}</p>
-            <span className='text-end mx-1 font-light text-gray-400 '>{formattedDate}</span>
+
+
   
-          </div>
-          <div className='bg-green-100 w-80 h-32 rounded-lg pl-3 '>
-          <p className='text-gray-500 font-light text-lg'>Success Amount</p>
-            <p className='text-green-500 font-semibold text-2xl'>${success}</p>
-            <span className='text-end mx-1 font-light text-gray-400 '>{formattedDate}</span>
-          </div>
-          <div className='bg-red-100 w-80 h-32 rounded-lg pl-3 '>
-          <p className='text-gray-500 font-light text-lg'>Pending Amount</p>
-            <p className='text-red-500 font-semibold text-2xl'>${pendingAmount}</p>
-            <span className='text-end mx-1 font-light text-gray-400 '>{formattedDate}</span>
-          </div>
-        </div>
+
+
+      <div className='max-w-7xl ml-2 flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row w-full gap-6 mt-3 p-2 m-2'>
+  <div className='bg-blue-100 w-full lg:w-1/3 h-32 rounded-lg text-start pl-3'>
+    <p className='text-gray-500 font-light text-lg'>Total Amount</p>
+    <p className='text-2xl text-blue-500 font-semibold'>${total}</p>
+    <span className='text-end mx-1 font-light text-gray-400'>{formattedDate}</span>
+  </div>
+  <div className='bg-green-100 w-full lg:w-1/3 h-32 rounded-lg pl-3'>
+    <p className='text-gray-500 font-light text-lg'>Success Amount</p>
+    <p className='text-green-500 font-semibold text-2xl'>${success}</p>
+    <span className='text-end mx-1 font-light text-gray-400'>{formattedDate}</span>
+  </div>
+  <div className='bg-red-100 w-full lg:w-1/3 h-32 rounded-lg pl-3'>
+    <p className='text-gray-500 font-light text-lg'>Pending Amount</p>
+    <p className='text-red-500 font-semibold text-2xl'>${pendingAmount}</p>
+    <span className='text-end mx-1 font-light text-gray-400'>{formattedDate}</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div className='mx-4 mt-3'>
         <h1 className='font-semibold text-xl text-gray-500'>Payment History</h1>
       </div>
       
       <div className="border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-4 w-10/12 flex justify-between ">
       
-      <div className="hidden sm:flex sm:items-center sm:justify-between">
+      <div className=" sm:flex sm:items-center sm:justify-between">
         <div>
           <nav className="isolate inline-flex  -space-x-px rounded-md  w-80 justify-between" aria-label="Pagination">
             {/* Pagination buttons */}
@@ -102,7 +118,7 @@ const currentDate = new Date(Date.now());
         </div>
       </div>
       <div>
-        {!isOpen && <FaFilter onClick={toggleDropdown} />}
+        {!isOpen && <FaFilter onClick={toggleDropdown} className='s:mt-2' />}
       
       {isOpen&&
     <FilterModal  isOpen={isOpen} setIsOpen={setIsOpen} setFilter={setFilter}/>

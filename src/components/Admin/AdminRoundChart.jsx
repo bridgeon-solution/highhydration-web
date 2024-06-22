@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import api from '../../axiosInterceptors';
 
-const COLORS = ['#19461A','#FF474C'];
+const COLORS = ['#052951','#EB0101'];
 
 const RADIAN = Math.PI / 180;
 

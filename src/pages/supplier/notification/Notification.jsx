@@ -1,4 +1,5 @@
-import SideBar from "../../../components/supplier/Sidebar";
+
+import SideBar from "../../../components/supplier/sidebar/Sidebar";
 import api from "../../../axiosInterceptors";
 import { useEffect, useState } from "react";
 

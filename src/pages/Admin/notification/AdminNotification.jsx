@@ -14,13 +14,31 @@ const AdminNotification = () => {
                 const response = await api.get(`/notifications/${adminId}`);
                 if (response.status === 200) {
                     setNotification(response.data.notification);
+                    markNotificationsAsSeen(response.data.notification);
                 }
             } catch (error) {
                 console.error('Error fetching notifications:', error);
             }
         };
-        fetchNotification();
-    }, [notification,setNotification,adminId]);
+        const markNotificationsAsSeen = async (notifications) => {
+            try {
+              const unseenNotifications = notifications.filter(n => !n.admin_seen);
+              if (unseenNotifications.length > 0) {
+                await api.post(`/notifications/mark-seen/${adminId}`, {
+                  
+                  notificationIds: unseenNotifications.map(n => n._id),
+                  userType:"admin"
+                });
+              }
+            } catch (error) {
+              console.log('error in marking notifications as seen', error);
+            }
+          };
+      
+          if (adminId) {
+            fetchNotification();
+          }
+    }, [setNotification,adminId]);
 
     useListenNotification();
 
@@ -37,13 +55,13 @@ const AdminNotification = () => {
                     <hr /><br />
                     <div className="space-y-4">
                         {notification.map((notification) => (
-                            <div key={notification._id} className="p-4 bg-white rounded-lg shadow-xl border-1 border-blue-600">
+                            <div key={notification._id} className="p-2 bg-white rounded-lg shadow-xl border-1 border-blue-600">
                                 {notification?.senderId?.first_name && notification?.senderId?.first_name !== "undefined" ? (
-                                    <h2 className="text-xl font-semibold">
+                                    <h2 className="text-sm font-bold">
                                         {`${notification?.senderId?.first_name} ${notification?.senderId?.last_name}`}
                                     </h2>
                                 ) : (
-                                    <p className="text-lg">
+                                    <p className="text-sm font-bold">
                                         {notification?.productId?.productname}
                                     </p>
                                 )}

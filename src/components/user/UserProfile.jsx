@@ -19,6 +19,7 @@ const UserProfile = () => {
   const [userData, setUserData] = useState([])
   const [loading, setLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false) 
+  const[cardData,setCardData]=useState([])
   const[role,setRole]=useState('orders')
 
   useEffect(() => {
@@ -26,7 +27,9 @@ const UserProfile = () => {
       try {
         setLoading(true)
         const response = await api.get(`/users/${userId}`)
+        const response2 = await api.get(`/users/profileData/${userId}`)
         setUserData(response.data.data)
+       setCardData(response2.data.data)
         setLoading(false)
       } catch (error) {
         console.log(error);
@@ -133,10 +136,10 @@ const UserProfile = () => {
 className="bg-gradient-to-b from-red-200 to-red-100 w-80 h-40 rounded-lg p-6 flex flex-col justify-center items-center shadow-lg transform hover:scale-105 transition-transform duration-300">
   <p className="text-gray-500 font-light text-lg mb-1">Total Orders</p>
   <p className="text-4xl md:text-5xl font-semibold text-transparent bg-gradient-to-b from-blue-500 to-blue-300 bg-clip-text">
-    20
+    {cardData?.orders}
   </p>
   <h6 className="mt-2 text-transparent bg-clip-text bg-gradient-to-b from-black to-gray-800 text-sm font-thin tracking-wide">
-    Last updated at 23/04/2023
+    Last updated at {cardData?.formattedDate}
   </h6>
 </div>
 
@@ -145,10 +148,10 @@ className="bg-gradient-to-b from-red-200 to-red-100 w-80 h-40 rounded-lg p-6 fle
 className="bg-gradient-to-b from-green-200 to-green-100 w-80 h-40 rounded-lg p-6 flex flex-col justify-center items-center shadow-lg transform hover:scale-105 transition-transform duration-300">
   <p className="text-gray-500 font-light text-lg mb-1">Last Payments</p>
   <p className="text-4xl md:text-5xl font-semibold text-transparent bg-gradient-to-b from-blue-500 to-blue-300 bg-clip-text">
-    10
+    {cardData?.payment}
   </p>
   <h6 className="mt-2 text-transparent bg-clip-text bg-gradient-to-b from-black to-gray-800 text-sm font-thin tracking-wide">
-    Last updated at 23/04/2023
+    Last updated at {cardData?.formattedDate}
   </h6>
 </div>
 
@@ -157,10 +160,10 @@ className="bg-gradient-to-b from-green-200 to-green-100 w-80 h-40 rounded-lg p-6
 className="bg-gradient-to-b from-red-200 to-red-100 w-80 h-40 rounded-lg p-6 flex flex-col justify-center items-center shadow-lg transform hover:scale-105 transition-transform duration-300">
   <p className="text-gray-500 font-light text-lg mb-1">Last Payments</p>
   <p className="text-4xl md:text-5xl font-semibold text-transparent bg-gradient-to-b from-blue-500 to-blue-300 bg-clip-text">
-    18
+    3
   </p>
   <h6 className="mt-2 text-transparent bg-clip-text bg-gradient-to-b from-black to-gray-800 text-sm font-thin tracking-wide">
-    Last updated at 23/04/2023
+    Last updated at {cardData?.formattedDate}
   </h6>
 </div>
    

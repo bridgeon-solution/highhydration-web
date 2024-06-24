@@ -46,6 +46,7 @@ import AdminProtectRouter from "./pages/Admin/utils/ProtectRouter";
 import SupplierProtectRoute from "./pages/supplier/utils/ProtectRouter";
 import UserProtectRouter from "./pages/users/utils/ProtectRouter";
 import AdminNotification from './pages/Admin/notification/AdminNotification'
+import Footer from "./components/user/footer/Footer";
 
 const clientId =
   "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
@@ -64,7 +65,7 @@ function App() {
   });
   return (
     <>
-      {/* <Navbar /> */}
+     
 
       <NavigationProvider>
         <Routes>

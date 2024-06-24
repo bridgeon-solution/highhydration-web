@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../../../components/Loader';
 import adminApi from './../utils/axiosInterceptors';
 import Navbar from '../../common/Navbar';
+import Footer from '../../../components/user/footer/Footer';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 
@@ -122,7 +123,9 @@ const AllProducts = () => {
 
 
   </div>
+  <Footer/>
   </div>
+ 
   </>
   )
 }

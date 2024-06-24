@@ -78,7 +78,7 @@ const UserProfile = () => {
 
 <div className="w-full flex flex-col md:flex-row h-auto bg-gradient-to-b from-blue-500 to-blue-200 rounded-bl-2xl rounded-br-2xl justify-between p-4 md:p-0">
   <div className="w-full md:w-1/3 flex items-center justify-center p-4 md:p-0">
-    <img className="h-56 w-56 border rounded-full" src={userData?.image} alt="User" />
+    <img className="h-56 w-56 border rounded-full" src={userData?.image||"https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} alt="User" />
   </div>
   <div className="w-full md:w-2/3 flex flex-col justify-center p-4">
     <div className="w-full bg-gradient-to-b from-blue-500 to-blue-200 rounded-lg shadow-lg">
@@ -114,7 +114,7 @@ const UserProfile = () => {
          onClick={() => navigate('/editPro')}
        
          >
-          Add Profile Section
+        Edit Profile Section
         </button>
         <button className="bg-[#3751FE] text-white rounded-2xl px-5 py-2" onClick={toggleModal}>
           Complaints

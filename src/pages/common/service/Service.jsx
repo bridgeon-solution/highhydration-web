@@ -43,7 +43,7 @@ const Service = () => {
     <>
     <Navbar/>
    
-    <div className="w-full bg-gradient-to-r bg-[#e5e1e6] flex flex-col justify-center items-center px-1 ">
+    <div className="w-full bg-gradient-to-r bg-[#EFF0F3] flex flex-col justify-center items-center px-1">
 <div>
 <Navbar/>
     <motion.h1

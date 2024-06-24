@@ -7,9 +7,11 @@ import { CiTwitter } from "react-icons/ci";
 import { LiaFacebookMessenger } from "react-icons/lia";
 
 import Navbar from '../Navbar';
+import Footer from "../../../components/user/footer/Footer";
 
 const Contact = () => {
   return (
+    <> 
     <div className='h-screen overflow-hidden'> 
       <Navbar/> 
     <div className='bg-[#EFF0F3] p-2 h-screen'>
@@ -95,7 +97,10 @@ const Contact = () => {
         </div>
       </div>
     </div>
+  
     </div>
+    <Footer/>
+    </>
   );
 };
 

@@ -39,14 +39,15 @@ const [conversations, setConversations] = useState([]);
     return (
         <div className='flex w-full h-screen overflow-hidden bg-[#F8F8F8]'>
             <div className='mt-2 min-h-screen'>
-                <AdminSidebar />
+            {!isModalOpen &&  <AdminSidebar />}
             </div>
-
-            <div className="relative flex flex-wrap justify-evenly gap-4 w-full p-4 overflow-scroll">
+            <div className="relative flex flex-col gap-2 m-2 lg:w-1/2 w-full  overflow-scroll">
+            <h3 className='mx-3 mt-2'>Chat</h3>
+            <hr />
                 {conversations.map((conversation) => (
                     <div
                         key={conversation._id}
-                        className="cursor-pointer w-full sm:w-1/2 lg:w-2/5 flex flex-col items-center bg-white shadow-xl rounded-lg p-6 transform hover:scale-105 transition-transform duration-300 ease-in-out"
+                        className="cursor-pointer w-full sm:w-1/5 lg:w-full flex items-center s:rounded-3xl bg-white shadow-xl rounded-lg p-2  px-3 transform hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={() => handleCardClick(conversation?.participants)}
                     >
                         {conversation.participants.map((participant) => (
@@ -56,7 +57,7 @@ const [conversations, setConversations] = useState([]);
                                     alt={participant.first_name || "User Image"}
                                     className="inline-block h-16 w-16 rounded-full object-cover object-center border-2 border-gray-300"
                                 />
-                                <div className="flex flex-col">
+                                <div className="flex-col flex">
                                     <h5 className="font-sans text-xl font-semibold text-gray-900">
                                         {participant.first_name || "Anonymous"}
                                     </h5>
@@ -71,13 +72,8 @@ const [conversations, setConversations] = useState([]);
             </div>
 
 
-        <div className="relative flex flex-wrap justify-evenly gap-4 w-full p-4  overflow-scroll">
-        {isModalOpen && (
-                <AdminChatModal
-                   
-                    closeModal={closeModal}
-                />
-            )}
+        <div className="relative  flex flex-wrap justify-evenly gap-4 lg:w-full lg:p-4 overflow-scroll ">
+       
     {message.map((message) => (
         <div key={message._id} 
         className="w-full sm:w-1/2 lg:w-2/5 flex flex-col items-center bg-white shadow-xl rounded-lg p-6 transform hover:scale-105 transition-transform duration-300 ease-in-out"
@@ -105,7 +101,12 @@ const [conversations, setConversations] = useState([]);
         </div>
     ))}
 </div>
-
+{isModalOpen && (
+                <AdminChatModal
+                   
+                    closeModal={closeModal}
+                />
+            )}
 
 {modal&&(
     <ChatModal setModal={{setModal}} />

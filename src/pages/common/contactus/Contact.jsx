@@ -7,12 +7,14 @@ import { CiTwitter } from "react-icons/ci";
 import { LiaFacebookMessenger } from "react-icons/lia";
 
 import Navbar from '../Navbar';
+import Footer from "../../../components/user/footer/Footer";
 
 const Contact = () => {
   return (
-    <div className='h-screen overflow-hidden'> 
+    <> 
+    <div className='h-screen overflow-y-scroll'> 
       <Navbar/> 
-    <div className='bg-[#EFF0F3] p-2 h-screen'>
+    <div className='bg-[#EFF0F3] p-2 mt-5 h-screen'>
 
       <p className='text-center text-3xl font-bold mt-3'>Contact us</p>
       <p className='text-center text-xl mt-2'>Any question or remarks? just write a message!</p>
@@ -95,7 +97,10 @@ const Contact = () => {
         </div>
       </div>
     </div>
+  
     </div>
+    <Footer/>
+    </>
   );
 };
 

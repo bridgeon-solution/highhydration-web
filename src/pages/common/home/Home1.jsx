@@ -51,19 +51,20 @@ const Home1 = () => {
         </div>
 
         <div className='ml-8 md:ml-16 mt-5 text-lg md:text-2xl text-center'>
-          <motion.button 
-            className='bg-[#22B6FE] rounded-3xl px-4 py-2 md:px-5 md:py-2 text-sm md:text-lg lg:text-xl' 
-            whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgba(255, 255, 255, 1)", textShadow: "0px 0px 8px rgba(255, 255, 255, 1)" }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{  duration: 0.5 }}
-            onClick={()=>navigate('/products')}
-          >
-            Buy
-          </motion.button>
+        <motion.button 
+  className='bg-[#22B6FE] text-white hover:bg-white hover:text-black border-2 border-[#22B6FE] rounded-3xl px-4 py-2 md:px-5 md:py-2 text-sm md:text-lg lg:text-xl' 
+  whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgba(255, 255, 255, 1)", textShadow: "0px 0px 8px rgba(255, 255, 255, 1)" }}
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+  onClick={()=>navigate('/products')}
+>
+  Buy  
+</motion.button>
+  
 
           <motion.button 
-            className='ml-4 md:ml-8 bg-[#EFF0F3] border-2 border-[#22B6FE] rounded-3xl px-4 py-2 md:px-3 md:py-2 text-sm md:text-lg lg:text-xl' 
+            className='ml-4 md:ml-8 bg-[#EFF0F3]   hover:bg-[#22B6FE] hover:text-white border-2 border-[#22B6FE] rounded-3xl px-4 py-2 md:px-3 md:py-2 text-sm md:text-lg lg:text-xl' 
             whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgba(255, 255, 255, 1)", textShadow: "0px 0px 8px rgba(255, 255, 255, 1)" }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}

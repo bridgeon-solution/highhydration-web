@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-// import ved from '../../assets/bgvedio.mp4'
+import ved from '../../assets/waterfalls.mp4'
 const Wellcome = () => {
   const navigate = useNavigate()
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <video
-        // src={ved}
+        src={ved}
         className="absolute top-0 left-0 w-full h-full object-cover rounded-md"
         loop
         autoPlay

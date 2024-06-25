@@ -82,7 +82,7 @@ const Navbar = () => {
           <img src={logo} className="h-10" alt="Logo" onClick={() => navigate('/home')} />
 
           <div className={`w-full md:block md:w-auto ${isMenuOpen ? 'block' : 'hidden'}`} id="navbar-default">
-            <ul className="font-medium flex flex-col md:p-0 mt-2 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+            <ul className="font-medium flex flex-col  items-center md:p-0 mt-2 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
               <li>
                 <p className="block  font-semibold  py-2 px-3 text-blue-700 rounded hover:bg-blue-900 md:hover:bg-transparent md:border-0 md:hover:text-blue-900 md:p-0 cursor-pointer"   aria-current="page" onClick={() => navigate("/home")}>Home</p>
               </li>
@@ -145,7 +145,7 @@ const Navbar = () => {
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-blue-700 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-blue-700 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-200 "
             aria-controls="navbar-default"
             aria-expanded={isMenuOpen ? "true" : "false"}
             onClick={handleMenuToggle}

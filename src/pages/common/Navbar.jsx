@@ -10,6 +10,7 @@ import NotificationModal from '../../components/user/modals/notification/Notific
 const Navbar = () => {
   const navigate = useNavigate()
   const userId = localStorage.getItem('userId')
+  const [shadow, setShadow] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [loading, setLoading] = useState(false)
@@ -60,34 +61,45 @@ const Navbar = () => {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setShadow(true);
+      } else {
+        setShadow(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
 
   return (
     <>
 
-      <nav className="bg-[#0E2C72] border-gray-200 fixed top-0 left-0 w-full z-50 shadow-2xl" >
+      <nav className={`bg-[#EFF0F3]  fixed top-0 left-0 w-full z-50 transition-shadow duration-300 py-3 border-b-2 border-indigo-500 border-opacity-60   ${shadow ? 'shadow-md' : ''} `} >
         <div className="max-w-full flex flex-wrap items-center justify-between  p-1">
           <img src={logo} className="h-10" alt="Logo" onClick={() => navigate('/home')} />
 
           <div className={`w-full md:block md:w-auto ${isMenuOpen ? 'block' : 'hidden'}`} id="navbar-default">
             <ul className="font-medium flex flex-col md:p-0 mt-2 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
               <li>
-                <p className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page" onClick={() => navigate("/home")}>Home</p>
+                <p className="block  font-semibold  py-2 px-3 text-blue-700 rounded hover:bg-blue-900 md:hover:bg-transparent md:border-0 md:hover:text-blue-900 md:p-0 cursor-pointer"   aria-current="page" onClick={() => navigate("/home")}>Home</p>
               </li>
               <li>
-                <p onClick={() => navigate('/aboutus')} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</p>
+                <p onClick={() => navigate('/aboutus')} className="block  font-semibold  py-2 px-3 text-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-900  md:p-0 cursor-pointer ">About</p>
               </li>
               <li>
-                <p onClick={() => navigate('/service')} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</p>
+                <p onClick={() => navigate('/service')} className="block font-semibold  py-2 px-3 text-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-900  md:p-0 cursor-pointer ">Services</p>
               </li>
               <li>
-                <p onClick={() => navigate('/products')} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Products</p>
+                <p onClick={() => navigate('/products')} className="block font-semibold   py-2 px-3 text-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-900  md:p-0 cursor-pointer">Products</p>
               </li>
               <li>
-                <p onClick={() => navigate('/contactus')} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact us</p>
+                <p onClick={() => navigate('/contactus')} className="block font-semibold    py-2 px-3 text-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-900  md:p-0 cursor-pointer ">Contact us</p>
               </li>
-              <li className='bg-whit'>
-               <IoIosNotificationsOutline size={25} onClick={()=>setIsOpen(true)} className="text-4xl mt-2 mx-2 text-white"/>
+              <li className=''>
+               <IoIosNotificationsOutline size={25} onClick={()=>setIsOpen(true)} className="text-4xl mt-2 mx-2 text-blue-700  cursor-pointer hover:text-blue-900"/>
                {isOpen&&<NotificationModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
               </li>
 
@@ -96,20 +108,20 @@ const Navbar = () => {
                   className="relative"
                   onClick={handleDropdownToggle}
                 >
-<img src={userData.image} className="w-14 h-14 border rounded-full" alt="Client" onClick={() => navigate('/home')} />
+<img src={userData.image||"https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} className="w-14 h-14 border rounded-full ring-1 ring-blue-700" alt="Client" onClick={() => navigate('/home')} />
 
 {isDropdownOpen && (
                    <div className="absolute z-10 top-16 right-0 bg-slate-500 border rounded-md shadow-lg">
                    <ul className="py-2">
                    <li>
   <div className="flex items-center space-x-2 py-2 cursor-pointer rounded-lg">
-    <img src={userData.image} className="w-10 h-10 rounded-full border" alt="User" />
+    <img src={userData.image||"https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} className="w-10 h-10 rounded-full border" alt="User" />
     <p className="text-white truncate">{userData?.first_name}</p>
   </div>
 </li>
 
                      <li>
-                       <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate()}>Account</p>
+                       <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate('/orderdetails')}>Orders</p>
                      </li>
                      <li>
                        <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate("/userpro")}>Profile</p>
@@ -124,7 +136,7 @@ const Navbar = () => {
                 </button>
               ) : (
                 <li>
-                  <a href="/userlogin" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  <a href="/userlogin" className="block  font-semibold py-2 px-3 text-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
                   >Login</a>
                 </li>
               )}
@@ -133,7 +145,7 @@ const Navbar = () => {
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-blue-700 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
             aria-controls="navbar-default"
             aria-expanded={isMenuOpen ? "true" : "false"}
             onClick={handleMenuToggle}

@@ -1,18 +1,27 @@
-import { useEffect } from "react";
-import SideBar from "../../../components/supplier/Sidebar";
+
+import SideBar from "../../../components/supplier/sidebar/Sidebar";
 import api from "../../../axiosInterceptors";
+import { useEffect, useState } from "react";
 
-// useEffect(()=>{
-//     // const fetchNotification = async()=>{
-//     //     try {
-//     //         const response = await a
-//     //     } catch (error) {
-//     //         console.log('error in fetch notification')
-//     //     }
-//     // }
-// },[])
 
-const Notification = () => {
+const Notification = () => {  
+    const supplierid = localStorage.getItem("supplierid")
+    const [notification , setNotification] = useState([])
+    useEffect(()=>{
+        const fetchNotification = async()=>{
+            try {
+                const response = await api.get(`/notifications/${supplierid}`)
+                console.log(response)
+                if(response.status===200){
+                    setNotification(response.data.notification)
+                }
+
+            } catch (error) {
+                console.log('error in get notification')
+            }
+        }
+        fetchNotification()
+    },[supplierid])
   return (
     <div className="flex w-full h-screen overflow-hidden">
       <div className="mt-2 min-h-screen w-1/4shadow-lg">
@@ -24,12 +33,12 @@ const Notification = () => {
           <div className="space-y-4">
             {/* Example Notification */}
             { 
-            [...Array(6)].map((x)=>(
+            notification.map((notification)=>(
                 <>
                 <div className="p-4 bg-white rounded-lg shadow-xl border-1 border-blue-600 ">
-              <h2 className="text-xl font-semibold">Notification Title 1</h2>
-              <p className="text-gray-600">This is a brief description of the notification.</p>
-              <p className="text-sm text-gray-400 mt-2">Date and Time</p>
+              <h2 className="text-xl font-semibold">{`${notification?.senderId?.first_name} ${notification?.senderId?.last_name}`}</h2>
+              <p className="text-gray-600">{notification.message}</p>
+              <p className="text-sm text-gray-400 mt-2">{notification.createdAt.slice(0, 10)}</p>
             </div>
             </>
             ))

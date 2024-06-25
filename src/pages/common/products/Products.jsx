@@ -4,7 +4,8 @@ import { MdWater } from "react-icons/md";
 import Navbar from '../Navbar';
 import api from '../../../axiosInterceptors';
 import Loader from '../../../components/Loader';
-import ProductList from '../../../components/user/ProductList';
+import ProductList from '../../../components/user/products/ProductList';
+import Footer from '../../../components/user/footer/Footer';
 const Products = () => {
   const [productss,setProduct]=useState([])
   const [loading,setLoading]=useState(false)
@@ -41,6 +42,7 @@ const Products = () => {
       <ProductList products={productss} />
 
     </div>
+    <Footer/>
     </>
   )
 }

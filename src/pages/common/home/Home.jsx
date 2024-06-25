@@ -2,11 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Home1 from './Home1';
 import Home2 from './Home2';
-import Countup from '../../../components/user/Countup';
-import Footer from '../../../components/user/Footer';
-import Products from '../../users/Products'
-import ProductList from '../../../components/user/ProductList';
+import Countup from '../../../components/user/home/Countup';
+import Footer from '../../../components/user/footer/Footer';
+import Products from '../../users/products/Products'
+import ProductList from '../../../components/user/products/ProductList';
 import Navbar from '../Navbar';
+
 function App() {
   const motionDivRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -25,8 +26,9 @@ function App() {
   }, []);
 
   return (
-    <div className='bg-[#fdfdfd]'>
+    <div className='bg-[##EFF0F3]'>
     <Navbar/>
+
       <Home1 />
       <motion.div
         ref={motionDivRef}

@@ -4,18 +4,23 @@ import AdminSidebar from '../../../components/Admin/sidebar/AdminSidebar'
 import api from '../../../axiosInterceptors';
 import useListenNotification from '../../../hooks/useListenNotification';
 import useConversation from '../../../zustand/useConversation';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 const AdminNotification = () => {
     const adminId = import.meta.env.VITE_ADMIN_ID;
     const { notification, setNotification } = useConversation();
+    const [page,setPage]=useState(1)
+    const [toatalPage,setTotalPage]=useState(0)
 
     useEffect(() => {
         const fetchNotification = async () => {
             try {
-                const response = await api.get(`/notifications/${adminId}`);
+                const response = await api.get(`/notifications/${adminId}`,{params:{page}});
                 if (response.status === 200) {
                     setNotification(response.data.notification);
                     markNotificationsAsSeen(response.data.notification);
+                    setTotalPage(response.data.totalpage)
                 }
             } catch (error) {
                 console.error('Error fetching notifications:', error);
@@ -39,11 +44,13 @@ const AdminNotification = () => {
           if (adminId) {
             fetchNotification();
           }
-    }, [setNotification,adminId]);
+    }, [setNotification,adminId,page]);
 
     useListenNotification();
 
-
+    const handleChange=(event,value)=>{
+        setPage(value)
+    }
 
     return (
         <div className='flex h-screen'>
@@ -54,6 +61,7 @@ const AdminNotification = () => {
                 <div className="max-w-4xl">
                     <h1 className="text-3xl font-semibold mb-6">Notifications</h1>
                     <hr /><br />
+                    
                     <div className="space-y-4">
                         {notification.map((notification) => (
                             <div key={notification._id} className="p-2 bg-white rounded-lg shadow-xl border-1 border-blue-600">
@@ -70,6 +78,11 @@ const AdminNotification = () => {
                                 <p className="text-sm text-gray-400 mt-2">{notification.createdAt.slice(0, 10)}</p>
                             </div>
                         ))}
+                    </div>
+                    <div className='m-3 flex justify-center mt-4'>
+                    <Stack spacing={2} >
+                    <Pagination  count={toatalPage} onChange={handleChange} color="primary" />
+                    </Stack>
                     </div>
                 </div>
             </div>

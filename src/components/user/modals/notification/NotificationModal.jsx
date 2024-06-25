@@ -1,24 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { IoIosCloseCircle } from 'react-icons/io';
 import api from '../../../../axiosInterceptors';
 import useConversation from '../../../../zustand/useConversation';
 import useListenNotification from '../../../../hooks/useListenNotification';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 const NotificationModal = ({ isOpen, setIsOpen }) => {
   const userId = localStorage.getItem("userId");
   const { notification, setNotification } = useConversation();
+  const [page,setPage]=useState(1)
+  const [totalPage,setTotalPage]=useState(0)
 
   useEffect(() => {
     const fetchNotification = async () => {
       try {
-        const response = await api.get(`/notifications/${userId}`);
-        console.log(response);
+        const response = await api.get(`/notifications/${userId}`,{params:{page}});
         if (response.status === 200) {
           setNotification(response.data.notification);
           markNotificationsAsSeen(response.data.notification);
+          setTotalPage(response.data.totalpage)
         }
       } catch (error) {
-        console.log('error in get notification', error);
+        console.log('error in get notification', error); 
       }
     };
 
@@ -40,10 +44,12 @@ const NotificationModal = ({ isOpen, setIsOpen }) => {
     if (userId) {
       fetchNotification();
     }
-  }, [userId, setNotification]);
+  }, [userId, setNotification,page]);
 
   useListenNotification();
-
+const handleChange=(e,value)=>{
+setPage(value)
+}
   return (
     <div className="relative inline-block text-left">
       <div
@@ -56,6 +62,13 @@ const NotificationModal = ({ isOpen, setIsOpen }) => {
           <h3 className="mx-2 flex items-center">Notification</h3>
           <IoIosCloseCircle className="text-red-400" size={17} onClick={() => setIsOpen(false)} />
         </div>
+        <div className=''> 
+        {totalPage>1&&
+        <Stack className='flex justify-center items-center mb-3'>
+        <Pagination count={totalPage} onChange={handleChange} variant="outlined" color="primary" />
+        </Stack>
+}
+          </div>
         <div className="mb-4 max-h-96 overflow-y-auto border p-2 rounded">
           {notification.map((notification) => (
             <div key={notification._id} className="p-2 bg-white rounded-lg shadow-xl border-1 mb-2 border-blue-600">

@@ -118,7 +118,6 @@ const Navbar = () => {
       console.log('error in marking notifications as seen', error);
     }
   };
-  console.log(notification,'navbar notiiii')
   useListenNotification()
   return (
     <>

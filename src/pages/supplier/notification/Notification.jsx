@@ -1,12 +1,14 @@
 
 import SideBar from "../../../components/supplier/sidebar/Sidebar";
 import api from "../../../axiosInterceptors";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import useConversation from "../../../zustand/useConversation";
+import useListenNotification from "../../../hooks/useListenNotification";
 
 
 const Notification = () => {  
     const supplierid = localStorage.getItem("supplierid")
-    const [notification , setNotification] = useState([])
+    const { notification, setNotification } = useConversation();
     useEffect(()=>{
         const fetchNotification = async()=>{
             try {
@@ -21,7 +23,8 @@ const Notification = () => {
             }
         }
         fetchNotification()
-    },[supplierid])
+    },[setNotification,supplierid])
+    useListenNotification()
   return (
     <div className="flex w-full h-screen overflow-hidden">
       <div className="mt-2 min-h-screen w-1/4shadow-lg">

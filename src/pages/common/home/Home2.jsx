@@ -6,7 +6,7 @@ import image2 from '../../../assets/Home/Image3.png'
 const Home2 = () => {
   return (
     <div className=' mt-2 bg-[#fdfdfd] '>
-        <div className='flex justify-evenly h-1/2'>
+        <div className='flex  flex-col items-center   md:flex-row justify-evenly h-1/2'>
 <div className="relative flex flex-col mt-6 text-gray-700 bg-[#EFF0F3]shadow-md bg-clip-border rounded-xl w-96">
 <div
   className="relative h-56 mx-4 -mt-6 overflow-hidden text-white  bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40 flex items-center justify-center">

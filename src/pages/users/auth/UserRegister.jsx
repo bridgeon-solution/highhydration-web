@@ -121,7 +121,7 @@ const UserRegister = () => {
                       type="text"
                       placeholder="First Name"
                       value={values.first_name}
-                      onChange={handleChange}
+                      onChange={handleChange}     
                       onBlur={handleBlur}
                    />
 {errors.first_name && <small className="text-xs italic text-red-500">{errors.first_name}</small>}
@@ -129,7 +129,7 @@ const UserRegister = () => {
                   <div className="md:ml-2">
                     <label className="block mb-1 text-sm font-bold text-gray-700 dark:text-white" htmlFor="lastName">
                       Last Name
-                    </label>
+                    </label>   
                     <input
                       className="w-full px-3 py-2 text-sm leading-tight text-gray-700 dark:text-blackborder rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="last_name"

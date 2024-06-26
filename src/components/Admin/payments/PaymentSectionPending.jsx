@@ -24,7 +24,6 @@ const PaymentSectionPending = ({filter,setLoading}) => {
         console.log(response);
         setData(response?.data?.payment)
         setTotalaPage(response?.data?.totalpage)
-        setTotalLength(response?.data?.totalLength)
         setLoading(false)
         
       } catch (error) {
@@ -114,7 +113,7 @@ const PaymentSectionPending = ({filter,setLoading}) => {
         <div>
           <p className="text-sm text-gray-700">
             Showing <span className="font-medium">{page}</span> to <span className="font-medium">{toatalpage}</span> of{' '}
-            <span className="font-medium">{totalLength}</span> results
+            <span className="font-medium">{toatalpage}</span> results
           </p>
         </div>
         <div>

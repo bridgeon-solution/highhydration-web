@@ -57,16 +57,16 @@ const AdminNotification = () => {
             <div>
                 <AdminSidebar />
             </div>
-            <div className="w-full p-4 overflow-scroll">
+            <div className="w-full p-4 overflow-scroll bg-[#f8f8f8]">
                 <div className="max-w-4xl">
                     <h1 className="text-3xl font-semibold mb-6">Notifications</h1>
                     <hr /><br />
                     
                     <div className="space-y-4">
                         {notification.map((notification) => (
-                            <div key={notification._id} className="p-2 bg-white rounded-lg shadow-xl border-1 border-blue-600">
+                            <div key={notification._id} className="p-2 bg-white  shadow-xl border-1  rounded-2xl">
                                 {notification?.senderId?.first_name && notification?.senderId?.first_name !== "undefined" ? (
-                                    <h2 className="text-sm font-bold">
+                                    <h2 className="text-sm font-bold text-blue-600">
                                         {`${notification?.senderId?.first_name} ${notification?.senderId?.last_name}`}
                                     </h2>
                                 ) : (

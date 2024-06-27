@@ -22,14 +22,14 @@ const TinyChartComp = () => {
   useEffect(()=>{
    fetchData()
   },[])
-  console.log(data,"huuhuuhaahaa");
-  return (
-    <div className='flex flex-wrap m-2 justify-between  '>
 
-<div className="w-52 border rounded-lg mr-2 flex  bg-white">
+  return (
+    <div className='flex flex-col md:flex-row items-center  m-2 justify-evenly  '>
+
+<div className="w-52  rounded-lg mr-2 flex  bg-white shadow-xl ">
   <div className="py-4 px-4 w-2/3">
     <div>
-      <h6 className="mb-2 text-[#333333] font-semibold tracking-wide">Orders</h6>
+      <h6 className="mb-2 text-[#333333] font-bold  tracking-wide">Orders</h6>
       <h6 className="mb-2 text-lime-700 text-2xl font-bold tracking-wide">{data?.orders}</h6>
       <p className="text-green-600 font-bold">4.4%</p>
     </div>
@@ -45,7 +45,7 @@ const TinyChartComp = () => {
 
 
 
-<div className="w-52 border rounded-lg mr-2 flex  bg-white">
+<div className="w-52 border rounded-lg mr-2 flex  bg-white shadow-xl">
   <div className="py-4 px-4 w-2/3">
     <div>
       <h6 className="mb-2 text-[#333333] font-semibold tracking-wide">User</h6>
@@ -65,7 +65,7 @@ const TinyChartComp = () => {
 
 
 
-<div className="w-52 border rounded-lg mr-2 flex  bg-white">
+<div className="w-52 border rounded-lg mr-2 flex  bg-white shadow-xl">
   <div className="py-4 px-4 w-2/3">
     <div>
       <h6 className="mb-2 text-[#333333] font-semibold tracking-wide">Suppliers</h6>
@@ -85,7 +85,7 @@ const TinyChartComp = () => {
 
 
 
-<div className="w-52 border rounded-lg mr-2 flex  bg-white">
+<div className="w-52 border rounded-lg mr-2 flex  bg-white shadow-xl">
   <div className="py-4 px-4 w-2/3">
     <div>
       <h6 className="mb-2 text-[#333333] font-semibold tracking-wide">Products</h6>

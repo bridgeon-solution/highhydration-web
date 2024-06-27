@@ -111,27 +111,64 @@ const Navbar = () => {
 <img src={userData.image||"https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} className="w-14 h-14 border rounded-full ring-1 ring-blue-700" alt="Client" onClick={() => navigate('/home')} />
 
 {isDropdownOpen && (
-                   <div className="absolute z-10 top-16 right-0 bg-slate-500 border rounded-md shadow-lg">
-                   <ul className="py-2">
-                   <li>
-  <div className="flex items-center space-x-2 py-2 cursor-pointer rounded-lg">
-    <img src={userData.image||"https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} className="w-10 h-10 rounded-full border" alt="User" />
-    <p className="text-white truncate">{userData?.first_name}</p>
-  </div>
-</li>
+//                    <div className="absolute z-10 top-16 right-0 bg-slate-500 border rounded-md shadow-lg w-36">
+//                    <ul className="py-2">
+//                    <li>
+//   <div className="flex items-center space-x-2 py-2  cursor-pointer rounded-lg">
+//     <img src={userData.image||"https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} className="w-10 h-10 rounded-full border" alt="User" />
+//     <p className="text-white truncate">{userData?.first_name}</p>
+//   </div>
+// </li>
+//  <li>
+//                        <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate('/orderdetails')}>Orders</p>
+//                      </li>
+//                      <li>
+//                        <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate("/userpro")}>Profile</p>
+//                      </li>
+//                      <li>
+//                        <p onClick={logout} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Logout</p>
+//                      </li>
+//                    </ul>
+//                  </div>
+<div className="absolute z-10 top-16 right-0 bg-[#EFF0F3] rounded-md shadow-xl w-36 sm:w-48 lg:w-48">
+<ul className="py-2">
+  <li>
+    <div className="flex items-center space-x-2 py-2 cursor-pointer rounded-lg px-4 hover:bg-slate-600">
+      <img 
+        src={userData.image || "https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} 
+        className="w-14 h-14 rounded-full border" 
+        alt="User" 
+      />
+      <p className="text-gray-950 truncate text-3xl italic font-semibold ">{userData?.first_name}</p>
+    </div>
+  </li>
+  <li>
+    <p 
+      className="block px-4 py-2 text-gray-800 hover:bg-gray-300 cursor-pointer" 
+      onClick={() => navigate('/orderdetails')}
+    >
+      Orders
+    </p>
+  </li>
+  <li>
+    <p 
+      className="block px-4 py-2 text-gray-800 hover:bg-gray-300 cursor-pointer" 
+      onClick={() => navigate("/userpro")}
+    >
+      Profile
+    </p>
+  </li>
+  <li>
+    <p 
+      onClick={logout} 
+      className="block px-4 py-2 text-gray-800 hover:bg-gray-300 cursor-pointer"
+    >
+      Logout
+    </p>
+  </li>
+</ul>
+</div>
 
-                     <li>
-                       <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate('/orderdetails')}>Orders</p>
-                     </li>
-                     <li>
-                       <p className="block px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={() => navigate("/userpro")}>Profile</p>
-                     </li>
-                     <li>
-                       <p onClick={logout} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Logout</p>
-                     </li>
-                   </ul>
-                 </div>
-                 
                   )}
                 </button>
               ) : (

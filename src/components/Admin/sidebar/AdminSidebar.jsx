@@ -123,7 +123,7 @@ const AdminSidebar = () => {
         <>
             
             <NavLink to={"/admindashboard"}    activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon='fas fa-tachometer-alt'>Dashbord</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon='fas fa-tachometer-alt'>Dashboard</CDBSidebarMenuItem>
             </NavLink>
 
             <NavLink  to="/product" activeClassName="activeClicked">

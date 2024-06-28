@@ -201,7 +201,7 @@ if(a==="-"){
   return (
     <div className=' bg-opacity-5 justify-center flex'>
       {loader&&<Loader/>}
-        <div className='shadow-[10px_35px_30px_10px_rgba(0,0,0,0.3)] mt-4 p-1  md:w-1/4 s:w-full rounded-xl '>
+        <div className='shadow-[10px_35px_30px_10px_rgba(0,0,0,0.3)] mt-4 p-1 lg:1/3 md:w-1/4 s:w-full sm:w-full rounded-xl '>
             <div className='mt-6'>
         <Box  sx={{ width: '100%' }}>
       <Stepper activeStep={pageNum} alternativeLabel>

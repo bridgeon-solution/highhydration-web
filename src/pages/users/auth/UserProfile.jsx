@@ -46,9 +46,10 @@ const UserProfile = () => {
   return (
     <> 
     <Navbar/>
+    <>
+      {loading && <Loader />}
     <div className='w-full h-screen'>
     
-      {loading && <Loader />}
 
 
 
@@ -186,6 +187,7 @@ className="bg-gradient-to-b from-red-200 to-red-100 w-80 h-40 rounded-lg p-6 fle
  {isModalOpen && <ChatModal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
 
     </div>
+    </>
     </>
   )
 }

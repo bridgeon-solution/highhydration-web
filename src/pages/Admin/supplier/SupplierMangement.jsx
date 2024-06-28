@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import AdminSidebar from "../../../components/Admin/sidebar/AdminSidebar";
 import { CiSearch } from "react-icons/ci";
-import { FiMessageCircle } from "react-icons/fi";
 import { MdBlock, MdDeleteOutline } from "react-icons/md";
 import { CgUnblock } from "react-icons/cg";
 import { Button, IconButton } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-import axios from "axios";
 import Loader from "../../../components/Loader";
 import SupplierMangementModal from "../../../components/Admin/modal/SupplierManagementModal";
 import adminApi from "./../utils/axiosInterceptors";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const manageUrl=import.meta.env.VITE_BASE_URL_SUPPLIERMANGEMENT;
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 
 const SupplierMangement = () => {
@@ -20,44 +20,17 @@ const SupplierMangement = () => {
   const [display, setDisply] = useState();
   const [search,setSearch]=useState('')
   const [loading,setLoading]=useState(false)
-  const totalPageCount = Math.ceil(suppliers.length / 5);
   const [isOpen,setIsOpen]=useState(false)
+  const [page,setPage]=useState(1)
+  const [totalPage,setTotalPage]=useState(0)
 
-  const handlePageChange = (action) => {
-    setLoading(true)
-    let newActive = active;
-    if (action === "prev") {
-      newActive = Math.max(active - 1, 1);
-    } else if (action === "next") {
-      newActive = Math.min(active + 1, totalPageCount);
-    } else {
-      newActive = action;
-    }
-
-    setActive(newActive);
-    setLoading(false)
-  };
-
-  const itemsPerPage = 6;
-  const startIndex = (active - 1) * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, suppliers.length);
-  const currentPageData = suppliers.slice(startIndex, endIndex);
-
-  const getItemProps = (index) => ({
-    variant: active === index ? "filled" : "text",
-    color: active === index ? "red" : "black",
-    onClick: () => setActive(index),
-    className: "rounded-full",
-    style: {
-      fontSize: "1rem",
-      textAlign: "center",
-    },
-  });
+  const handleChange=(event,value)=>{
+    setPage(value)
+  }
   const blockUnblock=async(id,status)=>{
     try {
       setLoading(true)
       const response=await adminApi.patch(`${manageUrl}`,{id,status})
-      console.log(response);
       setLoading(false)
       if(response.status==200){
         allusers()
@@ -85,10 +58,12 @@ const SupplierMangement = () => {
 const allusers=async()=>{
   try {
     setLoading(true)
-    const response=await adminApi.get(`${manageUrl}`)
+    const response=await adminApi.get(`${manageUrl}`,{params:{page,search}})
     setLoading(false)
+    console.log(response);
     if(response.status==200){
-      setSuppliers(response.data.data);
+      setSuppliers(response.data.data.data);
+      setTotalPage(response?.data?.data.totalpage)
     }else{
       console.log('responess Not Found');
     }
@@ -98,19 +73,19 @@ const allusers=async()=>{
 }
   useEffect(()=>{
 allusers()
-  },[])
+  },[page,search])
 
-  const Search = currentPageData.filter((item) => {
-    if (search === "") {
-      return item;
-    } else if (item.first_name.toLowerCase().includes(search.toLowerCase())) {
-      return item;
-    } else {
-      return "";
-    }
-  });
+  // const Search = currentPageData.filter((item) => {
+  //   if (search === "") {
+  //     return item;
+  //   } else if (item.first_name.toLowerCase().includes(search.toLowerCase())) {
+  //     return item;
+  //   } else {
+  //     return "";
+  //   }
+  // });
 
-  console.log(isOpen,"page");
+  console.log(totalPage);
 
   return (
     <div className="flex h-screen ">
@@ -174,7 +149,7 @@ allusers()
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {Search.map((person, index) => (
+              {suppliers.map((person, index) => (
                 <tr 
                 
                   key={person.email}
@@ -211,34 +186,13 @@ allusers()
             </tbody>
           </table>
           <div className="flex justify-end gap-4">
-            <Button
-              variant="text"
-              className="flex items-center gap-2 rounded-full"
-              onClick={() => handlePageChange("prev")}
-              disabled={active === 1}
-            >
-              <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Previous
-            </Button>
-            <div className="flex items-center gap-2">
-              {[...Array(totalPageCount)].map((_, index) => (
-                <IconButton
-                  style={{ textAlign: "center" }}
-                  key={index}
-                  {...getItemProps(index + 1)}
-                >
-                  {index + 1}
-                </IconButton>
-              ))}
-            </div>
-            <Button
-              variant="text"
-              className="flex items-center gap-2 rounded-full"
-              onClick={() => handlePageChange("next")}
-              disabled={active === 5}
-            >
-              Next
-              <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
-            </Button>
+          <div className='mt-2 mb-5 p-2  border-t-2'>
+        {totalPage>1&&
+        <Stack className='flex justify-center items-center mb-3'>
+        <Pagination count={totalPage} onChange={handleChange} variant="outlined" color="primary" />
+        </Stack>
+        } 
+        </div>
           </div>
         </div>
       </div>

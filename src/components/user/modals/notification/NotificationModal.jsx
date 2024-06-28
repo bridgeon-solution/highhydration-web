@@ -11,6 +11,7 @@ const NotificationModal = ({ isOpen, setIsOpen }) => {
   const { notification, setNotification } = useConversation();
   const [page,setPage]=useState(1)
   const [totalPage,setTotalPage]=useState(0)
+  const [screenSize,setScreenSize]=useState(window.innerWidth)
 
   useEffect(() => {
     const fetchNotification = async () => {
@@ -51,11 +52,13 @@ const handleChange=(e,value)=>{
 setPage(value)
 }
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative items-center inline-block text-left  ">
       <div
-        className={`origin-top-right absolute right-0 mt-2 w-96 p-3 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-transform transform ${
+        className={
+          `origin-top-right absolute right-0 mt-2 w-96 p-3 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-transform transform ${
           isOpen ? 'scale-y-100' : 'scale-y-0'
-        }`}
+        }`
+      }
         style={{ transformOrigin: 'top' }}
       >
         <div className="flex justify-between m-2">

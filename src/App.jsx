@@ -48,6 +48,7 @@ import UserProtectRouter from "./pages/users/utils/ProtectRouter";
 import AdminNotification from './pages/Admin/notification/AdminNotification'
 import Footer from "./components/user/footer/Footer";
 
+
 const clientId =
   "203212309830-4f9qm9lv8tdvi1uvs8em7vnl5f0jkt11.apps.googleusercontent.com";
 const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -65,15 +66,13 @@ function App() {
   });
   return (
     <>
-     
-
-      <NavigationProvider>
+     <NavigationProvider>
         <Routes>
-          <Route path="/" element={<Wellcome />} />
+         <Route path="/" element={<Wellcome />} />
           <Route path="/service" element={<Service />} />
           <Route path="/home" element={<Home />} />
           <Route path="/service" element={<Service />} />
-          <Route path="/aboutus" element={<Aboutus />} />
+          <Route path="/aboutus" element={<Aboutus />} /> 
           <Route path="/contactus" element={<Contact />} />
           <Route path="/userRegistration" element={<UserRegister />} />
           <Route path="/userlogin" element={<UserLogin />} />

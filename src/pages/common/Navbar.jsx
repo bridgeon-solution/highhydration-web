@@ -144,7 +144,7 @@ const Navbar = () => {
               <li>
                 <p onClick={() => navigate('/contactus')} className="block font-semibold    py-2 px-3 text-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-900  md:p-0 cursor-pointer ">Contact us</p>
               </li>
-
+  
               <li className='relative'>
                <IoIosNotificationsOutline size={25} onClick={handleNotificationClick}   className="text-4xl mt-2 mx-2 text-blue-700  cursor-pointer hover:text-blue-900"/>
                {unseenCount > 0 && (

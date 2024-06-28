@@ -10,7 +10,7 @@ const Home1 = () => {
   return (
     <div className='w-full bg-[#EFF0F3] flex flex-col md:flex-row'>
       <motion.div
-        className='md:w-2/3 w-full h-screen flex flex-col justify-center items-start'
+        className=' md:w-2/3 w-full h-screen flex flex-col justify-center items-start'
         initial={{ x: -250 }}
         animate={{ x: 0 }} 
         transition={{ type: 'spring', stiffness: 100, damping: 20 }} // Adjusted transition

@@ -4,6 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import ved from '../../assets/waterfalls.mp4'
 const Wellcome = () => {
   const navigate = useNavigate()
+
+setTimeout(()=>{
+  navigate('/home')
+},5000)
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <video

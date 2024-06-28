@@ -1,12 +1,12 @@
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import UserLogin from './UserLogin';
-import { test } from 'vitest';
+import SupplyHome from './SupplyHome';
+import '@testing-library/jest-dom/extend-expect';
 
-test('renders UserLogin component', () => {
+test('renders SupplyHome component', () => {
     render(
         <MemoryRouter>
-            <UserLogin/>
+            <SupplyHome />
         </MemoryRouter>
     ); 
 });

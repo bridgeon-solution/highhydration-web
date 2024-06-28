@@ -6,6 +6,7 @@ let adminId = import.meta.env.VITE_ADMIN_ID;
 const ModalMessages = () => {
     const userId = localStorage.getItem("userId");
     const { messages, setMessages,  } = useConversation();
+    console.log(messages,'hiiii')
  
 
     useEffect(() => {

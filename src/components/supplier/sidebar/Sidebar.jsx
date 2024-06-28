@@ -8,9 +8,16 @@ import {
   CDBSidebarMenuItem,
 } from "cdbreact";
 
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+
 
 const SideBar = () => {
+const navigate = useNavigate()
+const logoutSupplier = ()=>{
+  localStorage.clear()
+  navigate('/suplogin')
+}
+
 return (
     <div
       style={{ display: "flex", height: "100vh", overflow: "scroll initial", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",borderRight: "4px solid #e2e8f0"}}
@@ -42,8 +49,8 @@ return (
             <NavLink  to={'/orderAllocation/'}  activeClassName="activeClicked">
               <CDBSidebarMenuItem icon='fas fa-shopping-cart'> Orders</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="sign-out-alt">LogOut</CDBSidebarMenuItem>
+            <NavLink onClick={logoutSupplier} activeClassName="activeClicked">
+              <CDBSidebarMenuItem  icon="sign-out-alt">LogOut</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>

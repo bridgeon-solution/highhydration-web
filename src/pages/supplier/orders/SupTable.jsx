@@ -39,7 +39,7 @@ async function  handleButton(id){
 console.log(id,"huzzzzz");
 
 try {
-  const response=await supplierApi.patch('suppliers/order',{_id:id})
+  const response=await supplierApi.patch(`suppliers/order/${userId}`,{_id:id})
   console.log(response,"huhuhu");
   if(response.status===200){
     fetchData()

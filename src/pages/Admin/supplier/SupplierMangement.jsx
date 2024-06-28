@@ -176,11 +176,11 @@ allusers()
             <tbody className="bg-white divide-y divide-gray-200">
               {Search.map((person, index) => (
                 <tr 
-                onClick={()=>{setIsOpen(person)}}
+                
                   key={person.email}
                   className={index % 2 === 1 ? "bg-[#F7F6FE]" : "bg-white"}
                 >
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" onClick={()=>{setIsOpen(person)}}>
                     {person.first_name} {person.last_name}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

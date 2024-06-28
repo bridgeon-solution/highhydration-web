@@ -3,17 +3,20 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaStar } from "react-icons/fa";
-import {  useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import Order from "../order/Order";
 import Loader from "../../../components/Loader";
 import api from "../../../axiosInterceptors";
 import toast from "react-hot-toast";
+import { IoArrowBack } from "react-icons/io5";
 
 const SingleProduct = () => {
   const { productId } = useParams();
+  const navigate=useNavigate()
   const [modalOpen, setModalOpen] = useState(false);
   const [loader, setLoading] = useState(false);
   const [showAll, setShowAll] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const settings = {
     dots: true,
     infinite: true,
@@ -90,6 +93,17 @@ const SingleProduct = () => {
   return (
     <>
       {loader && <Loader />}
+      <button
+      onClick={()=>{navigate('/home')}}
+      className={`bg-white transform mt-4 mx-3 p-2 border-2 w-12 h-12 rounded-full duration-500 text-gray-400 border-gray-400 hover:bg-gray-400 hover:text-black hover:w-32 flex items-center justify-center`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+        <IoArrowBack />
+      {isHovered &&
+        <span className="whitespace-nowrap mx-2">Back</span>}
+      
+    </button>
       {modalOpen ? (
         <Order product={product} setModalOpen={setModalOpen} />
       ) : (

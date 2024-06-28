@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import PaymentSectionAll from './PaymentSectionAll';
 import PaymentSectionPending from './PaymentSectionPending';
 import PaymentSectionPaid from './PaymentSectionPaid';
-
+import { PiCurrencyInrBold } from "react-icons/pi";
 import { FaFilter } from 'react-icons/fa';
 import FilterModal from '../modal/FilterModal';
 import Loader from '../../Loader';
@@ -55,11 +55,17 @@ const currentDate = new Date(Date.now());
 
 
       <div className='max-w-7xl ml-2 flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row w-full gap-6 mt-3 p-2 m-2'>
+        
   <div className='bg-blue-100 w-full lg:w-1/3 h-32 rounded-lg text-start pl-3'>
     <p className='text-gray-500 font-light text-lg'>Total Amount</p>
-    <p className='text-2xl text-blue-500 font-semibold'>${total}</p>
+    <div className='flex '>
+    <p className='text-xl text-blue-500 font-semibold'><PiCurrencyInrBold /></p>
+     <p className='text-2xl text-blue-500 font-semibold'>{total}</p>
+</div>
     <span className='text-end mx-1 font-light text-gray-400'>{formattedDate}</span>
   </div>
+
+
   <div className='bg-green-100 w-full lg:w-1/3 h-32 rounded-lg pl-3'>
     <p className='text-gray-500 font-light text-lg'>Success Amount</p>
     <p className='text-green-500 font-semibold text-2xl'>${success}</p>

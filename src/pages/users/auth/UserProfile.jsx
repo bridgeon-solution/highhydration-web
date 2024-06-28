@@ -50,46 +50,21 @@ const UserProfile = () => {
     
       {loading && <Loader />}
 
-      {/* <div className='w-full flex flex-col  md:flex-row h-1/3 bg-gradient-to-b from-blue-200 to-blue-100 rounded-bl-2xl rounded-br-2xl justify-between'>
 
-        <div className='w-full md:w-1/3  flex items-center justify-center'>
-          <img className='h-56 w-56 border rounded-full' src={userData?.image} alt="User" />
-        </div>
-        <div class="flex flex-col md:flex-row justify-between items-center p-2 lg:mr-5 mx-5">
 
-  <div class="w-full bg-gradient-to-b from-blue-200 to-blue-100 lg:ml-2 lg:mr-0 rounded-lg ">
-    <p class="text-2xl font-bold text-center mt-2 bg-gradient-to-b from-blue-200 to-blue-200 py-2 rounded-t-lg">Personal Details</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 p-4">
-      <div class="flex flex-col items-center lg:items-start space-y-2 bg-gradient-to-b from-blue-200 to-blue-100 shadow-xl rounded-lg p-4">
-        <p class="text-lg font-semibold text-gray-700">First Name <span class="text-gray-500">{userData?.first_name}</span></p>
-        <p class="text-lg font-semibold text-gray-700">Last Name <span class="text-gray-500">{userData?.last_name}</span></p>
-      </div>
-
-      <div class="flex flex-col items-center lg:items-start space-y-2 bg-gradient-to-b from-blue-200 to-blue-100 shadow-xl rounded-lg p-4">
-        <p class="text-lg font-semibold text-gray-700">Email <span class="text-gray-500">{userData?.email}</span></p>
-        <p class="text-lg font-semibold text-gray-700">Phone <span class="text-gray-500">{userData?.phone_number}</span></p>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div> */}
-
-<div className="w-full flex flex-col md:flex-row h-auto bg-gradient-to-b from-blue-500 to-blue-200 rounded-bl-2xl rounded-br-2xl justify-between p-4 md:p-0">
+<div className="w-full flex flex-col md:flex-row h-auto bg-gradient-to-b from-blue-500 to-blue-00 rounded-bl-2xl rounded-br-2xl justify-between p-4 md:p-0">
   <div className="w-full md:w-1/3 flex items-center justify-center p-4 md:p-0">
-    <img className="h-56 w-56 border rounded-full" src={userData?.image||"https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} alt="User" />
+    <img className="h-56 w-56 border rounded-full lg:mt-2" src={userData?.image||"https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} alt="User" />
   </div>
   <div className="w-full md:w-2/3 flex flex-col justify-center p-4">
-    <div className="w-full bg-gradient-to-b from-blue-500 to-blue-200 rounded-lg shadow-lg">
-      <p className="text-2xl font-bold text-center mt-2 bg-gradient-to-b from-blue-500 to-blue-200 py-2 rounded-t-lg">Personal Details</p>
+    <div className="w-full ">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-        <div className="flex flex-col items-center md:items-start space-y-2 bg-gradient-to-b from-blue-400 to-blue-100 shadow-xl rounded-lg p-4">
-          <p className="text-lg font-semibold text-gray-700">First Name: <span className="text-gray-500">{userData?.first_name}</span></p>
-          <p className="text-lg font-semibold text-gray-700">Last Name: <span className="text-gray-500">{userData?.last_name}</span></p>
+        <div className="flex flex-col items-center md:items-start space-y-2  rounded-lg p-4">
+          <p className="text-lg font-semibold text-gray-700 first-letter:uppercase">First Name: <span className="text-gray-500">{userData?.first_name}</span></p>
+          <p className="text-lg font-semibold text-gray-700 first-letter:uppercase">Last Name: <span className="text-gray-500">{userData?.last_name}</span></p>
         </div>
-        <div className="flex flex-col items-center md:items-start space-y-2 bg-gradient-to-b from-blue-400 to-blue-100 shadow-xl rounded-lg p-4">
-          <p className="text-lg font-semibold text-gray-700">Email: <span className="text-gray-500">{userData?.email}</span></p>
+        <div className="flex flex-col items-center md:items-start space-y-2   rounded-lg p-4">
+          <p className="text-lg font-semibold text-gray-700 ">Email: <span className="text-gray-500">{userData?.email}</span></p>
           <p className="text-lg font-semibold text-gray-700">Phone: <span className="text-gray-500">{userData?.phone_number}</span></p>
         </div>
       </div>

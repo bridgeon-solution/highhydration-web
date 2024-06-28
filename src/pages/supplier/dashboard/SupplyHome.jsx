@@ -1,7 +1,5 @@
 import ad from "../../../assets/Supplier/sup1.png"
-import SupTable from '../SupTable'
 import SideBar from '../../../components/supplier/sidebar/Sidebar'
-import SupplierChart1 from '../../../components/supplier/SupplierChart1'
 import map from '../../../assets/map1.png'
 
 

@@ -32,15 +32,13 @@ const AllProducts = () => {
     console.log(data,"datumm");
   return (
     <>
-    
-    
-    <div className='flex w-full h-screen overflow-hidden bg-[#e5e1e6]'>
+     <div className='flex w-full h-screen overflow-hidden bg-[#e5e1e6]'>
       {loading&&<Loader/>}
     <div className='mt-2 min-h-screen'>
       <AdminSidebar />
     </div>
   
-    <div className='mt-1 m-2 w-full overflow-scroll overscroll-none'>
+    <div className='mt-1 m-2 w-full '>
 
       <div className='w-full h-1/4 flex border rounded-lg' style={{ backgroundColor: '#303c6c' }}>
         <div className='w-3/4'>
@@ -67,7 +65,7 @@ const AllProducts = () => {
 
 
 {/* table */}
-<div className="overflow-x-auto shadow-md sm:rounded-lg mt-4">
+<div className="overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg mt-4">
   {/* <div class="flex flex-wrap items-center justify-between pb-4 space-y-4 md:space-y-0 bg-white dark:bg-gray-900 sm:rounded-t-lg">
     <label for="table-search" class="sr-only">Search</label>
     <div class="relative">
@@ -123,9 +121,9 @@ const AllProducts = () => {
 
 
   </div>
-  <Footer/>
+
   </div>
- 
+
   </>
   )
 }

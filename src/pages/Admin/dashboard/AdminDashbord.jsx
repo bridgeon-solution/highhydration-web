@@ -13,15 +13,17 @@ import api from '../../../axiosInterceptors'
 const AdminDashbord = () => {
 
   return (
-    <div className="flex w-full h-screen overflow-hidden bg-[#EDE8F5] overflow-y-scroll">
+    <div className="flex w-full h-screen overflow-hidden bg-[#EDE8F5] ">
       <div className=" mt-2 min-h-screen">
         <AdminSidebar />
        
       </div>
 
-      <div className="mt-2 ml-2 mr-2 w-full ">   
 
-  <div className='w-full flex  h-1/3 border rounded-lg bg-[#303c6c]'>
+
+      <div className="mt-2 ml-2 mr-2 w-full overflow-y-auto ">   
+
+  <div className='w-full flex  h-1/3 border rounded-lg bg-[#303c6c] '>
           <div className='w-3/4 flex justify-center items-center'>
             <p className='text-white text-4xl md:text-6xl font-bold md:pt-12 text-center'>
               Welcome To High Hydration

@@ -38,7 +38,7 @@ const AllProducts = () => {
       <AdminSidebar />
     </div>
   
-    <div className='mt-1 m-2 w-full '>
+    <div className='mt-1 m-2 w-full overflow-y-auto'>
 
       <div className='w-full h-1/4 flex border rounded-lg' style={{ backgroundColor: '#303c6c' }}>
         <div className='w-3/4'>
@@ -73,9 +73,9 @@ const AllProducts = () => {
     </div>
   </div> */}
   
-  <div class="overflow-x-auto">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-      <thead class="text-xs uppercase bg-[#303c6c]">
+  <div className="overflow-x-auto">
+    <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
+      <thead className="text-xs uppercase bg-[#303c6c]">
         <tr>
           <th scope="col" className="p-4"></th>
           <th scope="col" className="px-6 py-3">Product Name</th>

@@ -92,6 +92,7 @@ const SingleProduct = () => {
   console.log();
   return (
     <>
+    
       {loader && <Loader />}
       <button
       onClick={()=>{navigate('/home')}}
@@ -138,7 +139,7 @@ const SingleProduct = () => {
                     </svg>
                   ))}
                 </div>
-                <h5 className="text-xl mt-3  font-bold">${product?.price}</h5>
+                <h5 className="text-xl mt-3  font-bold">₹{product?.price}</h5>
                 <button
                   className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-xl mt-4 select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-gray-900/10 active:bg-gray-900/20"
                   type="button"

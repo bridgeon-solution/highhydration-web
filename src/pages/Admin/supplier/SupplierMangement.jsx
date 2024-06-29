@@ -113,14 +113,14 @@ allusers()
   console.log(isOpen,"page");
 
   return (
-    <div className="flex h-screen ">
+    <div className="flex h-screen overflow-hidden">
       { isOpen && <SupplierMangementModal handleClose={setIsOpen} isOpen={isOpen} fethcData={allusers}/>
       }
       {loading&&<Loader/>}
       <div>
         <AdminSidebar />
       </div>
-      <div className=" w-full h-screen bg-[#e5e1e6] ">
+      <div className=" w-full h-screen bg-[#e5e1e6] overflow-y-scroll ">
         <div className="flex w-full h-28 justify-between items-center">
           <p className="ml-5 text-2xl  text-     font-bold">Manage Suppliers</p>
           <div className="flex mr-2">

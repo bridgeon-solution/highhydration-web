@@ -218,7 +218,7 @@ if(a==="-"){
         <img src={product?.image} alt="" />
     </div>
     <div>
-    <h5 className="text-xl mt-3 text-center font-bold">${price}</h5>
+    <h5 className="text-xl mt-3 text-center font-bold">₹{price}</h5>
     <div className='flex justify-center mt-5'>
     <button onClick={()=>{handlechnge('-')}}
   className="flex items-center justify-center bg-gray-800 text-white rounded-full w-8 h-8 text-lg font-bold transition-all duration-300 transform hover:bg-gray-900 hover:scale-105 active:bg-gray-700">

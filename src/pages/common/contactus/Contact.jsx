@@ -14,7 +14,7 @@ const Contact = () => {
     <> 
     <div className='h-screen overflow-y-scroll'> 
       <Navbar/> 
-    <div className='bg-[#EFF0F3] p-2 mt-5 h-screen'>
+    <div className='bg-[#EFF0F3] pt-5  h-screen'>
 
       <p className='text-center text-3xl font-bold mt-3'>Contact us</p>
       <p className='text-center text-xl mt-2'>Any question or remarks? just write a message!</p>

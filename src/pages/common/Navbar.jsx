@@ -185,10 +185,10 @@ const Navbar = () => {
 <div className="absolute z-10 top-16 right-0 bg-[#EFF0F3] rounded-md shadow-xl w-36 sm:w-48 lg:w-48">
 <ul className="py-2">
   <li>
-    <div className="flex items-center space-x-2 py-2 cursor-pointer rounded-lg px-4 hover:bg-slate-600">
+    <div className="flex items-center space-x-2 py-2 -z-10 cursor-pointer rounded-lg px-4 hover:bg-slate-600">
       <img 
         src={userData.image || "https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} 
-        className="w-14 h-14 rounded-full border" 
+        className="w-14 h-14 -z-10 rounded-full border" 
         alt="User" 
       />
       <p className="text-gray-950 truncate text-3xl italic font-semibold ">{userData?.first_name}</p>

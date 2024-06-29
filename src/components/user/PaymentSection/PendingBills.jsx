@@ -26,7 +26,7 @@ const PendingBills = () => {
     }, [userId]);
 
 
-    console.log(orders,"kutta kutta");
+
 
     async function handleButton() {
         const monthNumber = new Date(orders[0].purchaseDate).getMonth() + 1;

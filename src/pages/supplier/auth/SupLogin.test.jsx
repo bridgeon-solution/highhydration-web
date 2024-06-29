@@ -1,12 +1,12 @@
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import UserLogin from './UserLogin';
 import { test } from 'vitest';
+import SupLogin from './SupLogin';
 
 test('renders UserLogin component', () => {
     render(
         <MemoryRouter>
-            <UserLogin/>
+            <SupLogin/>
         </MemoryRouter>
     ); 
 });

@@ -95,6 +95,10 @@ const AdminSidebar = () => {
   console.log(notification,'navbar notiiii')
   useListenNotification()
 
+  const handleLogout=()=>{
+    localStorage.clear()
+    navigate('/home')
+  }
   return (
     <div
       style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
@@ -174,6 +178,9 @@ const AdminSidebar = () => {
            </NavLink>:""}
       </>
       )}
+      <NavLink onClick={()=>handleLogout()} activeClassName="activeClicked">
+    <CDBSidebarMenuItem icon="sign-out-alt">Logout</CDBSidebarMenuItem>
+           </NavLink>
 
           </CDBSidebarMenu>
         </CDBSidebarContent>

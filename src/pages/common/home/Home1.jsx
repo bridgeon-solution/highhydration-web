@@ -1,12 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { motion } from 'framer-motion';
 import HomeCarousel from '../../../components/user/home/HomeCorousel';
 import {useNavigate } from 'react-router-dom';
+import api from '../../../axiosInterceptors';
 
 
 const Home1 = () => {
   const navigate=useNavigate()
+  const userId=localStorage.getItem('userId')
+
+  const fetchData= async()=>{
+try {
+  const response1 = await api.get(`/users/${userId}`);
+  if(response1.data.data.is_billPending){
+    setTimeout(async ()=>{
+   const response=await api.get(`payment/monthlyPaymentBlock/${userId}`)
+     const billId = response.data.BillId;
+      const payment=await api.post('payment/monthlypayment',{billId})
+      if(payment.status===200){
+        const value=window.location.href=payment.data.session
+      }
+     
+  
+    },5000)
+    
+  }
+
+  console.log(response1.data.data.is_billPending,"my response") 
+
+    
+  } catch (error) {
+    
+  }
+
+}
+
+fetchData();
   return (
     <div className='w-full bg-[#EFF0F3] flex flex-col md:flex-row'>
       <motion.div

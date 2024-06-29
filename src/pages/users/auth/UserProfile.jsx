@@ -133,7 +133,7 @@ className="bg-gradient-to-b from-green-200 to-green-100 w-80 h-40 rounded-lg p-6
 
 <div  onClick={()=>setRole('pending')}
 className="bg-gradient-to-b from-red-200 to-red-100 w-80 h-40 rounded-lg p-6 flex flex-col justify-center items-center shadow-lg transform hover:scale-105 transition-transform duration-300">
-  <p className="text-gray-500 font-light text-lg mb-1">Last Payments</p>
+  <p className="text-gray-500 font-light text-lg mb-1">Pending Bills</p>
   <p className="text-4xl md:text-5xl font-semibold text-transparent bg-gradient-to-b from-blue-500 to-blue-300 bg-clip-text">
     3
   </p>

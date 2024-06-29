@@ -1,9 +1,21 @@
-// vitest.config.js or equivalent in your setup
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
+import babel from 'vite-plugin-babel'
 
-module.exports = {
-    setupFilesAfterEnv: [
-      '@testing-library/jest-dom/extend-expect',
-      // Add any other setup files here if needed
-    ],
-  };
-  
+export default defineConfig({
+  plugins: [
+    react(),
+    babel({
+      babelConfig: {
+        plugins: ['@babel/plugin-transform-react-jsx']
+      }
+    })
+  ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    transformMode: {
+      web: [/.[jt]sx?$/],
+    },
+  },
+})

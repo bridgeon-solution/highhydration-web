@@ -12,7 +12,7 @@ function OrderDetails({props}) {
             <div className='text-center'>
             <p className='text-lg mb-2 mt-1'>Order Number :#{props?._id}</p>
             <p className='text-lg mb-2 mt-1'>Order Create At :{props?.purchaseDate}</p>
-            <p className='text-lg mb-2 mt-1'k>Total :${props?.amount}</p>
+            <p className='text-lg mb-2 mt-1'k>Total :₹{props?.amount}</p>
             </div>
         </div>
         <div className='flex flex-col items-center'>

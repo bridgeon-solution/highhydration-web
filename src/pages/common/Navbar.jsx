@@ -123,7 +123,7 @@ const Navbar = () => {
     <>
 
 
-      <nav className={`bg-[#EFF0F3]  fixed top-0 left-0 w-full z-50 transition-shadow duration-300 py-3 border-b-2 border-indigo-500 border-opacity-60   ${shadow ? 'shadow-md' : ''} `} >
+      <nav className={`bg-[#EFF0F3]  fixed top-0 left-0 w-full z-50 transition-shadow duration-300 py-3 border-b-2 border-gray-400 border-opacity-60   ${shadow ? 'shadow-md' : ''} `} >
         <div className="max-w-full flex flex-wrap items-center justify-between  p-1">
           <img src={logo} className="h-10" alt="Logo" onClick={() => navigate('/home')} />
 
@@ -185,11 +185,12 @@ const Navbar = () => {
 <div className="absolute z-10 top-16 right-0 bg-[#EFF0F3] rounded-md shadow-xl w-36 sm:w-48 lg:w-48">
 <ul className="py-2">
   <li>
-    <div className="flex items-center space-x-2 py-2 cursor-pointer rounded-lg px-4 hover:bg-slate-600">
+    <div className="flex items-center space-x-2 py-2 -z-10 cursor-pointer rounded-lg px-4 hover:bg-slate-600">
       <img 
         src={userData.image || "https://i.pinimg.com/236x/c2/7e/b7/c27eb77c278f37d9a204bff5a661b83b.jpg"} 
+
         className="w-8 h-8xl:w-12 xl:h-12  rounded-full border" 
-        alt="User" 
+ alt="User" 
       />
       <p className="text-gray-950 truncate text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl italic font-semibold ">{userData?.first_name}</p>
     </div>

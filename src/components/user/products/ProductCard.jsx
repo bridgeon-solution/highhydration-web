@@ -33,7 +33,7 @@ function  ProductCard({ product }) {
         <p className='ml-5 font-light'>({ratings?.length}Reviews)</p>
 
         </div>
-        <p className='text-center font-semibold  mt-3 text-l'><i class="fa fa-inr"></i> {product?.price}</p>
+        <p className='text-center font-semibold  mt-3 text-l'>₹ {product?.price}</p>
         <div className='flex justify-center mt-3'>
         <button onClick={()=>{handlechane(product?._id)}} className="text-white bg-blue-700 hover:bg-[#0B2C72] hover:text-[#8DEBFC] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Order Now</button>
         </div>

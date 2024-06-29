@@ -44,11 +44,12 @@ const currentDate = new Date(Date.now());
   return (
     <>
     {loading&& <Loader />}
-    <div className='flex w-full h-scree bg-[#F8F8F8]'>
-      <div className=' mt-2 min-h-screen' >
+    <div className='flex w-full h-screen overflow-hidden bg-[#F8F8F8]'>
+      <div className=' mt-2 min-h-screen overflow-y-scroll' >
         <AdminSidebar />
       </div>
-      <div className='w-full sm:overflow-auto overflow-hidden'>
+      <div className='w-full overflow-y-scroll'>
+
 
 
   

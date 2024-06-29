@@ -22,12 +22,13 @@ const Aboutus = () => {
           transform: "rotate(180deg)",
         }}
       >
-        <div className="text-center w-1/3" style={{ marginTop: "5%" }}>
-          <h1 className="rotate-180 text-5xl text-yellow-300">~</h1>
-          <h1 className="rotate-180 text-5xl font-serif">
-            A Trusted Name In Bottled Water Industry
-          </h1>
-        </div>
+        <div className="text-center w-full sm:w-2/3 md:w-1/2 lg:w-1/3 mx-auto mt-5 sm:mt-8 md:mt-10">
+  <h1 className="rotate-180 text-4xl sm:text-5xl text-yellow-300">~</h1>
+  <h1 className="rotate-180 text-3xl sm:text-4xl md:text-5xl font-serif">
+    A Trusted Name In Bottled Water Industry
+  </h1>
+</div>
+
         <div className="flex justify-center items-center h-screen">
           <h1 className="text-7xl transform transition rotate-180 duration-500 ease-in-out hover:scale-110 motion-safe:animate-moveTopAndHide font-sans">
             About Us
@@ -74,12 +75,6 @@ const Aboutus = () => {
             Learn More
           </a>
         </div>
-        {/* <div className='flex flex-col gap-3 items-center w-full md:w-1/4 p-3'>
-    <FaGlassWaterDroplet className='text-[#22B6FE]' size={90}/>
-    <h1 className='text-2xl text-[#22B6FE]'>Quality Certified</h1>
-    <p className='text-center p-4 leading-relaxed max-w-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio autem alias qui placeat temporibus, magnam itaque molestiae omnis, doloribus nobis aspernatur quod, quaerat fuga aliquam nostrum eius perferendis dolores natus.</p>
-    <a className='text-yellow-300 underline' href="#">Learn More</a>
-  </div> */}
       </div>
 
       <div className="flex justify-center">
@@ -95,7 +90,7 @@ const Aboutus = () => {
           allowFullScreen
         ></iframe>
       </div>
-      <div className="flex justify-center items-center mt-2 mb-2">
+      <div className="flex justify-center items-center mt-3 mb-3">
         <h1 className="text-5xl font-serif">Helping To Improve</h1>
         <p className=" w-72 border-l-2 border-black mx-2 pl-2">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, est
@@ -103,34 +98,34 @@ const Aboutus = () => {
         </p>
       </div>
 
-      <div className="w-10/12 mt-3 m-auto">
-        <div className="flex gap-9 mt-5">
+      <div className="w-full flex justify-center mt-3 m-auto mb-5">
+        <div className="flex flex-wrap mt-5 justify-center gap-9">
           <img
-            className="w-1/3"
+            className="w-1/4 "
             src="https://d2jx2rerrg6sh3.cloudfront.net/images/news/ImageForNews_733911_16711894528694581.jpg"
             alt=""
           />
           <img
-            className="w-1/3"
+            className="w-1/4"
             src="https://odishabytes.com/wp-content/uploads/2019/07/Mi-Water-Tester.jpg"
             alt=""
           />
           <img
-            className="w-1/3"
+            className="w-1/4"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEXvK2sXoSGHTfWYxykFPfQnEZZROSV2V3ag&s"
             alt=""
           />
         </div>
       </div>
       <div
-        className=" mt-5 h-screen"
+        className=" mt-5 h-screen hidden "
         style={{
           backgroundImage: `url(${aboutbg})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
       >
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center ">
           <h1 className="text-5xl font-serif mt-52 text-white">
             Filtration Process
           </h1>

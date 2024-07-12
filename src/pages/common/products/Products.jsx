@@ -22,6 +22,12 @@ const Products = () => {
       }
       }
       fetchDatas()
+      const intervalId = setInterval(() => {
+        fetchDatas();
+        console.log('API called');
+      }, 14 * 60 * 1000);
+  
+      return () => clearInterval(intervalId);
   },[])
 
   return (

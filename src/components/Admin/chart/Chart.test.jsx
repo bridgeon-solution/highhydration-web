@@ -1,12 +1,12 @@
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import UserLogin from './UserLogin';
 import { test } from 'vitest';
+import AdminChart from './AdminChart';
 
-test('renders UserLogin component', () => {
+test('renders AdminChart component', () => {
     render(
         <MemoryRouter>
-            <UserLogin/>
+            <AdminChart/>
         </MemoryRouter>
     ); 
 });

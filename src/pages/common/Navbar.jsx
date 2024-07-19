@@ -123,7 +123,9 @@ const Navbar = () => {
     <>
 
 
-      <nav className={`bg-[#EFF0F3]  fixed top-0 left-0 w-full z-50 transition-shadow duration-300 py-3 border-b-2 border-indigo-500 border-opacity-60   ${shadow ? 'shadow-md' : ''} `} >
+      <nav className={`bg-[#EFF0F3]  fixed top-0 left-0 w-full z-50 transition-shadow duration-300 py-3 border-b-2 border-opacity-60   ${shadow ? 'shadow-md' : ''} `} >
+
+
         <div className="max-w-full flex flex-wrap items-center justify-between  p-1">
           <img src={logo} className="h-10" alt="Logo" onClick={() => navigate('/home')} />
 

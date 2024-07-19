@@ -7,10 +7,12 @@ import { GiWaterRecycling } from "react-icons/gi";
 import { FaGlassWaterDroplet } from "react-icons/fa6";
 import { RiWaterFlashFill } from "react-icons/ri";
 import { IoIosWater } from "react-icons/io";
-import Footer from "../../../components/user/Footer";
+import Footer from "../../../components/user/footer/Footer";
+import Navbar from "../Navbar";
 const Aboutus = () => {
   return (
     <>
+    <Navbar/>
       <div
         className="w-full h-[89vh]  flex-col justify-center flex items-center relative"
         style={{
@@ -87,10 +89,10 @@ const Aboutus = () => {
           height="415"
           src="https://www.youtube.com/embed/v_8AcH7N98s?si=yUHR180kupEX-1Ce"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
         ></iframe>
       </div>
       <div className="flex justify-center items-center mt-2 mb-2">

@@ -1,0 +1,64 @@
+import React, { useState } from "react";
+import {
+  CDBSidebar,
+  CDBSidebarContent,
+  CDBSidebarFooter,
+  CDBSidebarHeader,
+  CDBSidebarMenu,
+  CDBSidebarMenuItem,
+} from "cdbreact";
+
+import {NavLink, useNavigate} from "react-router-dom";
+
+
+const SideBar = () => {
+const navigate = useNavigate()
+const logoutSupplier = ()=>{
+  localStorage.clear()
+  navigate('/suplogin')
+}
+
+return (
+    <div
+      style={{ display: "flex", height: "100vh", overflow: "scroll initial", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",borderRight: "4px solid #e2e8f0"}}
+    >
+      <CDBSidebar textColor="000" backgroundColor="#fff">
+        <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+          <NavLink
+            
+            className="text-decoration-none"
+            style={{ color: "inherit" }}
+           
+          >
+           High Hydration
+          </NavLink>
+        </CDBSidebarHeader>
+
+        <CDBSidebarContent className="sidebar-content">
+          <CDBSidebarMenu>
+            <NavLink to={"/supdashbord"}    activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon='fas fa-tachometer-alt'>Dashbord</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink  to="/supprofile" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon='user'>Profile </CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink to='/suppliers/notification' activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon='fas fa-bell'>Notification</CDBSidebarMenuItem>
+            </NavLink>
+           
+            <NavLink  to={'/orderAllocation/'}  activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon='fas fa-shopping-cart'> Orders</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink onClick={logoutSupplier} activeClassName="activeClicked">
+              <CDBSidebarMenuItem  icon="sign-out-alt">LogOut</CDBSidebarMenuItem>
+            </NavLink>
+          </CDBSidebarMenu>
+        </CDBSidebarContent>
+
+        <CDBSidebarFooter style={{ textAlign: "center" }}></CDBSidebarFooter>
+      </CDBSidebar>
+    </div>
+  );
+};
+
+export default SideBar;
